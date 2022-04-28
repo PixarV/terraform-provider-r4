@@ -131,7 +131,7 @@ func ResourceAMI() *schema.Resource {
 							Type:         schema.TypeString,
 							Optional:     true,
 							ForceNew:     true,
-							Default:      ec2.VolumeTypeStandard,
+							Default:      ec2.VolumeTypeSt2,
 							ValidateFunc: validation.StringInSlice(ec2.VolumeType_Values(), false),
 						},
 					},

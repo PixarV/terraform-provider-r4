@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/ProtonMail/go-crypto v0.0.0-20210428141323-04723f9f07d7
-	github.com/aws/aws-sdk-go v1.44.4
+	github.com/aws/aws-sdk-go v1.43.41
 	github.com/aws/aws-sdk-go-v2 v1.16.3
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.12.4
 	github.com/aws/aws-sdk-go-v2/service/route53domains v1.12.4
@@ -88,3 +88,5 @@ require (
 	google.golang.org/grpc v1.45.0 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 )
+
+replace github.com/aws/aws-sdk-go => github.com/PixarV/aws-sdk-go v1.43.42-0.20220504085238-ec226abb617d

@@ -3,8 +3,8 @@ module github.com/PixarV/terraform-provider-ritt
 go 1.17
 
 require (
+	github.com/PixarV/aws-sdk-go v0.0.5-ritt
 	github.com/ProtonMail/go-crypto v0.0.0-20210428141323-04723f9f07d7
-	github.com/aws/aws-sdk-go v1.43.41
 	github.com/aws/aws-sdk-go-v2 v1.16.2
 	github.com/aws/aws-sdk-go-v2/service/route53domains v1.12.3
 	github.com/beevik/etree v1.1.0
@@ -33,6 +33,7 @@ require (
 	github.com/agext/levenshtein v1.2.2 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
+	github.com/aws/aws-sdk-go v1.42.52 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.15.0 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.10.0 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.12.0 // indirect
@@ -88,5 +89,3 @@ require (
 	google.golang.org/grpc v1.45.0 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 )
-
-replace github.com/aws/aws-sdk-go => github.com/PixarV/aws-sdk-go v0.0.3-ritt

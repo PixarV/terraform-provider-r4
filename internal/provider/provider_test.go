@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hashicorp/terraform-provider-aws/names"
+	"github.com/PixarV/terraform-provider-ritt/names"
 )
 
 func TestExpandEndpoints(t *testing.T) {

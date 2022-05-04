@@ -11,10 +11,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/structure"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfiam "github.com/hashicorp/terraform-provider-aws/internal/service/iam"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
-	"github.com/hashicorp/terraform-provider-aws/internal/verify"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfiam "github.com/PixarV/terraform-provider-ritt/internal/service/iam"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/verify"
 )
 
 func ResourceSecretPolicy() *schema.Resource {

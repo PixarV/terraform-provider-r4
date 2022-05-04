@@ -11,9 +11,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfwafv2 "github.com/hashicorp/terraform-provider-aws/internal/service/wafv2"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfwafv2 "github.com/PixarV/terraform-provider-ritt/internal/service/wafv2"
 )
 
 func TestAccWAFV2WebACL_basic(t *testing.T) {
@@ -1520,7 +1520,7 @@ func TestAccWAFV2WebACL_tags(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/13862
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/13862
 func TestAccWAFV2WebACL_RateBased_maxNested(t *testing.T) {
 	var v wafv2.WebACL
 	webACLName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)

@@ -13,9 +13,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfelbv2 "github.com/hashicorp/terraform-provider-aws/internal/service/elbv2"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfelbv2 "github.com/PixarV/terraform-provider-ritt/internal/service/elbv2"
 )
 
 func init() {
@@ -2585,7 +2585,7 @@ resource "aws_lb" "lb_test" {
   }
 }
 
-# See https://github.com/hashicorp/terraform-provider-aws/issues/2498
+# See https://github.com/PixarV/terraform-provider-ritt/issues/2498
 output "lb_name" {
   value = aws_lb.lb_test.name
 }

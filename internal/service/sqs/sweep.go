@@ -11,8 +11,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/sqs"
 	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/sweep"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/sweep"
 )
 
 func init() {

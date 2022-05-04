@@ -11,9 +11,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfecr "github.com/hashicorp/terraform-provider-aws/internal/service/ecr"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfecr "github.com/PixarV/terraform-provider-ritt/internal/service/ecr"
 )
 
 func TestAccECRRepositoryPolicy_basic(t *testing.T) {
@@ -81,7 +81,7 @@ func TestAccECRRepositoryPolicy_IAM_basic(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/19365
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/19365
 func TestAccECRRepositoryPolicy_IAM_principalOrder(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_ecr_repository_policy.test"

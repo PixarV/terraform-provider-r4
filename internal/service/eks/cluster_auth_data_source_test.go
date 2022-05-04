@@ -7,8 +7,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/eks"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	tfeks "github.com/hashicorp/terraform-provider-aws/internal/service/eks"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	tfeks "github.com/PixarV/terraform-provider-ritt/internal/service/eks"
 )
 
 func TestAccEKSClusterAuthDataSource_basic(t *testing.T) {

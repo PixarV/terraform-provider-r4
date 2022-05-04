@@ -9,9 +9,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/route53domains"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/names"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/names"
 )
 
 func TestAccRoute53Domains_serial(t *testing.T) {

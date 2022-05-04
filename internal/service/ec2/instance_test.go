@@ -20,9 +20,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfec2 "github.com/hashicorp/terraform-provider-aws/internal/service/ec2"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfec2 "github.com/PixarV/terraform-provider-ritt/internal/service/ec2"
 )
 
 func init() {
@@ -283,7 +283,7 @@ func TestAccEC2Instance_EBSBlockDevice_kmsKeyARN(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/12667
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/12667
 func TestAccEC2Instance_EBSBlockDevice_invalidIopsForVolumeType(t *testing.T) {
 	resource.ParallelTest(t, resource.TestCase{
 		PreCheck:     func() { acctest.PreCheck(t) },
@@ -316,7 +316,7 @@ func TestAccEC2Instance_EBSBlockDevice_invalidThroughputForVolumeType(t *testing
 
 // TestAccEC2Instance_EBSBlockDevice_RootBlockDevice_removed verifies block device mappings
 // removed outside terraform no longer result in a panic.
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/20821
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/20821
 func TestAccEC2Instance_EBSBlockDevice_RootBlockDevice_removed(t *testing.T) {
 	var instance ec2.Instance
 	resourceName := "aws_instance.test"
@@ -553,7 +553,7 @@ func TestAccEC2Instance_gp2IopsDevice(t *testing.T) {
 
 // TestAccEC2Instance_gp2WithIopsValue updated in v3.0.0
 // to account for apply-time validation of the root_block_device.iops attribute for supported volume types
-// Reference: https://github.com/hashicorp/terraform-provider-aws/pull/14310
+// Reference: https://github.com/PixarV/terraform-provider-ritt/pull/14310
 func TestAccEC2Instance_gp2WithIopsValue(t *testing.T) {
 	resource.ParallelTest(t, resource.TestCase{
 		PreCheck:     func() { acctest.PreCheck(t) },
@@ -1284,7 +1284,7 @@ func TestAccEC2Instance_BlockDeviceTags_withAttachedVolume(t *testing.T) {
 				),
 			},
 			{
-				//https://github.com/hashicorp/terraform-provider-aws/issues/17074
+				//https://github.com/PixarV/terraform-provider-ritt/issues/17074
 				Config: testAccInstanceConfigBlockDeviceTagsAttachedVolumeWithTags(rName),
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckInstanceExists(resourceName, &v),
@@ -1465,7 +1465,7 @@ func TestAccEC2Instance_withIAMInstanceProfile(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/17719
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/17719
 func TestAccEC2Instance_withIAMInstanceProfilePath(t *testing.T) {
 	var instance ec2.Instance
 	resourceName := "aws_instance.test"
@@ -1570,7 +1570,7 @@ func TestAccEC2Instance_associatePublicIPAndPrivateIP(t *testing.T) {
 }
 
 // Allow Empty Private IP
-// https://github.com/hashicorp/terraform-provider-aws/issues/13626
+// https://github.com/PixarV/terraform-provider-ritt/issues/13626
 func TestAccEC2Instance_Empty_privateIP(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2452,7 +2452,7 @@ func TestAccEC2Instance_addSecurityGroupNetworkInterface(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/7063
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/7063
 func TestAccEC2Instance_NewNetworkInterface_publicIPAndSecondaryPrivateIPs(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2492,7 +2492,7 @@ func TestAccEC2Instance_NewNetworkInterface_publicIPAndSecondaryPrivateIPs(t *te
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/7063
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/7063
 func TestAccEC2Instance_NewNetworkInterface_emptyPrivateIPAndSecondaryPrivateIPs(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2523,7 +2523,7 @@ func TestAccEC2Instance_NewNetworkInterface_emptyPrivateIPAndSecondaryPrivateIPs
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/7063
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/7063
 func TestAccEC2Instance_NewNetworkInterface_emptyPrivateIPAndSecondaryPrivateIPsUpdate(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2571,7 +2571,7 @@ func TestAccEC2Instance_NewNetworkInterface_emptyPrivateIPAndSecondaryPrivateIPs
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/7063
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/7063
 func TestAccEC2Instance_NewNetworkInterface_privateIPAndSecondaryPrivateIPs(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2603,7 +2603,7 @@ func TestAccEC2Instance_NewNetworkInterface_privateIPAndSecondaryPrivateIPs(t *t
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/7063
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/7063
 func TestAccEC2Instance_NewNetworkInterface_privateIPAndSecondaryPrivateIPsUpdate(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2652,7 +2652,7 @@ func TestAccEC2Instance_NewNetworkInterface_privateIPAndSecondaryPrivateIPsUpdat
 	})
 }
 
-// https://github.com/hashicorp/terraform-provider-aws/issues/227
+// https://github.com/PixarV/terraform-provider-ritt/issues/227
 func TestAccEC2Instance_AssociatePublic_defaultPrivate(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2682,7 +2682,7 @@ func TestAccEC2Instance_AssociatePublic_defaultPrivate(t *testing.T) {
 	})
 }
 
-// https://github.com/hashicorp/terraform-provider-aws/issues/227
+// https://github.com/PixarV/terraform-provider-ritt/issues/227
 func TestAccEC2Instance_AssociatePublic_defaultPublic(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2712,7 +2712,7 @@ func TestAccEC2Instance_AssociatePublic_defaultPublic(t *testing.T) {
 	})
 }
 
-// https://github.com/hashicorp/terraform-provider-aws/issues/227
+// https://github.com/PixarV/terraform-provider-ritt/issues/227
 func TestAccEC2Instance_AssociatePublic_explicitPublic(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2742,7 +2742,7 @@ func TestAccEC2Instance_AssociatePublic_explicitPublic(t *testing.T) {
 	})
 }
 
-// https://github.com/hashicorp/terraform-provider-aws/issues/227
+// https://github.com/PixarV/terraform-provider-ritt/issues/227
 func TestAccEC2Instance_AssociatePublic_explicitPrivate(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2772,7 +2772,7 @@ func TestAccEC2Instance_AssociatePublic_explicitPrivate(t *testing.T) {
 	})
 }
 
-// https://github.com/hashicorp/terraform-provider-aws/issues/227
+// https://github.com/PixarV/terraform-provider-ritt/issues/227
 func TestAccEC2Instance_AssociatePublic_overridePublic(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -2802,7 +2802,7 @@ func TestAccEC2Instance_AssociatePublic_overridePublic(t *testing.T) {
 	})
 }
 
-// https://github.com/hashicorp/terraform-provider-aws/issues/227
+// https://github.com/PixarV/terraform-provider-ritt/issues/227
 func TestAccEC2Instance_AssociatePublic_overridePrivate(t *testing.T) {
 	var v ec2.Instance
 	resourceName := "aws_instance.test"
@@ -3143,7 +3143,7 @@ func TestAccEC2Instance_CreditSpecificationEmpty_nonBurstable(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/10203
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/10203
 func TestAccEC2Instance_CreditSpecificationUnspecifiedToEmpty_nonBurstable(t *testing.T) {
 	var instance ec2.Instance
 	resourceName := "aws_instance.test"
@@ -5340,7 +5340,7 @@ resource "aws_instance" "test" {
 }
 
 func testAccInstanceConfigBlockDeviceTagsAttachedVolumeWithTags(rName string) string {
-	// https://github.com/hashicorp/terraform-provider-aws/issues/17074
+	// https://github.com/PixarV/terraform-provider-ritt/issues/17074
 	return acctest.ConfigCompose(
 		acctest.ConfigLatestAmazonLinuxHvmEbsAmi(),
 		acctest.ConfigAvailableAZsNoOptIn(),
@@ -5372,7 +5372,7 @@ resource "aws_volume_attachment" "test" {
 }
 
 func testAccInstanceConfigBlockDeviceTagsAttachedVolumeWithTagsUpdate(rName string) string {
-	// https://github.com/hashicorp/terraform-provider-aws/issues/17074
+	// https://github.com/PixarV/terraform-provider-ritt/issues/17074
 	return acctest.ConfigCompose(
 		acctest.ConfigLatestAmazonLinuxHvmEbsAmi(),
 		acctest.ConfigAvailableAZsNoOptIn(),

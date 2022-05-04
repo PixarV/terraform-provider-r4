@@ -13,9 +13,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfdynamodb "github.com/hashicorp/terraform-provider-aws/internal/service/dynamodb"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfdynamodb "github.com/PixarV/terraform-provider-ritt/internal/service/dynamodb"
 )
 
 func init() {
@@ -996,7 +996,7 @@ func TestAccDynamoDBTable_gsiUpdateOtherAttributes(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/15115
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/15115
 func TestAccDynamoDBTable_lsiNonKeyAttributes(t *testing.T) {
 	var conf dynamodb.DescribeTableOutput
 	resourceName := "aws_dynamodb_table.test"
@@ -1031,7 +1031,7 @@ func TestAccDynamoDBTable_lsiNonKeyAttributes(t *testing.T) {
 	})
 }
 
-// https://github.com/hashicorp/terraform-provider-aws/issues/566
+// https://github.com/PixarV/terraform-provider-ritt/issues/566
 func TestAccDynamoDBTable_gsiUpdateNonKeyAttributes(t *testing.T) {
 	if testing.Short() {
 		t.Skip("skipping long-running test in short mode")
@@ -1126,7 +1126,7 @@ func TestAccDynamoDBTable_gsiUpdateNonKeyAttributes(t *testing.T) {
 	})
 }
 
-// https://github.com/hashicorp/terraform-provider-aws/issues/671
+// https://github.com/PixarV/terraform-provider-ritt/issues/671
 func TestAccDynamoDBTable_GsiUpdateNonKeyAttributes_emptyPlan(t *testing.T) {
 	var conf dynamodb.DescribeTableOutput
 	resourceName := "aws_dynamodb_table.test"

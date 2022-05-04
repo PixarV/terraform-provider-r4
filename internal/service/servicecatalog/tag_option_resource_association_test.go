@@ -8,10 +8,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfservicecatalog "github.com/hashicorp/terraform-provider-aws/internal/service/servicecatalog"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfservicecatalog "github.com/PixarV/terraform-provider-ritt/internal/service/servicecatalog"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 // add sweeper to delete known test servicecat tag option resource associations

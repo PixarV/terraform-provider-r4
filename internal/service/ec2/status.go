@@ -8,8 +8,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	tfiam "github.com/hashicorp/terraform-provider-aws/internal/service/iam"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	tfiam "github.com/PixarV/terraform-provider-ritt/internal/service/iam"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func StatusCapacityReservationState(conn *ec2.EC2, id string) resource.StateRefreshFunc {

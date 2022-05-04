@@ -8,10 +8,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfefs "github.com/hashicorp/terraform-provider-aws/internal/service/efs"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfefs "github.com/PixarV/terraform-provider-ritt/internal/service/efs"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestAccEFSFileSystemPolicy_basic(t *testing.T) {
@@ -107,7 +107,7 @@ func TestAccEFSFileSystemPolicy_policyBypass(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/21968
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/21968
 func TestAccEFSFileSystemPolicy_equivalentPolicies(t *testing.T) {
 	var desc efs.DescribeFileSystemPolicyOutput
 	resourceName := "aws_efs_file_system_policy.test"
@@ -134,7 +134,7 @@ func TestAccEFSFileSystemPolicy_equivalentPolicies(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/19245
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/19245
 func TestAccEFSFileSystemPolicy_equivalentPoliciesIAMPolicyDoc(t *testing.T) {
 	var desc efs.DescribeFileSystemPolicyOutput
 	resourceName := "aws_efs_file_system_policy.test"

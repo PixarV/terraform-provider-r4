@@ -11,10 +11,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfs3 "github.com/hashicorp/terraform-provider-aws/internal/service/s3"
-	"github.com/hashicorp/terraform-provider-aws/internal/verify"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfs3 "github.com/PixarV/terraform-provider-ritt/internal/service/s3"
+	"github.com/PixarV/terraform-provider-ritt/internal/verify"
 )
 
 func TestAccS3BucketReplicationConfiguration_basic(t *testing.T) {
@@ -369,7 +369,7 @@ func TestAccS3BucketReplicationConfiguration_configurationRuleDestinationAccessC
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/12480
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/12480
 func TestAccS3BucketReplicationConfiguration_configurationRuleDestinationAddAccessControlTranslation(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	callerIdentityDataSourceName := "data.aws_caller_identity.current"
@@ -542,7 +542,7 @@ func TestAccS3BucketReplicationConfiguration_replicaModifications(t *testing.T) 
 
 // TestAccS3BucketReplicationConfiguration_withoutId ensures a configuration with a Computed
 // rule.id does not result in a non-empty plan
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23690
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23690
 func TestAccS3BucketReplicationConfiguration_withoutId(t *testing.T) {
 	resourceName := "aws_s3_bucket_replication_configuration.test"
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -713,7 +713,7 @@ func TestAccS3BucketReplicationConfiguration_schemaV2SameRegion(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/21895
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/21895
 func TestAccS3BucketReplicationConfiguration_schemaV2DestinationMetrics(t *testing.T) {
 	resourceName := "aws_s3_bucket_replication_configuration.test"
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -798,7 +798,7 @@ func TestAccS3BucketReplicationConfiguration_existingObjectReplication(t *testin
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23487
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23487
 func TestAccS3BucketReplicationConfiguration_filter_emptyConfigurationBlock(t *testing.T) {
 	resourceName := "aws_s3_bucket_replication_configuration.test"
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -840,7 +840,7 @@ func TestAccS3BucketReplicationConfiguration_filter_emptyConfigurationBlock(t *t
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23487
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23487
 func TestAccS3BucketReplicationConfiguration_filter_emptyPrefix(t *testing.T) {
 	resourceName := "aws_s3_bucket_replication_configuration.test"
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -1005,7 +1005,7 @@ func TestAccS3BucketReplicationConfiguration_filter_andOperator(t *testing.T) {
 
 // TestAccS3BucketReplicationConfiguration_filter_withoutId ensures a configuration with a Computed
 // rule.id does not result in a non-empty plan.
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23690
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23690
 func TestAccS3BucketReplicationConfiguration_filter_withoutId(t *testing.T) {
 	resourceName := "aws_s3_bucket_replication_configuration.test"
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -1044,7 +1044,7 @@ func TestAccS3BucketReplicationConfiguration_filter_withoutId(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/21961
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/21961
 func TestAccS3BucketReplicationConfiguration_withoutPrefix(t *testing.T) {
 	resourceName := "aws_s3_bucket_replication_configuration.test"
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)

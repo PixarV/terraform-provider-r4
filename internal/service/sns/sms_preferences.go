@@ -9,8 +9,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/sns"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/hashicorp/terraform-provider-aws/internal/attrmap"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/attrmap"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
 )
 
 func validateMonthlySpend(v interface{}, k string) (ws []string, errors []error) {

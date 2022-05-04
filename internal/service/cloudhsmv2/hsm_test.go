@@ -9,9 +9,9 @@ import (
 	"github.com/aws/aws-sdk-go/service/cloudhsmv2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfcloudhsmv2 "github.com/hashicorp/terraform-provider-aws/internal/service/cloudhsmv2"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfcloudhsmv2 "github.com/PixarV/terraform-provider-ritt/internal/service/cloudhsmv2"
 )
 
 func testAccHSM_basic(t *testing.T) {

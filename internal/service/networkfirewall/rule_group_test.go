@@ -11,9 +11,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfnetworkfirewall "github.com/hashicorp/terraform-provider-aws/internal/service/networkfirewall"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfnetworkfirewall "github.com/PixarV/terraform-provider-ritt/internal/service/networkfirewall"
 )
 
 func TestAccNetworkFirewallRuleGroup_Basic_rulesSourceList(t *testing.T) {
@@ -310,7 +310,7 @@ func TestAccNetworkFirewallRuleGroup_statelessRuleWithCustomAction(t *testing.T)
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/19414
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/19414
 func TestAccNetworkFirewallRuleGroup_updateRules(t *testing.T) {
 	var ruleGroup networkfirewall.DescribeRuleGroupOutput
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -524,7 +524,7 @@ func TestAccNetworkFirewallRuleGroup_updateStatefulRule(t *testing.T) {
 
 // TestAccNetworkFirewallRuleGroup_updateMultipleStatefulRules validates
 // in-place updates to stateful_rule configuration blocks
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/16868
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/16868
 func TestAccNetworkFirewallRuleGroup_updateMultipleStatefulRules(t *testing.T) {
 	var ruleGroup networkfirewall.DescribeRuleGroupOutput
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -606,7 +606,7 @@ func TestAccNetworkFirewallRuleGroup_updateMultipleStatefulRules(t *testing.T) {
 
 // TestAccNetworkFirewallRuleGroup_StatefulRule_action validates in-place
 // updates to the "action" argument within 1 stateful_rule configuration block
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/16868
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/16868
 func TestAccNetworkFirewallRuleGroup_StatefulRule_action(t *testing.T) {
 	var ruleGroup networkfirewall.DescribeRuleGroupOutput
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -667,7 +667,7 @@ func TestAccNetworkFirewallRuleGroup_StatefulRule_action(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/16470
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/16470
 func TestAccNetworkFirewallRuleGroup_StatefulRule_header(t *testing.T) {
 	var ruleGroup networkfirewall.DescribeRuleGroupOutput
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)

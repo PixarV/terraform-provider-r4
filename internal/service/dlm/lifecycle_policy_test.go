@@ -12,9 +12,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfdlm "github.com/hashicorp/terraform-provider-aws/internal/service/dlm"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfdlm "github.com/PixarV/terraform-provider-ritt/internal/service/dlm"
 )
 
 func TestAccDLMLifecyclePolicy_basic(t *testing.T) {

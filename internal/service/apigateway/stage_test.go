@@ -9,10 +9,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfapigateway "github.com/hashicorp/terraform-provider-aws/internal/service/apigateway"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfapigateway "github.com/PixarV/terraform-provider-ritt/internal/service/apigateway"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestAccAPIGatewayStage_basic(t *testing.T) {
@@ -133,7 +133,7 @@ func TestAccAPIGatewayStage_cache(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/22866
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/22866
 func TestAccAPIGatewayStage_cache_size_cache_disabled(t *testing.T) {
 	var conf apigateway.Stage
 	rName := sdkacctest.RandString(5)
@@ -178,7 +178,7 @@ func TestAccAPIGatewayStage_cache_size_cache_disabled(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/12756
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/12756
 func TestAccAPIGatewayStage_Disappears_referencingDeployment(t *testing.T) {
 	var stage apigateway.Stage
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)

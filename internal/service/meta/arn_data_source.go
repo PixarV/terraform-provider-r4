@@ -5,7 +5,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/arn"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/hashicorp/terraform-provider-aws/internal/verify"
+	"github.com/PixarV/terraform-provider-ritt/internal/verify"
 )
 
 func DataSourceARN() *schema.Resource {

@@ -24,11 +24,11 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/structure"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/flex"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
-	"github.com/hashicorp/terraform-provider-aws/internal/verify"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/flex"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/verify"
 )
 
 func ResourceBucket() *schema.Resource {
@@ -1606,7 +1606,7 @@ func resourceBucketInternalCorsUpdate(conn *s3.S3, d *schema.ResourceData) error
 	rules := make([]*s3.CORSRule, 0, len(rawCors))
 	for _, cors := range rawCors {
 		// Prevent panic
-		// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/7546
+		// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/7546
 		corsMap, ok := cors.(map[string]interface{})
 		if !ok {
 			continue
@@ -2942,7 +2942,7 @@ func expandVersioningWhenIsNewResource(l []interface{}) *s3.VersioningConfigurat
 	// Only set and return a non-nil VersioningConfiguration with at least one of
 	// MFADelete or Status enabled as the PutBucketVersioning API request
 	// does not need to be made for new buckets that don't require versioning.
-	// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/4494
+	// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/4494
 
 	if v, ok := tfMap["enabled"].(bool); ok && v {
 		output.Status = aws.String(s3.BucketVersioningStatusEnabled)

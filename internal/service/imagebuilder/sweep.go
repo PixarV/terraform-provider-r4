@@ -11,8 +11,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/imagebuilder"
 	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/sweep"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/sweep"
 )
 
 func init() {
@@ -371,7 +371,7 @@ func sweepImages(region string) error {
 
 			// Retrieve the Image's Build Version ARNs required as input
 			// to the ResourceImage()'s Delete operation
-			// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/19851
+			// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/19851
 			imageVersionArn := aws.StringValue(imageVersion.Arn)
 
 			input := &imagebuilder.ListImageBuildVersionsInput{

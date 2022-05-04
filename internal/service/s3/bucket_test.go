@@ -22,12 +22,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfcloudformation "github.com/hashicorp/terraform-provider-aws/internal/service/cloudformation"
-	tfs3 "github.com/hashicorp/terraform-provider-aws/internal/service/s3"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfcloudformation "github.com/PixarV/terraform-provider-ritt/internal/service/cloudformation"
+	tfs3 "github.com/PixarV/terraform-provider-ritt/internal/service/s3"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func init() {
@@ -83,7 +83,7 @@ func TestAccS3Bucket_Basic_basic(t *testing.T) {
 }
 
 // Support for common Terraform 0.11 pattern
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/7868
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/7868
 func TestAccS3Bucket_Basic_emptyString(t *testing.T) {
 	resourceName := "aws_s3_bucket.test"
 
@@ -696,7 +696,7 @@ func TestAccS3Bucket_Manage_lifecycleExpireMarkerOnly(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/11420
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/11420
 func TestAccS3Bucket_Manage_lifecycleRuleExpirationEmptyBlock(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket.test"
@@ -717,7 +717,7 @@ func TestAccS3Bucket_Manage_lifecycleRuleExpirationEmptyBlock(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/15138
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/15138
 func TestAccS3Bucket_Manage_lifecycleRuleAbortIncompleteMultipartUploadDaysNoExpiration(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket.test"
@@ -1356,7 +1356,7 @@ func TestAccS3Bucket_Replication_ruleDestinationAccessControlTranslation(t *test
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/12480
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/12480
 func TestAccS3Bucket_Replication_ruleDestinationAddAccessControlTranslation(t *testing.T) {
 	bucketName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	region := acctest.Region()
@@ -1464,7 +1464,7 @@ func TestAccS3Bucket_Replication_expectVersioningValidationError(t *testing.T) {
 	})
 }
 
-// Prefix issue: https://github.com/hashicorp/terraform-provider-aws/issues/6340
+// Prefix issue: https://github.com/PixarV/terraform-provider-ritt/issues/6340
 func TestAccS3Bucket_Replication_withoutPrefix(t *testing.T) {
 	bucketName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	alternateRegion := acctest.AlternateRegion()

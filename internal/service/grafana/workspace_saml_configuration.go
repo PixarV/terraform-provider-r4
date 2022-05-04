@@ -8,9 +8,9 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/managedgrafana"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/flex"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/flex"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func ResourceWorkspaceSamlConfiguration() *schema.Resource {

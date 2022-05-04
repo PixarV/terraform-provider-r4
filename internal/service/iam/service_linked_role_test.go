@@ -9,10 +9,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfiam "github.com/hashicorp/terraform-provider-aws/internal/service/iam"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfiam "github.com/PixarV/terraform-provider-ritt/internal/service/iam"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestDecodeIamServiceLinkedRoleID(t *testing.T) {
@@ -159,7 +159,7 @@ func TestAccIAMServiceLinkedRole_customSuffix(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/4439
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/4439
 func TestAccIAMServiceLinkedRole_CustomSuffix_diffSuppressFunc(t *testing.T) {
 	resourceName := "aws_iam_service_linked_role.test"
 	awsServiceName := "custom-resource.application-autoscaling.amazonaws.com"

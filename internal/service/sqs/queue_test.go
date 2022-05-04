@@ -11,11 +11,11 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/create"
-	tfsqs "github.com/hashicorp/terraform-provider-aws/internal/service/sqs"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/create"
+	tfsqs "github.com/PixarV/terraform-provider-ritt/internal/service/sqs"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func init() {
@@ -706,7 +706,7 @@ func TestAccSQSQueue_zeroVisibilityTimeoutSeconds(t *testing.T) {
 	})
 }
 
-// https://github.com/hashicorp/terraform-provider-aws/issues/19786.
+// https://github.com/PixarV/terraform-provider-ritt/issues/19786.
 func TestAccSQSQueue_defaultKMSDataKeyReusePeriodSeconds(t *testing.T) {
 	var queueAttributes map[string]string
 	resourceName := "aws_sqs_queue.test"

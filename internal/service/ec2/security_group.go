@@ -16,11 +16,11 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/create"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
-	"github.com/hashicorp/terraform-provider-aws/internal/verify"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/create"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/verify"
 )
 
 func ResourceSecurityGroup() *schema.Resource {
@@ -1169,7 +1169,7 @@ func SecurityGroupCollapseRules(ruleset string, rules []interface{}) []interface
 // SecurityGroupExpandRules works in pair with
 // SecurityGroupCollapseRules and is used as a
 // workaround for the problem explained in
-// https://github.com/hashicorp/terraform-provider-aws/pull/4726
+// https://github.com/PixarV/terraform-provider-ritt/pull/4726
 //
 // This function converts every ingress/egress block that
 // contains multiple rules to multiple blocks with only one

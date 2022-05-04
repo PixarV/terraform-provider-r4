@@ -10,8 +10,8 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
 )
 
 func TestAccOpsWorksPermission_basic(t *testing.T) {
@@ -68,7 +68,7 @@ func TestAccOpsWorksPermission_basic(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/4804
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/4804
 func TestAccOpsWorksPermission_self(t *testing.T) {
 	var opsperm opsworks.Permission
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)

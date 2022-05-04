@@ -11,9 +11,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfet "github.com/hashicorp/terraform-provider-aws/internal/service/elastictranscoder"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfet "github.com/PixarV/terraform-provider-ritt/internal/service/elastictranscoder"
 )
 
 func TestAccElasticTranscoderPreset_basic(t *testing.T) {
@@ -119,7 +119,7 @@ func TestAccElasticTranscoderPreset_disappears(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/14087
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/14087
 func TestAccElasticTranscoderPreset_AudioCodecOptions_empty(t *testing.T) {
 	var preset elastictranscoder.Preset
 	resourceName := "aws_elastictranscoder_preset.test"
@@ -224,7 +224,7 @@ func TestAccElasticTranscoderPreset_full(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/695
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/695
 func TestAccElasticTranscoderPreset_Video_frameRate(t *testing.T) {
 	var preset elastictranscoder.Preset
 	resourceName := "aws_elastictranscoder_preset.test"

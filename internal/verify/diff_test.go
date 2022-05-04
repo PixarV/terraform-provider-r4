@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/hashicorp/terraform-provider-aws/internal/flex"
+	"github.com/PixarV/terraform-provider-ritt/internal/flex"
 )
 
 func TestSuppressEquivalentTypeStringBoolean(t *testing.T) {

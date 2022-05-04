@@ -119,7 +119,7 @@ func FindStandardsSubscriptionByARN(conn *securityhub.SecurityHub, arn string) (
 	}
 
 	// TODO Check for multiple results.
-	// TODO https://github.com/hashicorp/terraform-provider-aws/pull/17613.
+	// TODO https://github.com/PixarV/terraform-provider-ritt/pull/17613.
 
 	subscription := output.StandardsSubscriptions[0]
 

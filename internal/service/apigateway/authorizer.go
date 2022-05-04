@@ -12,9 +12,9 @@ import (
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/flex"
-	"github.com/hashicorp/terraform-provider-aws/internal/verify"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/flex"
+	"github.com/PixarV/terraform-provider-ritt/internal/verify"
 )
 
 const DefaultAuthorizerTTL = 300
@@ -119,7 +119,7 @@ func resourceAuthorizerCreate(d *schema.ResourceData, meta interface{}) error {
 		// While the CreateAuthorizer method allows one to pass AuthorizerCredentials
 		// regardless of authorizer Type, the API ignores this setting if the authorizer
 		// is of Type "COGNITO_USER_POOLS"; thus, a PatchOperation is used as an alternative.
-		// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/16613
+		// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/16613
 		if aws.StringValue(input.Type) != apigateway.AuthorizerTypeCognitoUserPools {
 			input.AuthorizerCredentials = aws.String(v.(string))
 		} else {

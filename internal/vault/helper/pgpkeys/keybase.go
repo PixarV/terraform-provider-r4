@@ -8,7 +8,7 @@ import (
 
 	"github.com/ProtonMail/go-crypto/openpgp"
 	cleanhttp "github.com/hashicorp/go-cleanhttp"
-	"github.com/hashicorp/terraform-provider-aws/internal/vault/sdk/helper/jsonutil"
+	"github.com/PixarV/terraform-provider-ritt/internal/vault/sdk/helper/jsonutil"
 )
 
 const (

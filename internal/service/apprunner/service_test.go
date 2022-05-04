@@ -12,9 +12,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfapprunner "github.com/hashicorp/terraform-provider-aws/internal/service/apprunner"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfapprunner "github.com/PixarV/terraform-provider-ritt/internal/service/apprunner"
 )
 
 func TestAccAppRunnerService_ImageRepository_basic(t *testing.T) {
@@ -305,7 +305,7 @@ func TestAccAppRunnerService_ImageRepository_networkConfiguration(t *testing.T) 
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/19469
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/19469
 func TestAccAppRunnerService_ImageRepository_runtimeEnvironmentVars(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_apprunner_service.test"

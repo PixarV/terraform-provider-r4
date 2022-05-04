@@ -14,8 +14,8 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
 )
 
 func TestAccEC2Fleet_basic(t *testing.T) {
@@ -1048,7 +1048,7 @@ func TestAccEC2Fleet_type(t *testing.T) {
 	})
 }
 
-// Test for the bug described in https://github.com/hashicorp/terraform-provider-aws/issues/6777
+// Test for the bug described in https://github.com/PixarV/terraform-provider-ritt/issues/6777
 func TestAccEC2Fleet_templateMultipleNetworkInterfaces(t *testing.T) {
 	var fleet1 ec2.FleetData
 	resourceName := "aws_ec2_fleet.test"

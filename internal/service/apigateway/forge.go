@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
 )
 
 func buildInvokeURL(client *conns.AWSClient, restApiId, stageName string) string {

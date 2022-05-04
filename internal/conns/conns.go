@@ -288,9 +288,9 @@ import (
 	awsbasev1 "github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
-	"github.com/hashicorp/terraform-provider-aws/names"
-	"github.com/hashicorp/terraform-provider-aws/version"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
+	"github.com/PixarV/terraform-provider-ritt/names"
+	"github.com/PixarV/terraform-provider-ritt/version"
 )
 
 type Config struct {
@@ -1234,7 +1234,7 @@ func (c *Config) Client(ctx context.Context) (interface{}, diag.Diagnostics) {
 			}
 		// System problems can arise during FMS policy updates (maybe also creation),
 		// so we set the following operation as retryable.
-		// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23946
+		// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23946
 		case "PutPolicy":
 			if tfawserr.ErrCodeEquals(r.Error, fms.ErrCodeInternalErrorException) {
 				r.Retryable = aws.Bool(true)
@@ -1275,7 +1275,7 @@ func (c *Config) Client(ctx context.Context) (interface{}, diag.Diagnostics) {
 		}
 	})
 
-	// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/17996
+	// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/17996
 	client.SecurityHubConn.Handlers.Retry.PushBack(func(r *request.Request) {
 		switch r.Operation.Name {
 		case "EnableOrganizationAdminAccount":
@@ -1285,7 +1285,7 @@ func (c *Config) Client(ctx context.Context) (interface{}, diag.Diagnostics) {
 		}
 	})
 
-	// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/19215
+	// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/19215
 	client.SSOAdminConn.Handlers.Retry.PushBack(func(r *request.Request) {
 		if r.Operation.Name == "AttachManagedPolicyToPermissionSet" || r.Operation.Name == "DetachManagedPolicyFromPermissionSet" {
 			if tfawserr.ErrCodeEquals(r.Error, ssoadmin.ErrCodeConflictException) {

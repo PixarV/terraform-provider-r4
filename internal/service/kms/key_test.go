@@ -11,10 +11,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfkms "github.com/hashicorp/terraform-provider-aws/internal/service/kms"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfkms "github.com/PixarV/terraform-provider-ritt/internal/service/kms"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestAccKMSKey_basic(t *testing.T) {
@@ -244,7 +244,7 @@ func TestAccKMSKey_Policy_iamRole(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/11801
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/11801
 func TestAccKMSKey_Policy_iamRoleOrder(t *testing.T) {
 	var key kms.KeyMetadata
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -287,7 +287,7 @@ func TestAccKMSKey_Policy_iamRoleOrder(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/7646
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/7646
 func TestAccKMSKey_Policy_iamServiceLinkedRole(t *testing.T) {
 	var key kms.KeyMetadata
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)

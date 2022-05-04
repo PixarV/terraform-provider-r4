@@ -3,7 +3,7 @@ package kafka_test
 import (
 	"testing"
 
-	tfkafka "github.com/hashicorp/terraform-provider-aws/internal/service/kafka"
+	tfkafka "github.com/PixarV/terraform-provider-ritt/internal/service/kafka"
 )
 
 func TestSortEndpointsString(t *testing.T) {

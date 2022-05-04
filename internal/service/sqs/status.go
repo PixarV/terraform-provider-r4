@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/sqs"
 	awspolicy "github.com/hashicorp/awspolicyequivalence"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func statusQueueState(conn *sqs.SQS, url string) resource.StateRefreshFunc {
@@ -37,7 +37,7 @@ func statusQueueAttributeState(conn *sqs.SQS, url string, expected map[string]st
 						continue
 					}
 
-					// Backwards compatibility: https://github.com/hashicorp/terraform-provider-aws/issues/19786.
+					// Backwards compatibility: https://github.com/PixarV/terraform-provider-ritt/issues/19786.
 					if k == sqs.QueueAttributeNameKmsDataKeyReusePeriodSeconds && e == strconv.Itoa(DefaultQueueKMSDataKeyReusePeriodSeconds) {
 						continue
 					}

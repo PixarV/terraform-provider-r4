@@ -3,7 +3,7 @@ package lambda
 import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/lambda"
-	"github.com/hashicorp/terraform-provider-aws/internal/flex"
+	"github.com/PixarV/terraform-provider-ritt/internal/flex"
 )
 
 func flattenAliasRoutingConfiguration(arc *lambda.AliasRoutingConfiguration) []interface{} {

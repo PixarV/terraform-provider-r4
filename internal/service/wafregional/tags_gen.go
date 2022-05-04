@@ -7,7 +7,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/waf"
 	"github.com/aws/aws-sdk-go/service/wafregional"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 
 // ListTags lists wafregional service tags.

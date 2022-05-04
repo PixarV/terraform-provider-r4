@@ -9,11 +9,11 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/create"
-	tfbatch "github.com/hashicorp/terraform-provider-aws/internal/service/batch"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/create"
+	tfbatch "github.com/PixarV/terraform-provider-ritt/internal/service/batch"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestAccBatchComputeEnvironment_basic(t *testing.T) {

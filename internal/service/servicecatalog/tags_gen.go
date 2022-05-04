@@ -4,7 +4,7 @@ package servicecatalog
 import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/servicecatalog"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 
 // []*SERVICE.Tag handling

@@ -8,8 +8,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 // GetTag fetches an individual dynamodb service tag for a resource.

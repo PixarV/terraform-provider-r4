@@ -8,8 +8,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/hashicorp/terraform-provider-aws/internal/experimental/nullable"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
+	"github.com/PixarV/terraform-provider-ritt/internal/experimental/nullable"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 
 func ExpandReplicationRuleDestinationAccessControlTranslation(l []interface{}) *s3.AccessControlTranslation {
@@ -164,7 +164,7 @@ func ExpandReplicationRuleFilter(l []interface{}) *s3.ReplicationRuleFilter {
 	// Specifying more than one of the listed parameters results in a MalformedXML error.
 	// If a filter is specified as filter { prefix = "" } in Terraform, we should send the prefix value
 	// in the API request even if it is an empty value, else Terraform will report non-empty plans.
-	// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23487
+	// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23487
 	if v, ok := tfMap["prefix"].(string); ok && result.And == nil && result.Tag == nil {
 		result.Prefix = aws.String(v)
 	}

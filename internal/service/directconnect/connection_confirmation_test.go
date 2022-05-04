@@ -11,9 +11,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfdirectconnect "github.com/hashicorp/terraform-provider-aws/internal/service/directconnect"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfdirectconnect "github.com/PixarV/terraform-provider-ritt/internal/service/directconnect"
 )
 
 func TestAccDirectConnectConnectionConfirmation_basic(t *testing.T) {

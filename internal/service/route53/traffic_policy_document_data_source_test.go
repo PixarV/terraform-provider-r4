@@ -9,8 +9,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/route53"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	tfrouter53 "github.com/hashicorp/terraform-provider-aws/internal/service/route53"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	tfrouter53 "github.com/PixarV/terraform-provider-ritt/internal/service/route53"
 )
 
 func TestAccRoute53TrafficPolicyDocumentDataSource_basic(t *testing.T) {

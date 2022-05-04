@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/create"
+	"github.com/PixarV/terraform-provider-ritt/internal/create"
 )
 
 func InstanceMigrateState(

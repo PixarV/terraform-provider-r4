@@ -5,7 +5,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/cloud9"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func findEnvironment(conn *cloud9.Cloud9, input *cloud9.DescribeEnvironmentsInput) (*cloud9.Environment, error) {

@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	tfmeta "github.com/hashicorp/terraform-provider-aws/internal/service/meta"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	tfmeta "github.com/PixarV/terraform-provider-ritt/internal/service/meta"
 )
 
 func TestAccMetaBillingServiceAccountDataSource_basic(t *testing.T) {

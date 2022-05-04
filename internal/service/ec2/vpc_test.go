@@ -12,10 +12,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfec2 "github.com/hashicorp/terraform-provider-aws/internal/service/ec2"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfec2 "github.com/PixarV/terraform-provider-ritt/internal/service/ec2"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestAccVPC_basic(t *testing.T) {
@@ -421,7 +421,7 @@ func TestAccVPC_DefaultTagsProviderAndResource_duplicateTag(t *testing.T) {
 // attributes are correctly determined when the provider-level default_tags block
 // is left unused and resource tags (merged with local.tags) are only known at apply time,
 // with additional lifecycle ignore_changes attributes, thereby eliminating "Inconsistent final plan" errors
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/18366
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/18366
 func TestAccVPC_DynamicResourceTagsMergedWithLocals_ignoreChanges(t *testing.T) {
 	var providers []*schema.Provider
 	var vpc ec2.Vpc
@@ -477,7 +477,7 @@ func TestAccVPC_DynamicResourceTagsMergedWithLocals_ignoreChanges(t *testing.T) 
 // attributes are correctly determined when the provider-level default_tags block
 // is left unused and resource tags are only known at apply time,
 // with additional lifecycle ignore_changes attributes, thereby eliminating "Inconsistent final plan" errors
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/18366
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/18366
 func TestAccVPC_DynamicResourceTags_ignoreChanges(t *testing.T) {
 	var providers []*schema.Provider
 	var vpc ec2.Vpc

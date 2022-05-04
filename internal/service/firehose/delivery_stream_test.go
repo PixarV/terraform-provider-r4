@@ -13,10 +13,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tffirehose "github.com/hashicorp/terraform-provider-aws/internal/service/firehose"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tffirehose "github.com/PixarV/terraform-provider-ritt/internal/service/firehose"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestAccFirehoseDeliveryStream_basic(t *testing.T) {
@@ -800,7 +800,7 @@ func TestAccFirehoseDeliveryStream_ExtendedS3_errorOutputPrefix(t *testing.T) {
 			},
 			{
 				// Ensure the ErrorOutputPrefix can be updated to an empty value
-				// Reference: https://github.com/hashicorp/terraform-provider-aws/pull/11229#discussion_r356282765
+				// Reference: https://github.com/PixarV/terraform-provider-ritt/pull/11229#discussion_r356282765
 				Config: testAccDeliveryStreamConfig_ExtendedS3_ErrorOutputPrefix(rName, ""),
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckDeliveryStreamExists(resourceName, &stream),
@@ -862,7 +862,7 @@ func TestAccFirehoseDeliveryStream_ExtendedS3_S3BackupConfiguration_ErrorOutputP
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/12600
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/12600
 func TestAccFirehoseDeliveryStream_ExtendedS3Processing_empty(t *testing.T) {
 	var stream firehose.DeliveryStreamDescription
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -1567,7 +1567,7 @@ func TestAccFirehoseDeliveryStream_Elasticsearch_ErrorOutputPrefix(t *testing.T)
 	})
 }
 
-// Regression test for https://github.com/hashicorp/terraform-provider-aws/issues/1657
+// Regression test for https://github.com/PixarV/terraform-provider-ritt/issues/1657
 func TestAccFirehoseDeliveryStream_missingProcessing(t *testing.T) {
 	var stream firehose.DeliveryStreamDescription
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)

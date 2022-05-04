@@ -10,9 +10,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfssm "github.com/hashicorp/terraform-provider-aws/internal/service/ssm"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfssm "github.com/PixarV/terraform-provider-ritt/internal/service/ssm"
 )
 
 func TestAccSSMParameter_basic(t *testing.T) {
@@ -246,7 +246,7 @@ func TestAccSSMParameter_overwrite(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/12213
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/12213
 func TestAccSSMParameter_overwriteCascade(t *testing.T) {
 	name := fmt.Sprintf("%s_%s", t.Name(), sdkacctest.RandString(10))
 
@@ -271,7 +271,7 @@ func TestAccSSMParameter_overwriteCascade(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/18550
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/18550
 func TestAccSSMParameter_overwriteWithTags(t *testing.T) {
 	var param ssm.Parameter
 	rName := fmt.Sprintf("%s_%s", t.Name(), sdkacctest.RandString(10))
@@ -301,7 +301,7 @@ func TestAccSSMParameter_overwriteWithTags(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/18550
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/18550
 func TestAccSSMParameter_noOverwriteWithTags(t *testing.T) {
 	var param ssm.Parameter
 	rName := fmt.Sprintf("%s_%s", t.Name(), sdkacctest.RandString(10))
@@ -331,7 +331,7 @@ func TestAccSSMParameter_noOverwriteWithTags(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/18550
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/18550
 func TestAccSSMParameter_updateToOverwriteWithTags(t *testing.T) {
 	var param ssm.Parameter
 	rName := fmt.Sprintf("%s_%s", t.Name(), sdkacctest.RandString(10))

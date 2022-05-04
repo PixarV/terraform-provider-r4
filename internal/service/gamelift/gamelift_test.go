@@ -7,7 +7,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/endpoints"
 	"github.com/aws/aws-sdk-go/service/gamelift"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
 )
 
 type testAccGame struct {

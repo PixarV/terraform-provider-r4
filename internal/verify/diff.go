@@ -6,8 +6,8 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 
 // Find JSON diff functions in the json.go file.
@@ -34,8 +34,8 @@ func SetTagsDiff(_ context.Context, diff *schema.ResourceDiff, meta interface{})
 	// when the merger of resource-level tags onto provider-level tags results in n > 0 tags,
 	// otherwise we mark the attribute as "Computed" only when their is a known diff (excluding an empty map)
 	// or a change for "tags_all".
-	// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/18366
-	// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/19005
+	// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/18366
+	// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/19005
 	if len(allTags) > 0 {
 		if err := diff.SetNew("tags_all", allTags.Map()); err != nil {
 			return fmt.Errorf("error setting new tags_all diff: %w", err)

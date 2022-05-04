@@ -6,7 +6,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/iotanalytics"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 
 // ListTags lists iotanalytics service tags.

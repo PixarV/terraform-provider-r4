@@ -3,7 +3,7 @@ package sns
 import (
 	"github.com/aws/aws-sdk-go/service/sns"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func statusSubscriptionPendingConfirmation(conn *sns.SNS, arn string) resource.StateRefreshFunc {

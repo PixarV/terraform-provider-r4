@@ -11,9 +11,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfecs "github.com/hashicorp/terraform-provider-aws/internal/service/ecs"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfecs "github.com/PixarV/terraform-provider-ritt/internal/service/ecs"
 )
 
 func init() {
@@ -727,7 +727,7 @@ func TestAccECSTaskDefinition_changeVolumesForcesNewResource(t *testing.T) {
 	})
 }
 
-// Regression for https://github.com/hashicorp/terraform-provider-aws/issues/2336
+// Regression for https://github.com/PixarV/terraform-provider-ritt/issues/2336
 func TestAccECSTaskDefinition_arrays(t *testing.T) {
 	var conf ecs.TaskDefinition
 	resourceName := "aws_ecs_task_definition.test"

@@ -7,8 +7,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws/endpoints"
 	"github.com/aws/aws-sdk-go/service/cloudfront"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 
 func DataSourceDistribution() *schema.Resource {

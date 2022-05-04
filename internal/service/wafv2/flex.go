@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/wafv2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/hashicorp/terraform-provider-aws/internal/flex"
+	"github.com/PixarV/terraform-provider-ritt/internal/flex"
 )
 
 func expandRules(l []interface{}) []*wafv2.Rule {

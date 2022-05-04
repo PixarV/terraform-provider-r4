@@ -11,8 +11,8 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
 )
 
 func TestAccS3BucketPolicy_basic(t *testing.T) {
@@ -134,7 +134,7 @@ func TestAccS3BucketPolicy_policyUpdate(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/11801
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/11801
 func TestAccS3BucketPolicy_IAMRoleOrder_policyDoc(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket.test"
@@ -167,8 +167,8 @@ func TestAccS3BucketPolicy_IAMRoleOrder_policyDoc(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/13144
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/20456
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/13144
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/20456
 func TestAccS3BucketPolicy_IAMRoleOrder_policyDocNotPrincipal(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket.test"
@@ -203,7 +203,7 @@ func TestAccS3BucketPolicy_IAMRoleOrder_policyDocNotPrincipal(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/11801
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/11801
 func TestAccS3BucketPolicy_IAMRoleOrder_jsonEncode(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	rName2 := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)

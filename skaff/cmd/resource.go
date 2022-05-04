@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/hashicorp/terraform-provider-aws/skaff/resource"
+	"github.com/PixarV/terraform-provider-ritt/skaff/resource"
 	"github.com/spf13/cobra"
 )
 

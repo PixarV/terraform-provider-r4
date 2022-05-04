@@ -21,13 +21,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/create"
-	"github.com/hashicorp/terraform-provider-aws/internal/flex"
-	tfiam "github.com/hashicorp/terraform-provider-aws/internal/service/iam"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
-	"github.com/hashicorp/terraform-provider-aws/internal/verify"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/create"
+	"github.com/PixarV/terraform-provider-ritt/internal/flex"
+	tfiam "github.com/PixarV/terraform-provider-ritt/internal/service/iam"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/verify"
 )
 
 func ResourceInstance() *schema.Resource {
@@ -1175,12 +1175,12 @@ func resourceInstanceRead(d *schema.ResourceData, meta interface{}) error {
 	}
 
 	// AWS Standard will return InstanceCreditSpecification.NotSupported errors for EC2 Instance IDs outside T2 and T3 instance types
-	// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/8055
+	// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/8055
 	if strings.HasPrefix(aws.StringValue(instance.InstanceType), "t2") || strings.HasPrefix(aws.StringValue(instance.InstanceType), "t3") {
 		creditSpecifications, err := getCreditSpecifications(conn, d.Id())
 
 		// Ignore UnsupportedOperation errors for AWS China and GovCloud (US)
-		// Reference: https://github.com/hashicorp/terraform-provider-aws/pull/4362
+		// Reference: https://github.com/PixarV/terraform-provider-ritt/pull/4362
 		if err != nil && !tfawserr.ErrCodeEquals(err, "UnsupportedOperation") {
 			return fmt.Errorf("error getting EC2 Instance (%s) Credit Specifications: %s", d.Id(), err)
 		}
@@ -1623,7 +1623,7 @@ func resourceInstanceUpdate(d *schema.ResourceData, meta interface{}) error {
 		if d.HasChange("root_block_device.0.iops") {
 			if v, ok := d.Get("root_block_device.0.iops").(int); ok && v != 0 {
 				// Enforce IOPs usage with a valid volume type
-				// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/12667
+				// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/12667
 				if t, ok := d.Get("root_block_device.0.volume_type").(string); ok && t != ec2.VolumeTypeIo1 && t != ec2.VolumeTypeIo2 && t != ec2.VolumeTypeGp3 {
 					if t == "" {
 						// Volume defaults to gp2
@@ -1804,7 +1804,7 @@ func modifyAttributeWithInstanceStopStart(d *schema.ResourceData, conn *ec2.EC2,
 		InstanceIds: []*string{aws.String(d.Id())},
 	}
 
-	// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/16433
+	// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/16433
 	err = resource.Retry(InstanceAttributePropagationTimeout, func() *resource.RetryError {
 		_, err := conn.StartInstances(startInput)
 
@@ -2357,7 +2357,7 @@ func readBlockDeviceMappingsFromConfig(d *schema.ResourceData, conn *ec2.EC2) ([
 						ebs.Iops = aws.Int64(int64(iops))
 					} else {
 						// Enforce IOPs usage with a valid volume type
-						// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/12667
+						// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/12667
 						return nil, fmt.Errorf("error creating resource: iops attribute not supported for ebs_block_device with volume_type %s", v)
 					}
 				}
@@ -2432,7 +2432,7 @@ func readBlockDeviceMappingsFromConfig(d *schema.ResourceData, conn *ec2.EC2) ([
 						ebs.Iops = aws.Int64(int64(iops))
 					} else {
 						// Enforce IOPs usage with a valid volume type
-						// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/12667
+						// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/12667
 						return nil, fmt.Errorf("error creating resource: iops attribute not supported for root_block_device with volume_type %s", v)
 					}
 				}

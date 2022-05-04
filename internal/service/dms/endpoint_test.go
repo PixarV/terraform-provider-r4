@@ -9,10 +9,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfdms "github.com/hashicorp/terraform-provider-aws/internal/service/dms"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfdms "github.com/PixarV/terraform-provider-ritt/internal/service/dms"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestAccDMSEndpoint_basic(t *testing.T) {
@@ -111,7 +111,7 @@ func TestAccDMSEndpoint_S3_basic(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/8009
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/8009
 func TestAccDMSEndpoint_S3_extraConnectionAttributes(t *testing.T) {
 	resourceName := "aws_dms_endpoint.test"
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -205,7 +205,7 @@ func TestAccDMSEndpoint_OpenSearch_basic(t *testing.T) {
 // TestAccDMSEndpoint_OpenSearch_extraConnectionAttributes validates
 // extra_connection_attributes handling for "elasticsearch" engine not affected
 // by changes made specific to suppressing diffs in the case of "s3"/"mongodb" engine
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/8009
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/8009
 func TestAccDMSEndpoint_OpenSearch_extraConnectionAttributes(t *testing.T) {
 	resourceName := "aws_dms_endpoint.test"
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -462,7 +462,7 @@ func TestAccDMSEndpoint_MongoDB_basic(t *testing.T) {
 
 // TestAccDMSEndpoint_MongoDB_update validates engine-specific
 // configured fields and extra_connection_attributes now set in the resource
-// per https://github.com/hashicorp/terraform-provider-aws/issues/8009
+// per https://github.com/PixarV/terraform-provider-ritt/issues/8009
 func TestAccDMSEndpoint_MongoDB_update(t *testing.T) {
 	resourceName := "aws_dms_endpoint.test"
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -694,7 +694,7 @@ func TestAccDMSEndpoint_PostgreSQL_update(t *testing.T) {
 	})
 }
 
-// https://github.com/hashicorp/terraform-provider-aws/issues/23143
+// https://github.com/PixarV/terraform-provider-ritt/issues/23143
 func TestAccDMSEndpoint_PostgreSQL_kmsKey(t *testing.T) {
 	resourceName := "aws_dms_endpoint.test"
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)

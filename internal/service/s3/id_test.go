@@ -3,7 +3,7 @@ package s3_test
 import (
 	"testing"
 
-	tfs3 "github.com/hashicorp/terraform-provider-aws/internal/service/s3"
+	tfs3 "github.com/PixarV/terraform-provider-ritt/internal/service/s3"
 )
 
 func TestParseResourceID(t *testing.T) {

@@ -14,9 +14,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfneptune "github.com/hashicorp/terraform-provider-aws/internal/service/neptune"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfneptune "github.com/PixarV/terraform-provider-ritt/internal/service/neptune"
 )
 
 func TestAccNeptuneCluster_basic(t *testing.T) {

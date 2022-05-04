@@ -14,9 +14,9 @@ import ( // nosemgrep: aws-sdk-go-multiple-service-imports
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfelb "github.com/hashicorp/terraform-provider-aws/internal/service/elb"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfelb "github.com/PixarV/terraform-provider-ritt/internal/service/elb"
 )
 
 func TestAccELBLoadBalancer_basic(t *testing.T) {
@@ -1350,7 +1350,7 @@ resource "aws_elb" "test" {
   }
 }
 
-# See https://github.com/hashicorp/terraform-provider-aws/issues/2498
+# See https://github.com/PixarV/terraform-provider-ritt/issues/2498
 output "lb_name" {
   value = aws_elb.test.name
 }

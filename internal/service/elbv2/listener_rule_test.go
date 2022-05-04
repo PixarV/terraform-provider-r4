@@ -13,9 +13,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfelbv2 "github.com/hashicorp/terraform-provider-aws/internal/service/elbv2"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfelbv2 "github.com/PixarV/terraform-provider-ritt/internal/service/elbv2"
 )
 
 func TestLBListenerARNFromRuleARN(t *testing.T) {
@@ -687,7 +687,7 @@ func TestAccELBV2ListenerRule_Action_order(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/6171
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/6171
 func TestAccELBV2ListenerRule_ActionOrder_recreates(t *testing.T) {
 	var rule elbv2.Rule
 	key := acctest.TLSRSAPrivateKeyPEM(2048)

@@ -8,8 +8,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/elasticbeanstalk"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	tfelasticbeanstalk "github.com/hashicorp/terraform-provider-aws/internal/service/elasticbeanstalk"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	tfelasticbeanstalk "github.com/PixarV/terraform-provider-ritt/internal/service/elasticbeanstalk"
 )
 
 func TestAccElasticBeanstalkHostedZoneDataSource_basic(t *testing.T) {

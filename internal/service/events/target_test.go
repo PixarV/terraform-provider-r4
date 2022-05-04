@@ -13,10 +13,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/create"
-	tfevents "github.com/hashicorp/terraform-provider-aws/internal/service/events"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/create"
+	tfevents "github.com/PixarV/terraform-provider-ritt/internal/service/events"
 )
 
 func TestAccEventsTarget_basic(t *testing.T) {
@@ -368,7 +368,7 @@ func TestAccEventsTarget_http(t *testing.T) {
 	})
 }
 
-//https://github.com/hashicorp/terraform-provider-aws/issues/23805
+//https://github.com/PixarV/terraform-provider-ritt/issues/23805
 func TestAccEventsTarget_http_params(t *testing.T) {
 	resourceName := "aws_cloudwatch_event_target.test"
 
@@ -491,7 +491,7 @@ func TestAccEventsTarget_redshift(t *testing.T) {
 
 // TestAccEventsTarget_ecsWithoutLaunchType verifies Event Target resources
 // can be created without a specified LaunchType
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/16078
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/16078
 func TestAccEventsTarget_ecsWithoutLaunchType(t *testing.T) {
 	resourceName := "aws_cloudwatch_event_target.test"
 	iamRoleResourceName := "aws_iam_role.test"

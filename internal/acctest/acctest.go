@@ -27,12 +27,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/structure"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/provider"
-	tfec2 "github.com/hashicorp/terraform-provider-aws/internal/service/ec2"
-	tforganizations "github.com/hashicorp/terraform-provider-aws/internal/service/organizations"
-	tfsts "github.com/hashicorp/terraform-provider-aws/internal/service/sts"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/provider"
+	tfec2 "github.com/PixarV/terraform-provider-ritt/internal/service/ec2"
+	tforganizations "github.com/PixarV/terraform-provider-ritt/internal/service/organizations"
+	tfsts "github.com/PixarV/terraform-provider-ritt/internal/service/sts"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 const (

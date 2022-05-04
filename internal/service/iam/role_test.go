@@ -11,11 +11,11 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/create"
-	tfiam "github.com/hashicorp/terraform-provider-aws/internal/service/iam"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/create"
+	tfiam "github.com/PixarV/terraform-provider-ritt/internal/service/iam"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestAccIAMRole_basic(t *testing.T) {
@@ -450,7 +450,7 @@ func TestAccIAMRole_InlinePolicy_basic(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/19444
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/19444
 // This test currently fails but should not. A new PR will fix it.
 func TestAccIAMRole_InlinePolicy_ignoreOrder(t *testing.T) {
 	var role iam.Role

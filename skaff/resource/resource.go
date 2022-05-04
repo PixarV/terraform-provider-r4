@@ -10,7 +10,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/hashicorp/terraform-provider-aws/names"
+	"github.com/PixarV/terraform-provider-ritt/names"
 )
 
 //go:embed resource.tmpl

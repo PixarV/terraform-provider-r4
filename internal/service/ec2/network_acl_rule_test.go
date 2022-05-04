@@ -11,10 +11,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfec2 "github.com/hashicorp/terraform-provider-aws/internal/service/ec2"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfec2 "github.com/PixarV/terraform-provider-ritt/internal/service/ec2"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestAccEC2NetworkACLRule_basic(t *testing.T) {
@@ -220,7 +220,7 @@ func TestAccEC2NetworkACLRule_ipv6ICMP(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/6710
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/6710
 func TestAccEC2NetworkACLRule_ipv6VPCAssignGeneratedIPv6CIDRBlockUpdate(t *testing.T) {
 	var v ec2.Vpc
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)

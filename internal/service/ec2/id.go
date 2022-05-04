@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hashicorp/terraform-provider-aws/internal/create"
+	"github.com/PixarV/terraform-provider-ritt/internal/create"
 )
 
 const managedPrefixListEntryIDSeparator = ","

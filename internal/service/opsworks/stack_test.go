@@ -11,8 +11,8 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
 )
 
 ///////////////////////////////
@@ -228,7 +228,7 @@ func TestAccOpsWorksStack_classicEndpoints(t *testing.T) {
 	var opsstack opsworks.Stack
 
 	// This test cannot be parallel with other tests, because it changes the provider region in a non-standard way
-	// https://github.com/hashicorp/terraform-provider-aws/issues/21887
+	// https://github.com/PixarV/terraform-provider-ritt/issues/21887
 	resource.Test(t, resource.TestCase{
 		PreCheck:     func() { acctest.PreCheck(t); acctest.PreCheckRegion(t, endpoints.UsWest2RegionID) },
 		ErrorCheck:   acctest.ErrorCheck(t, opsworks.EndpointsID),

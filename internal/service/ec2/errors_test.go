@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
-	tfec2 "github.com/hashicorp/terraform-provider-aws/internal/service/ec2"
+	tfec2 "github.com/PixarV/terraform-provider-ritt/internal/service/ec2"
 )
 
 func TestUnsuccessfulItemError(t *testing.T) {

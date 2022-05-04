@@ -9,8 +9,8 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	tfecs "github.com/hashicorp/terraform-provider-aws/internal/service/ecs"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	tfecs "github.com/PixarV/terraform-provider-ritt/internal/service/ecs"
 )
 
 func TestAccECSClusterCapacityProviders_basic(t *testing.T) {
@@ -101,7 +101,7 @@ func TestAccECSClusterCapacityProviders_defaults(t *testing.T) {
 }
 
 func TestAccECSClusterCapacityProviders_destroy(t *testing.T) {
-	// This test proves that https://github.com/hashicorp/terraform-provider-aws/issues/11409
+	// This test proves that https://github.com/PixarV/terraform-provider-ritt/issues/11409
 	// has been addressed by aws_ecs_cluster_capacity_providers.
 	//
 	// If we were configuring capacity providers directly on the cluster, the

@@ -18,13 +18,13 @@ import ( // nosemgrep: aws-sdk-go-multiple-service-imports
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/create"
-	"github.com/hashicorp/terraform-provider-aws/internal/flex"
-	tfec2 "github.com/hashicorp/terraform-provider-aws/internal/service/ec2"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
-	"github.com/hashicorp/terraform-provider-aws/internal/verify"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/create"
+	"github.com/PixarV/terraform-provider-ritt/internal/flex"
+	tfec2 "github.com/PixarV/terraform-provider-ritt/internal/service/ec2"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/verify"
 )
 
 func ResourceLoadBalancer() *schema.Resource {
@@ -487,7 +487,7 @@ func resourceLoadBalancerUpdate(d *schema.ResourceData, meta interface{}) error 
 		// e.g. us-gov-east-1; thus, we can instead only modify the attribute as a result of d.HasChange()
 		// to avoid "ValidationError: Load balancer attribute key 'waf.fail_open.enabled' is not recognized"
 		// when modifying the attribute right after resource creation.
-		// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/22037
+		// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/22037
 		if d.HasChange("enable_waf_fail_open") {
 			attributes = append(attributes, &elbv2.LoadBalancerAttribute{
 				Key:   aws.String("waf.fail_open.enabled"),

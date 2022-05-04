@@ -12,8 +12,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/apprunner"
 	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	"github.com/hashicorp/terraform-provider-aws/internal/sweep"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	"github.com/PixarV/terraform-provider-ritt/internal/sweep"
 )
 
 func init() {
@@ -60,7 +60,7 @@ func sweepAutoScalingConfigurationVersions(region string) error {
 			}
 
 			// Skip DefaultConfigurations as deletion not supported by the AppRunner service
-			// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/19840
+			// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/19840
 			if aws.StringValue(summaryConfig.AutoScalingConfigurationName) == "DefaultConfiguration" {
 				log.Printf("[INFO] Skipping App Runner AutoScaling Configuration: DefaultConfiguration")
 				continue

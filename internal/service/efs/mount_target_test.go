@@ -13,9 +13,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfefs "github.com/hashicorp/terraform-provider-aws/internal/service/efs"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfefs "github.com/PixarV/terraform-provider-ritt/internal/service/efs"
 )
 
 func TestAccEFSMountTarget_basic(t *testing.T) {
@@ -112,7 +112,7 @@ func TestAccEFSMountTarget_ipAddress(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/13845
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/13845
 func TestAccEFSMountTarget_IPAddress_emptyString(t *testing.T) {
 	var mount efs.MountTargetDescription
 	resourceName := "aws_efs_mount_target.test"

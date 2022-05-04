@@ -16,10 +16,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfopensearch "github.com/hashicorp/terraform-provider-aws/internal/service/opensearch"
-	"github.com/hashicorp/terraform-provider-aws/internal/tfresource"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfopensearch "github.com/PixarV/terraform-provider-ritt/internal/service/opensearch"
+	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )
 
 func TestAccOpenSearchDomain_basic(t *testing.T) {
@@ -1194,7 +1194,7 @@ func TestAccOpenSearchDomain_VolumeType_update(t *testing.T) {
 		}})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/13867
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/13867
 func TestAccOpenSearchDomain_VolumeType_missing(t *testing.T) {
 	if testing.Short() {
 		t.Skip("skipping long-running test in short mode")

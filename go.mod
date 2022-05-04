@@ -1,4 +1,4 @@
-module github.com/hashicorp/terraform-provider-aws
+module github.com/PixarV/terraform-provider-ritt
 
 go 1.17
 

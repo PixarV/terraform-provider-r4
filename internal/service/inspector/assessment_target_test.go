@@ -9,9 +9,9 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfinspector "github.com/hashicorp/terraform-provider-aws/internal/service/inspector"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfinspector "github.com/PixarV/terraform-provider-ritt/internal/service/inspector"
 )
 
 func TestAccInspectorAssessmentTarget_basic(t *testing.T) {

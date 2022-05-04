@@ -11,10 +11,10 @@ import (
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfs3 "github.com/hashicorp/terraform-provider-aws/internal/service/s3"
-	"github.com/hashicorp/terraform-provider-aws/internal/verify"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfs3 "github.com/PixarV/terraform-provider-ritt/internal/service/s3"
+	"github.com/PixarV/terraform-provider-ritt/internal/verify"
 )
 
 func TestAccS3BucketLifecycleConfiguration_basic(t *testing.T) {
@@ -372,7 +372,7 @@ func TestAccS3BucketLifecycleConfiguration_multipleRules(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23730
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23730
 func TestAccS3BucketLifecycleConfiguration_multipleRules_noFilterOrPrefix(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket_lifecycle_configuration.test"
@@ -503,7 +503,7 @@ func TestAccS3BucketLifecycleConfiguration_prefix(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23239
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23239
 func TestAccS3BucketLifecycleConfiguration_Filter_Tag(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket_lifecycle_configuration.test"
@@ -584,7 +584,7 @@ func TestAccS3BucketLifecycleConfiguration_RuleExpiration_expireMarkerOnly(t *te
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/11420
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/11420
 func TestAccS3BucketLifecycleConfiguration_RuleExpiration_emptyBlock(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket_lifecycle_configuration.test"
@@ -613,7 +613,7 @@ func TestAccS3BucketLifecycleConfiguration_RuleExpiration_emptyBlock(t *testing.
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/15138
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/15138
 func TestAccS3BucketLifecycleConfiguration_ruleAbortIncompleteMultipartUpload(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket_lifecycle_configuration.test"
@@ -659,7 +659,7 @@ func TestAccS3BucketLifecycleConfiguration_ruleAbortIncompleteMultipartUpload(t 
 }
 
 // TestAccS3BucketLifecycleConfiguration_TransitionDate_standardIa validates the change to address
-// https://github.com/hashicorp/terraform-provider-aws/issues/23117
+// https://github.com/PixarV/terraform-provider-ritt/issues/23117
 // does not introduce a regression.
 func TestAccS3BucketLifecycleConfiguration_TransitionDate_standardIa(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -690,7 +690,7 @@ func TestAccS3BucketLifecycleConfiguration_TransitionDate_standardIa(t *testing.
 }
 
 // TestAccS3BucketLifecycleConfiguration_TransitionDate_intelligentTiering validates the change to address
-// https://github.com/hashicorp/terraform-provider-aws/issues/23117
+// https://github.com/PixarV/terraform-provider-ritt/issues/23117
 // does not introduce a regression.
 func TestAccS3BucketLifecycleConfiguration_TransitionDate_intelligentTiering(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
@@ -720,7 +720,7 @@ func TestAccS3BucketLifecycleConfiguration_TransitionDate_intelligentTiering(t *
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23117
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23117
 func TestAccS3BucketLifecycleConfiguration_TransitionStorageClassOnly_intelligentTiering(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket_lifecycle_configuration.test"
@@ -751,7 +751,7 @@ func TestAccS3BucketLifecycleConfiguration_TransitionStorageClassOnly_intelligen
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23117
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23117
 func TestAccS3BucketLifecycleConfiguration_TransitionZeroDays_intelligentTiering(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket_lifecycle_configuration.test"
@@ -817,7 +817,7 @@ func TestAccS3BucketLifecycleConfiguration_TransitionUpdateBetweenDaysAndDate_in
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23228
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23228
 func TestAccS3BucketLifecycleConfiguration_EmptyFilter_NonCurrentVersions(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket_lifecycle_configuration.test"
@@ -926,7 +926,7 @@ func TestAccS3BucketLifecycleConfiguration_migrate_withChange(t *testing.T) {
 	})
 }
 
-// Reference: https://github.com/hashicorp/terraform-provider-aws/issues/23884
+// Reference: https://github.com/PixarV/terraform-provider-ritt/issues/23884
 func TestAccS3BucketLifecycleConfiguration_Update_filterWithAndToFilterWithPrefix(t *testing.T) {
 	rName := sdkacctest.RandomWithPrefix(acctest.ResourcePrefix)
 	resourceName := "aws_s3_bucket_lifecycle_configuration.test"

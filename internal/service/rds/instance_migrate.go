@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	tftags "github.com/hashicorp/terraform-provider-aws/internal/tags"
+	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 
 func resourceInstanceResourceV0() *schema.Resource {

@@ -9,9 +9,9 @@ import (
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/hashicorp/terraform-provider-aws/internal/acctest"
-	"github.com/hashicorp/terraform-provider-aws/internal/conns"
-	tfkms "github.com/hashicorp/terraform-provider-aws/internal/service/kms"
+	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
+	"github.com/PixarV/terraform-provider-ritt/internal/conns"
+	tfkms "github.com/PixarV/terraform-provider-ritt/internal/service/kms"
 )
 
 func TestAccEC2EBSDefaultKMSKey_basic(t *testing.T) {

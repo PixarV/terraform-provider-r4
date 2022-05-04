@@ -4,8 +4,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/directconnect"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/directconnect"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )

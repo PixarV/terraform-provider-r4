@@ -1,8 +1,8 @@
 package s3outposts
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3outposts"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/s3outposts"
 )
 
 // FindEndpoint returns matching FindEndpoint by ARN.

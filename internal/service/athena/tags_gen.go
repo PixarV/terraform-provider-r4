@@ -4,8 +4,8 @@ package athena
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/athena"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/athena"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

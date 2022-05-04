@@ -3,9 +3,9 @@ package ses
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/arn"
-	"github.com/aws/aws-sdk-go/service/ses"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/aws/arn"
+	"github.com/PixarV/aws-sdk-go/service/ses"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/PixarV/terraform-provider-ritt/internal/conns"
 )

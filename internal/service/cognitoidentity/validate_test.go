@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/service/cognitoidentity"
+	"github.com/PixarV/aws-sdk-go/service/cognitoidentity"
 )
 
 func TestValidIdentityPoolName(t *testing.T) {

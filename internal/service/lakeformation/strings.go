@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"sort"
 
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/aws"
 )
 
 func StringSlicesEqualIgnoreOrder(s1, s2 []*string) bool {

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/PixarV/aws-sdk-go/service/dynamodb"
 )
 
 func ExpandTableItemAttributes(input string) (map[string]*dynamodb.AttributeValue, error) {

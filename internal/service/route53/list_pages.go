@@ -6,8 +6,8 @@ package route53
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/route53"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/route53"
 )
 
 // Custom Route 53 service lister functions using the same format as generated code.

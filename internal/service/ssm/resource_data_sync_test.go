@@ -5,7 +5,7 @@ import (
 	"log"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/service/ssm"
+	"github.com/PixarV/aws-sdk-go/service/ssm"
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"

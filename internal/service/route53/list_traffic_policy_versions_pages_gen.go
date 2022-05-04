@@ -5,8 +5,8 @@ package route53
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/route53"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/route53"
 )
 
 func listTrafficPolicyVersionsPages(conn *route53.Route53, input *route53.ListTrafficPolicyVersionsInput, fn func(*route53.ListTrafficPolicyVersionsOutput, bool) bool) error {

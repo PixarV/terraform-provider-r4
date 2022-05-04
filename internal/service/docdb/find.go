@@ -4,8 +4,8 @@ import (
 	"context"
 	"log"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/docdb"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/docdb"
 )
 
 func findGlobalClusterByArn(ctx context.Context, conn *docdb.DocDB, dbClusterARN string) (*docdb.GlobalCluster, error) {

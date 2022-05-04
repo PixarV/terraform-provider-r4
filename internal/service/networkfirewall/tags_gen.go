@@ -4,8 +4,8 @@ package networkfirewall
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/networkfirewall"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/networkfirewall"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

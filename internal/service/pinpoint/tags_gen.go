@@ -4,8 +4,8 @@ package pinpoint
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/pinpoint"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/pinpoint"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

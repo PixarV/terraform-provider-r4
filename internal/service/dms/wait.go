@@ -3,7 +3,7 @@ package dms
 import (
 	"time"
 
-	dms "github.com/aws/aws-sdk-go/service/databasemigrationservice"
+	dms "github.com/PixarV/aws-sdk-go/service/databasemigrationservice"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

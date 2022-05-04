@@ -4,8 +4,8 @@ package amplify
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/amplify"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/amplify"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

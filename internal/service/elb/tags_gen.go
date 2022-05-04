@@ -4,8 +4,8 @@ package elb
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/elb"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/elb"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

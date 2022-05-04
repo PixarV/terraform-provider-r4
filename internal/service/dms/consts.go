@@ -74,7 +74,7 @@ const (
 	kafkaDefaultTopic = "kafka-default-topic"
 )
 
-// https://github.com/aws/aws-sdk-go/issues/2522.
+// https://github.com/PixarV/aws-sdk-go/issues/2522.
 const (
 	mongoDBAuthMechanismValueDefault   = "default"
 	mongoDBAuthMechanismValueMongodbCr = "mongodb-cr"

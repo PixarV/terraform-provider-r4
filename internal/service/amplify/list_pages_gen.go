@@ -5,8 +5,8 @@ package amplify
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/amplify"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/amplify"
 )
 
 func listAppsPages(conn *amplify.Amplify, input *amplify.ListAppsInput, fn func(*amplify.ListAppsOutput, bool) bool) error {

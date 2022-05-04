@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/aws/aws-sdk-go/service/eks"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/aws/awserr"
+	"github.com/PixarV/aws-sdk-go/service/eks"
 	multierror "github.com/hashicorp/go-multierror"
 )
 

@@ -4,8 +4,8 @@ package kinesisvideo
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/kinesisvideo"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/kinesisvideo"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/aws/aws-sdk-go/service/securityhub"
+	"github.com/PixarV/aws-sdk-go/service/securityhub"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"

@@ -3,7 +3,7 @@ package sqs
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/sqs"
+	"github.com/PixarV/aws-sdk-go/service/sqs"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

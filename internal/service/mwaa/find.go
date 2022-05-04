@@ -1,8 +1,8 @@
 package mwaa
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/mwaa"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/mwaa"
 )
 
 // findEnvironmentByName returns the MWAA Environment corresponding to the specified Name.

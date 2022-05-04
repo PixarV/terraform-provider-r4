@@ -3,8 +3,8 @@ package apprunner
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/apprunner"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/apprunner"
 )
 
 func FindConnectionSummaryByName(ctx context.Context, conn *apprunner.AppRunner, name string) (*apprunner.ConnectionSummary, error) {

@@ -4,8 +4,8 @@ package efs
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/efs"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/efs"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

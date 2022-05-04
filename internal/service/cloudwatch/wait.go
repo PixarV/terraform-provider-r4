@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/cloudwatch"
+	"github.com/PixarV/aws-sdk-go/service/cloudwatch"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

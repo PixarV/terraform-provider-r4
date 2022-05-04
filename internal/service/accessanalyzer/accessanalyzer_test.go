@@ -3,7 +3,7 @@ package accessanalyzer_test
 import (
 	"testing"
 
-	"github.com/aws/aws-sdk-go/service/accessanalyzer"
+	"github.com/PixarV/aws-sdk-go/service/accessanalyzer"
 	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
 	"github.com/PixarV/terraform-provider-ritt/internal/conns"
 )

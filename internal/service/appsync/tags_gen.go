@@ -4,8 +4,8 @@ package appsync
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/appsync"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/appsync"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

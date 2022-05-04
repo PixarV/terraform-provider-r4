@@ -1,8 +1,8 @@
 package events
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/eventbridge"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/eventbridge"
 )
 
 func ListAllTargetsForRulePages(conn *eventbridge.EventBridge, busName, ruleName string, fn func(*eventbridge.ListTargetsByRuleOutput, bool) bool) error {

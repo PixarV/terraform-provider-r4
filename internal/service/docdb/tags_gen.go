@@ -4,8 +4,8 @@ package docdb
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/docdb"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/docdb"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

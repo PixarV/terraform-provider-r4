@@ -3,7 +3,7 @@ package securityhub
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/securityhub"
+	"github.com/PixarV/aws-sdk-go/service/securityhub"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

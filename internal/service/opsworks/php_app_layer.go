@@ -1,7 +1,7 @@
 package opsworks
 
 import (
-	"github.com/aws/aws-sdk-go/service/opsworks"
+	"github.com/PixarV/aws-sdk-go/service/opsworks"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 

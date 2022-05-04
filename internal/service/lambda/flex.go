@@ -1,8 +1,8 @@
 package lambda
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/lambda"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/lambda"
 	"github.com/PixarV/terraform-provider-ritt/internal/flex"
 )
 

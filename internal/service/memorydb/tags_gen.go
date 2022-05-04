@@ -4,8 +4,8 @@ package memorydb
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/memorydb"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/memorydb"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

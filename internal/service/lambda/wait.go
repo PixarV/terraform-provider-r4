@@ -3,7 +3,7 @@ package lambda
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/lambda"
+	"github.com/PixarV/aws-sdk-go/service/lambda"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

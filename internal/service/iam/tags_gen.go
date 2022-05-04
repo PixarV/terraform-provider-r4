@@ -2,8 +2,8 @@
 package iam
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/iam"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/iam"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

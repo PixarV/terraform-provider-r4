@@ -4,9 +4,9 @@ package wafregional
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/waf"
-	"github.com/aws/aws-sdk-go/service/wafregional"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/waf"
+	"github.com/PixarV/aws-sdk-go/service/wafregional"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

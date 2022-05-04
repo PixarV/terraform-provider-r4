@@ -5,8 +5,8 @@ package appstream
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/appstream"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/appstream"
 )
 
 func describeDirectoryConfigsPages(conn *appstream.AppStream, input *appstream.DescribeDirectoryConfigsInput, fn func(*appstream.DescribeDirectoryConfigsOutput, bool) bool) error {

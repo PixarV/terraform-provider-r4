@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/lakeformation"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/lakeformation"
 	tflakeformation "github.com/PixarV/terraform-provider-ritt/internal/service/lakeformation"
 )
 

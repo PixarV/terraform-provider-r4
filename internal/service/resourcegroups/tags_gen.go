@@ -4,8 +4,8 @@ package resourcegroups
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/resourcegroups"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/resourcegroups"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

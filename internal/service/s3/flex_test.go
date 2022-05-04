@@ -3,8 +3,8 @@ package s3
 import (
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/s3"
 )
 
 func TestExpandReplicationRuleFilterTag(t *testing.T) {

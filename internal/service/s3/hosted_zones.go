@@ -3,7 +3,7 @@ package s3
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws/endpoints"
+	"github.com/PixarV/aws-sdk-go/aws/endpoints"
 )
 
 // See https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_website_region_endpoints.

@@ -82,7 +82,7 @@ func main() {
 		tmpl:      template.Must(template.New("function").Parse(functionTemplate)),
 	}
 
-	sourcePackage := fmt.Sprintf("github.com/aws/aws-sdk-go/service/%s", templateData.AWSService)
+	sourcePackage := fmt.Sprintf("github.com/PixarV/aws-sdk-go/service/%s", templateData.AWSService)
 	g.parsePackage(sourcePackage)
 
 	g.printHeader(HeaderInfo{
@@ -244,7 +244,7 @@ package {{ .DestinationPackage }}
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/aws"
 	"{{ .SourcePackage }}"
 )
 `

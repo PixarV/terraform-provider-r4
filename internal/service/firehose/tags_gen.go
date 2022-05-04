@@ -4,8 +4,8 @@ package firehose
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/firehose"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/firehose"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

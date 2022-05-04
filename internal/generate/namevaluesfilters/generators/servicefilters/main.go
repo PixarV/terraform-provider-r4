@@ -94,10 +94,10 @@ var templateBody = `
 package namevaluesfilters
 
 import ( // nosemgrep: aws-sdk-go-multiple-service-imports
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/aws"
 {{- range .SliceServiceNames }}
 {{- if eq . (. | FilterPackage) }}
-	"github.com/aws/aws-sdk-go/service/{{ . }}"
+	"github.com/PixarV/aws-sdk-go/service/{{ . }}"
 {{- end }}
 {{- end }}
 )

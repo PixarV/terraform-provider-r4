@@ -1,8 +1,8 @@
 package worklink
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/worklink"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/worklink"
 	"github.com/PixarV/terraform-provider-ritt/internal/flex"
 )
 

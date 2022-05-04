@@ -4,8 +4,8 @@ package elasticbeanstalk
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/elasticbeanstalk"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/elasticbeanstalk"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

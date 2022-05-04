@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/aws/aws-sdk-go/aws/endpoints"
+	"github.com/PixarV/aws-sdk-go/aws/endpoints"
 	"github.com/bflad/tfproviderlint/passes/commentignore"
 	"golang.org/x/tools/go/analysis"
 	"golang.org/x/tools/go/analysis/passes/inspect"

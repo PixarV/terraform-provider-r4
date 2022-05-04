@@ -3,8 +3,8 @@ package kinesis
 import (
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/kinesis"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/kinesis"
 )
 
 func TestFlattenShardLevelMetrics(t *testing.T) {

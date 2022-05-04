@@ -3,7 +3,7 @@ package events
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/eventbridge"
+	"github.com/PixarV/aws-sdk-go/service/eventbridge"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

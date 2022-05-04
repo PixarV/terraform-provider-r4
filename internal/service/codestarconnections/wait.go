@@ -3,7 +3,7 @@ package codestarconnections
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/codestarconnections"
+	"github.com/PixarV/aws-sdk-go/service/codestarconnections"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

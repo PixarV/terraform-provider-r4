@@ -1,8 +1,8 @@
 package cloudfront
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/cloudfront"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/cloudfront"
 )
 
 // Custom Cloudfront listing functions using similar formatting as other service generated code.

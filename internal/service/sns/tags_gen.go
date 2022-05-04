@@ -4,8 +4,8 @@ package sns
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/sns"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/sns"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

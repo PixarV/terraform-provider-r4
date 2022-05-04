@@ -4,8 +4,8 @@ package opsworks
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/opsworks"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/opsworks"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

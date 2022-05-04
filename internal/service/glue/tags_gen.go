@@ -4,8 +4,8 @@ package glue
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/glue"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/glue"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

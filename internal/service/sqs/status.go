@@ -3,7 +3,7 @@ package sqs
 import (
 	"strconv"
 
-	"github.com/aws/aws-sdk-go/service/sqs"
+	"github.com/PixarV/aws-sdk-go/service/sqs"
 	awspolicy "github.com/hashicorp/awspolicyequivalence"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"

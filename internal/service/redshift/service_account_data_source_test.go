@@ -3,7 +3,7 @@ package redshift_test
 import (
 	"testing"
 
-	"github.com/aws/aws-sdk-go/service/redshift"
+	"github.com/PixarV/aws-sdk-go/service/redshift"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
 	tfredshift "github.com/PixarV/terraform-provider-ritt/internal/service/redshift"

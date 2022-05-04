@@ -4,8 +4,8 @@ package ec2
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/ec2"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/ec2"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )

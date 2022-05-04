@@ -1,8 +1,8 @@
 package elasticache
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/elasticache"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/elasticache"
 )
 
 func flattenSecurityGroupIDs(securityGroups []*elasticache.SecurityGroupMembership) []string {

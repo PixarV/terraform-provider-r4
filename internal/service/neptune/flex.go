@@ -1,8 +1,8 @@
 package neptune
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/neptune"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/neptune"
 )
 
 // Takes the result of flatmap.Expand for an array of parameters and

@@ -1,8 +1,8 @@
 package docdb
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/docdb"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/docdb"
 )
 
 // Takes the result of flatmap.Expand for an array of parameters and

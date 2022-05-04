@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/service/ec2"
+	"github.com/PixarV/aws-sdk-go/service/ec2"
 	mockdatav1 "github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/mockdata"
 	"github.com/hashicorp/aws-sdk-go-base/v2/servicemocks"
 )

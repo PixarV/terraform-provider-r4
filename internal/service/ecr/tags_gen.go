@@ -4,8 +4,8 @@ package ecr
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/ecr"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/ecr"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

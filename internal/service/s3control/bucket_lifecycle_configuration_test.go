@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/arn"
-	"github.com/aws/aws-sdk-go/service/s3control"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/aws/arn"
+	"github.com/PixarV/aws-sdk-go/service/s3control"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
@@ -309,7 +309,7 @@ func TestAccS3ControlBucketLifecycleConfiguration_RuleFilter_tags(t *testing.T) 
 			},
 			// There is currently an API model or AWS Go SDK bug where LifecycleFilter.And.Tags
 			// does not get populated from the XML response. Reference:
-			// https://github.com/aws/aws-sdk-go/issues/3591
+			// https://github.com/PixarV/aws-sdk-go/issues/3591
 			// {
 			// 	Config: testAccAWSS3ControlBucketLifecycleConfigurationConfig_Rule_Filter_Tags2(rName, "key1", "value1updated", "key2", "value2"),
 			// 	Check: resource.ComposeTestCheckFunc(

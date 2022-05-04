@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws/endpoints"
+	"github.com/PixarV/aws-sdk-go/aws/endpoints"
 )
 
 // ValidBucketName validates any S3 bucket name that is not inside the us-east-1 region.

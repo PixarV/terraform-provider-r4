@@ -3,7 +3,7 @@ package s3outposts
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/s3outposts"
+	"github.com/PixarV/aws-sdk-go/service/s3outposts"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

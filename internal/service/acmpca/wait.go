@@ -3,7 +3,7 @@ package acmpca
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/acmpca"
+	"github.com/PixarV/aws-sdk-go/service/acmpca"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

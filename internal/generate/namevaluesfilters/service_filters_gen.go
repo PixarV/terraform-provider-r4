@@ -3,20 +3,20 @@
 package namevaluesfilters
 
 import ( // nosemgrep: aws-sdk-go-multiple-service-imports
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/autoscaling"
-	"github.com/aws/aws-sdk-go/service/databasemigrationservice"
-	"github.com/aws/aws-sdk-go/service/docdb"
-	"github.com/aws/aws-sdk-go/service/ec2"
-	"github.com/aws/aws-sdk-go/service/elasticinference"
-	"github.com/aws/aws-sdk-go/service/elasticsearchservice"
-	"github.com/aws/aws-sdk-go/service/fsx"
-	"github.com/aws/aws-sdk-go/service/imagebuilder"
-	"github.com/aws/aws-sdk-go/service/licensemanager"
-	"github.com/aws/aws-sdk-go/service/neptune"
-	"github.com/aws/aws-sdk-go/service/rds"
-	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
-	"github.com/aws/aws-sdk-go/service/route53resolver"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/autoscaling"
+	"github.com/PixarV/aws-sdk-go/service/databasemigrationservice"
+	"github.com/PixarV/aws-sdk-go/service/docdb"
+	"github.com/PixarV/aws-sdk-go/service/ec2"
+	"github.com/PixarV/aws-sdk-go/service/elasticinference"
+	"github.com/PixarV/aws-sdk-go/service/elasticsearchservice"
+	"github.com/PixarV/aws-sdk-go/service/fsx"
+	"github.com/PixarV/aws-sdk-go/service/imagebuilder"
+	"github.com/PixarV/aws-sdk-go/service/licensemanager"
+	"github.com/PixarV/aws-sdk-go/service/neptune"
+	"github.com/PixarV/aws-sdk-go/service/rds"
+	"github.com/PixarV/aws-sdk-go/service/resourcegroupstaggingapi"
+	"github.com/PixarV/aws-sdk-go/service/route53resolver"
 )
 
 // []*SERVICE.Filter handling

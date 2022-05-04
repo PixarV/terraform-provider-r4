@@ -4,8 +4,8 @@ package xray
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/xray"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/xray"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

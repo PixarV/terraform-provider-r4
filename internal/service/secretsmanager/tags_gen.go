@@ -4,8 +4,8 @@ package secretsmanager
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/secretsmanager"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/secretsmanager"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

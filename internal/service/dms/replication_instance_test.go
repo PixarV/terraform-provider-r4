@@ -5,8 +5,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws"
-	dms "github.com/aws/aws-sdk-go/service/databasemigrationservice"
+	"github.com/PixarV/aws-sdk-go/aws"
+	dms "github.com/PixarV/aws-sdk-go/service/databasemigrationservice"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	gversion "github.com/hashicorp/go-version"
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"

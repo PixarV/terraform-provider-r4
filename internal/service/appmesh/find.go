@@ -1,8 +1,8 @@
 package appmesh
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/appmesh"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/appmesh"
 )
 
 // FindGatewayRoute returns the gateway route corresponding to the specified mesh name, virtual gateway name, gateway route name and optional mesh owner.

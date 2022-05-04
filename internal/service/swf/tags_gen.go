@@ -4,8 +4,8 @@ package swf
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/swf"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/swf"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

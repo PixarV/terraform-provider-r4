@@ -3,7 +3,7 @@ package lakeformation_test
 import (
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/aws"
 	tflakeformation "github.com/PixarV/terraform-provider-ritt/internal/service/lakeformation"
 )
 

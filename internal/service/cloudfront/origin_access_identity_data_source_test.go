@@ -3,7 +3,7 @@ package cloudfront_test
 import (
 	"testing"
 
-	"github.com/aws/aws-sdk-go/service/cloudfront"
+	"github.com/PixarV/aws-sdk-go/service/cloudfront"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/PixarV/terraform-provider-ritt/internal/acctest"
 )

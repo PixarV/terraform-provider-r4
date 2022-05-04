@@ -3,7 +3,7 @@ package backup
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/backup"
+	"github.com/PixarV/aws-sdk-go/service/backup"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

@@ -4,8 +4,8 @@ package elasticache
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/elasticache"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/elasticache"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

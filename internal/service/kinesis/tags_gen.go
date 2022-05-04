@@ -4,8 +4,8 @@ package kinesis
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/kinesis"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/kinesis"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/route53"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/route53"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
@@ -223,7 +223,7 @@ func sweepQueryLogs(region string) error {
 		return !lastPage
 	})
 	// In unsupported AWS partitions, the API may return an error even the SDK cannot handle.
-	// Reference: https://github.com/aws/aws-sdk-go/issues/3313
+	// Reference: https://github.com/PixarV/aws-sdk-go/issues/3313
 	if sweep.SkipSweepError(err) || tfawserr.ErrMessageContains(err, "SerializationError", "failed to unmarshal error message") || tfawserr.ErrMessageContains(err, "AccessDeniedException", "Unable to determine service/operation name to be authorized") {
 		log.Printf("[WARN] Skipping Route53 query logging configurations sweep for %s: %s", region, err)
 		return sweeperErrs.ErrorOrNil() // In case we have completed some pages, but had errors

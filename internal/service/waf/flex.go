@@ -1,8 +1,8 @@
 package waf
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/waf"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/waf"
 )
 
 func ExpandAction(l []interface{}) *waf.WafAction {

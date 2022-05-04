@@ -3,8 +3,8 @@ package ec2
 import (
 	"sort"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/ec2"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/ec2"
 )
 
 // BuildAttributeFilterList takes a flat map of scalar attributes (most

@@ -2,8 +2,8 @@
 package codebuild
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/codebuild"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/codebuild"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

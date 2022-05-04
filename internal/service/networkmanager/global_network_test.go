@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/service/networkmanager"
+	"github.com/PixarV/aws-sdk-go/service/networkmanager"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"github.com/PixarV/terraform-provider-ritt/internal/acctest"

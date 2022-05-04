@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/waf"
+	"github.com/PixarV/aws-sdk-go/service/waf"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/PixarV/terraform-provider-ritt/internal/conns"

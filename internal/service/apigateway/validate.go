@@ -3,7 +3,7 @@ package apigateway
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/service/apigateway"
+	"github.com/PixarV/aws-sdk-go/service/apigateway"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
 )

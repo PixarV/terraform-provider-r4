@@ -3,7 +3,7 @@ package eks
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/aws"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"

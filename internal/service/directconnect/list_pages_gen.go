@@ -5,8 +5,8 @@ package directconnect
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/directconnect"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/directconnect"
 )
 
 func describeDirectConnectGatewayAssociationProposalsPages(conn *directconnect.DirectConnect, input *directconnect.DescribeDirectConnectGatewayAssociationProposalsInput, fn func(*directconnect.DescribeDirectConnectGatewayAssociationProposalsOutput, bool) bool) error {

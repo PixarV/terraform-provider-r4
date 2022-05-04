@@ -3,7 +3,7 @@ package imagebuilder
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/imagebuilder"
+	"github.com/PixarV/aws-sdk-go/service/imagebuilder"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

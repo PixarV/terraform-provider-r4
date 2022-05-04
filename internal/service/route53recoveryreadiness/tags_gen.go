@@ -4,8 +4,8 @@ package route53recoveryreadiness
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/route53recoveryreadiness"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/route53recoveryreadiness"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

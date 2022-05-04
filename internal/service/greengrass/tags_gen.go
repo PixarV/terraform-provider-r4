@@ -4,8 +4,8 @@ package greengrass
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/greengrass"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/greengrass"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

@@ -5,8 +5,8 @@ import (
 	"flag"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/PixarV/aws-sdk-go/aws/session"
+	"github.com/PixarV/aws-sdk-go/service/s3"
 	tfs3 "github.com/PixarV/terraform-provider-ritt/internal/service/s3"
 )
 

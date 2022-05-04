@@ -3,7 +3,7 @@ package neptune
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/neptune"
+	"github.com/PixarV/aws-sdk-go/service/neptune"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

@@ -5,8 +5,8 @@ package kinesisanalyticsv2
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/kinesisanalyticsv2"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/kinesisanalyticsv2"
 )
 
 func listApplicationsPages(conn *kinesisanalyticsv2.KinesisAnalyticsV2, input *kinesisanalyticsv2.ListApplicationsInput, fn func(*kinesisanalyticsv2.ListApplicationsOutput, bool) bool) error {

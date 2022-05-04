@@ -44,7 +44,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/sts"
+	"github.com/PixarV/aws-sdk-go/service/sts"
 )
 
 // Identity is returned on successful Verify() results. It contains a parsed
@@ -184,7 +184,7 @@ func (g generator) GetWithSTS(clusterID string, stsAPI *sts.STS) (Token, error) 
 	// timestamp regardless.  We set it to 60 seconds for backwards compatibility (the
 	// parameter is a required argument to Presign(), and authenticators 0.3.0 and older are expecting a value between
 	// 0 and 60 on the server side).
-	// https://github.com/aws/aws-sdk-go/issues/2167
+	// https://github.com/PixarV/aws-sdk-go/issues/2167
 	presignedURLString, err := request.Presign(requestPresignParam)
 	if err != nil {
 		return Token{}, err

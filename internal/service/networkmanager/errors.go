@@ -4,8 +4,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/networkmanager"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/networkmanager"
 )
 
 // resourceNotFoundExceptionResourceIDEquals returns true if the error matches all these conditions:

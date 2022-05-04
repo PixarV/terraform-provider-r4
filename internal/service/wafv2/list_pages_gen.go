@@ -5,8 +5,8 @@ package wafv2
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/wafv2"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/wafv2"
 )
 
 func listIPSetsPages(conn *wafv2.WAFV2, input *wafv2.ListIPSetsInput, fn func(*wafv2.ListIPSetsOutput, bool) bool) error {

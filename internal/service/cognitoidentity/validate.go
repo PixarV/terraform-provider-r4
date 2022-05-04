@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/aws/aws-sdk-go/service/cognitoidentity"
+	"github.com/PixarV/aws-sdk-go/service/cognitoidentity"
 )
 
 func validIdentityPoolName(v interface{}, k string) (ws []string, errors []error) {

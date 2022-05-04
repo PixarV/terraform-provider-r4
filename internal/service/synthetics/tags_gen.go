@@ -4,8 +4,8 @@ package synthetics
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/synthetics"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/synthetics"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

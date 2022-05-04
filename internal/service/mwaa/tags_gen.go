@@ -4,8 +4,8 @@ package mwaa
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/mwaa"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/mwaa"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

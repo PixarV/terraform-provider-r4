@@ -4,8 +4,8 @@ package timestreamwrite
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/timestreamwrite"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/timestreamwrite"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

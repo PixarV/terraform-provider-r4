@@ -117,7 +117,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/aws/aws-sdk-go/service/{{ .AWSService }}"
+	"github.com/PixarV/aws-sdk-go/service/{{ .AWSService }}"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/PixarV/terraform-provider-ritt/internal/conns"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
@@ -238,7 +238,7 @@ package {{ .ServicePackage }}_test
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/service/{{ .AWSService }}"
+	"github.com/PixarV/aws-sdk-go/service/{{ .AWSService }}"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"github.com/PixarV/terraform-provider-ritt/internal/acctest"

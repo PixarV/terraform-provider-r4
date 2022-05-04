@@ -4,8 +4,8 @@ package mediapackage
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/mediapackage"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/mediapackage"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

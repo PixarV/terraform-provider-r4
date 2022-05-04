@@ -2,7 +2,7 @@
 package macie2
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/aws"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

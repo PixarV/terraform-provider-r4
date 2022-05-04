@@ -4,8 +4,8 @@ package kms
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/kms"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/kms"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

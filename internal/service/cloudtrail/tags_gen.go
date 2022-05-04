@@ -4,8 +4,8 @@ package cloudtrail
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/cloudtrail"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/cloudtrail"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

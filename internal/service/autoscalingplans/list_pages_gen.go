@@ -5,8 +5,8 @@ package autoscalingplans
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/autoscalingplans"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/autoscalingplans"
 )
 
 func describeScalingPlansPages(conn *autoscalingplans.AutoScalingPlans, input *autoscalingplans.DescribeScalingPlansInput, fn func(*autoscalingplans.DescribeScalingPlansOutput, bool) bool) error {

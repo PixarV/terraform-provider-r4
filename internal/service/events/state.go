@@ -3,7 +3,7 @@ package events
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/service/eventbridge"
+	"github.com/PixarV/aws-sdk-go/service/eventbridge"
 )
 
 // RuleEnabledFromState infers from its state whether or not a rule is enabled.

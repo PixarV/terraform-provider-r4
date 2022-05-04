@@ -4,8 +4,8 @@ package configservice
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/configservice"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/configservice"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

@@ -5,8 +5,8 @@ package cloudwatchlogs
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/cloudwatchlogs"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/cloudwatchlogs"
 )
 
 func describeQueryDefinitionsPages(conn *cloudwatchlogs.CloudWatchLogs, input *cloudwatchlogs.DescribeQueryDefinitionsInput, fn func(*cloudwatchlogs.DescribeQueryDefinitionsOutput, bool) bool) error {

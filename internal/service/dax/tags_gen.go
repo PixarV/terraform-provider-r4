@@ -4,8 +4,8 @@ package dax
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/dax"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/dax"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

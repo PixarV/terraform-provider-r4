@@ -1,8 +1,8 @@
 package dax
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/dax"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/dax"
 )
 
 func expandEncryptAtRestOptions(m map[string]interface{}) *dax.SSESpecification {

@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/service/elasticache"
+	"github.com/PixarV/aws-sdk-go/service/elasticache"
 	multierror "github.com/hashicorp/go-multierror"
 	gversion "github.com/hashicorp/go-version"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"

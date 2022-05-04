@@ -4,8 +4,8 @@ package iotanalytics
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/iotanalytics"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/iotanalytics"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

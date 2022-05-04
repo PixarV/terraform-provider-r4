@@ -1,7 +1,7 @@
 package sts
 
 import (
-	"github.com/aws/aws-sdk-go/service/sts"
+	"github.com/PixarV/aws-sdk-go/service/sts"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

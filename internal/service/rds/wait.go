@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/rds"
+	"github.com/PixarV/aws-sdk-go/service/rds"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

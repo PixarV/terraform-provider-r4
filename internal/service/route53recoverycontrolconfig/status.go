@@ -1,8 +1,8 @@
 package route53recoverycontrolconfig
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	r53rcc "github.com/aws/aws-sdk-go/service/route53recoverycontrolconfig"
+	"github.com/PixarV/aws-sdk-go/aws"
+	r53rcc "github.com/PixarV/aws-sdk-go/service/route53recoverycontrolconfig"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

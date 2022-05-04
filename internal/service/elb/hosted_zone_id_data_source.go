@@ -3,7 +3,7 @@ package elb
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws/endpoints"
+	"github.com/PixarV/aws-sdk-go/aws/endpoints"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/PixarV/terraform-provider-ritt/internal/conns"
 )

@@ -3,7 +3,7 @@ package guardduty
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/guardduty"
+	"github.com/PixarV/aws-sdk-go/service/guardduty"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

@@ -4,8 +4,8 @@ package datasync
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/datasync"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/datasync"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

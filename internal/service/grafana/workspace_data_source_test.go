@@ -3,7 +3,7 @@ package grafana_test
 import (
 	"testing"
 
-	"github.com/aws/aws-sdk-go/service/managedgrafana"
+	"github.com/PixarV/aws-sdk-go/service/managedgrafana"
 	sdkacctest "github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/PixarV/terraform-provider-ritt/internal/acctest"

@@ -1,8 +1,8 @@
 package kinesisanalytics
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/kinesisanalytics"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/kinesisanalytics"
 )
 
 // Custom Kinesisanalytics listing functions using similar formatting as other service generated code.

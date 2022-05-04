@@ -4,8 +4,8 @@ package opensearch
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/opensearchservice"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/opensearchservice"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

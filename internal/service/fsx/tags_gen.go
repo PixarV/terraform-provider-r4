@@ -4,8 +4,8 @@ package fsx
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/fsx"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/fsx"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

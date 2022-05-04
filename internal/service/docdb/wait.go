@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/docdb"
+	"github.com/PixarV/aws-sdk-go/service/docdb"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/PixarV/terraform-provider-ritt/internal/tfresource"
 )

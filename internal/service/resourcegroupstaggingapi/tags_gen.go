@@ -2,8 +2,8 @@
 package resourcegroupstaggingapi
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/resourcegroupstaggingapi"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/resourcegroupstaggingapi"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

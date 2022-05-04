@@ -4,8 +4,8 @@ package directconnect
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/directconnect"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/directconnect"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

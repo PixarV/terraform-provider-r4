@@ -3,7 +3,7 @@ package cognitoidp
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/cognitoidentityprovider"
+	"github.com/PixarV/aws-sdk-go/service/cognitoidentityprovider"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

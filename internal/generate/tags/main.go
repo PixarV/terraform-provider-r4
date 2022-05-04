@@ -244,12 +244,12 @@ import (
 	"strconv"
 	{{- end }}
 
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/aws"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 	{{- if .AWSService }}
-	"github.com/aws/aws-sdk-go/service/{{ .AWSService }}"
+	"github.com/PixarV/aws-sdk-go/service/{{ .AWSService }}"
 	{{- if ne .AWSService .TagPackage }}
-	"github.com/aws/aws-sdk-go/service/{{ .TagPackage }}"
+	"github.com/PixarV/aws-sdk-go/service/{{ .TagPackage }}"
 	{{- end }}
 	{{- end }}
 	{{- if .HelperSchemaPkg }}

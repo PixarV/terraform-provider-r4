@@ -1,6 +1,6 @@
 package connect
 
-import "github.com/aws/aws-sdk-go/service/connect"
+import "github.com/PixarV/aws-sdk-go/service/connect"
 
 const InstanceStatusStatusNotFound = "ResourceNotFoundException"
 const BotAssociationStatusNotFound = "ResourceNotFoundException"

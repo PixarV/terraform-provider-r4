@@ -1,8 +1,8 @@
 package appautoscaling
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/applicationautoscaling"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/applicationautoscaling"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 

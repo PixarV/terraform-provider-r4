@@ -1,8 +1,8 @@
 package cloudformation
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/cloudformation"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/cloudformation"
 )
 
 func expandParameters(params map[string]interface{}) []*cloudformation.Parameter {

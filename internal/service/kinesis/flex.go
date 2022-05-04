@@ -1,7 +1,7 @@
 package kinesis
 
 import (
-	"github.com/aws/aws-sdk-go/service/kinesis"
+	"github.com/PixarV/aws-sdk-go/service/kinesis"
 )
 
 func FlattenShardLevelMetrics(list []*kinesis.EnhancedMetrics) []string {

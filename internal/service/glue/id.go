@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/glue"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/glue"
 )
 
 func readPartitionID(id string) (catalogID string, dbName string, tableName string, values []string, error error) {

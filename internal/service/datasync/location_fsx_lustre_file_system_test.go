@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/service/datasync"
-	"github.com/aws/aws-sdk-go/service/fsx"
+	"github.com/PixarV/aws-sdk-go/service/datasync"
+	"github.com/PixarV/aws-sdk-go/service/fsx"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"github.com/PixarV/terraform-provider-ritt/internal/acctest"

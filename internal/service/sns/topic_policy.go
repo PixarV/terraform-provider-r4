@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/aws/aws-sdk-go/service/sns"
+	"github.com/PixarV/aws-sdk-go/service/sns"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/structure"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"

@@ -5,8 +5,8 @@ package memorydb
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/memorydb"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/memorydb"
 )
 
 func describeACLsPages(conn *memorydb.MemoryDB, input *memorydb.DescribeACLsInput, fn func(*memorydb.DescribeACLsOutput, bool) bool) error {

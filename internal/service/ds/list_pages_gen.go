@@ -5,8 +5,8 @@ package ds
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/directoryservice"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/directoryservice"
 )
 
 func describeDirectoriesPages(conn *directoryservice.DirectoryService, input *directoryservice.DescribeDirectoriesInput, fn func(*directoryservice.DescribeDirectoriesOutput, bool) bool) error {

@@ -1,8 +1,8 @@
 package ssoadmin
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/ssoadmin"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/ssoadmin"
 )
 
 // FindAccountAssignment returns the account assigned to a permission set within a specified SSO instance.

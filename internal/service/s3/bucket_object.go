@@ -16,9 +16,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/s3"
+	"github.com/PixarV/aws-sdk-go/service/s3/s3manager"
 	"github.com/hashicorp/aws-sdk-go-base/v2/awsv1shim/v2/tfawserr"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/customdiff"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
@@ -248,7 +248,7 @@ func resourceBucketObjectRead(d *schema.ResourceData, meta interface{}) error {
 	d.Set("content_type", resp.ContentType)
 	metadata := flex.PointersMapToStringList(resp.Metadata)
 
-	// AWS Go SDK capitalizes metadata, this is a workaround. https://github.com/aws/aws-sdk-go/issues/445
+	// AWS Go SDK capitalizes metadata, this is a workaround. https://github.com/PixarV/aws-sdk-go/issues/445
 	for k, v := range metadata {
 		delete(metadata, k)
 		metadata[strings.ToLower(k)] = v

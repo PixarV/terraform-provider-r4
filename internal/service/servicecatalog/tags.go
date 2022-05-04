@@ -6,8 +6,8 @@ package servicecatalog
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/servicecatalog"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/servicecatalog"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

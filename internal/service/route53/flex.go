@@ -3,8 +3,8 @@ package route53
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/route53"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/route53"
 )
 
 func expandResourceRecords(recs []interface{}, typeStr string) []*route53.ResourceRecord {

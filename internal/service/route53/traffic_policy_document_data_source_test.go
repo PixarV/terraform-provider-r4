@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws/awsutil"
-	"github.com/aws/aws-sdk-go/service/route53"
+	"github.com/PixarV/aws-sdk-go/aws/awsutil"
+	"github.com/PixarV/aws-sdk-go/service/route53"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"github.com/PixarV/terraform-provider-ritt/internal/acctest"

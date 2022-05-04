@@ -4,8 +4,8 @@ package licensemanager
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/licensemanager"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/licensemanager"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

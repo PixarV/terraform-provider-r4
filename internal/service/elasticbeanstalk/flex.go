@@ -1,7 +1,7 @@
 package elasticbeanstalk
 
 import (
-	"github.com/aws/aws-sdk-go/service/elasticbeanstalk"
+	"github.com/PixarV/aws-sdk-go/service/elasticbeanstalk"
 )
 
 func flattenASG(list []*elasticbeanstalk.AutoScalingGroup) []string {

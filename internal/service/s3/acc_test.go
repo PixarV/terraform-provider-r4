@@ -3,7 +3,7 @@ package s3_test
 import (
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws/endpoints"
+	"github.com/PixarV/aws-sdk-go/aws/endpoints"
 	tfs3 "github.com/PixarV/terraform-provider-ritt/internal/service/s3"
 )
 

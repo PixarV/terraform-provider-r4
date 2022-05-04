@@ -4,8 +4,8 @@ package shield
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/shield"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/shield"
 	tftags "github.com/PixarV/terraform-provider-ritt/internal/tags"
 )
 

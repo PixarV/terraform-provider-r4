@@ -3,8 +3,8 @@ package ssm
 import (
 	"strings"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/ssm"
+	"github.com/PixarV/aws-sdk-go/aws"
+	"github.com/PixarV/aws-sdk-go/service/ssm"
 	"github.com/PixarV/terraform-provider-ritt/internal/flex"
 )
 

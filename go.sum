@@ -4,8 +4,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/Microsoft/go-winio v0.4.14/go.mod h1:qXqCSQ3Xa7+6tgxaGTIe4Kpcdsi+P8jBhyzoq1bpyYA=
 github.com/Microsoft/go-winio v0.4.16 h1:FtSW/jqD+l4ba5iPBj9CODVtgfYAD8w2wS923g/cFDk=
 github.com/Microsoft/go-winio v0.4.16/go.mod h1:XB6nPKklQyQ7GC9LdcBEcBl8PF76WugXOPRXwdLnMv0=
-github.com/PixarV/aws-sdk-go v1.43.42-0.20220504085238-ec226abb617d h1:KfHLF0f1/9QNtPCOW7yIKxfEtkNa3/Bk4b4ip2g5UvA=
-github.com/PixarV/aws-sdk-go v1.43.42-0.20220504085238-ec226abb617d/go.mod h1:+mfmu7JqPT4d86CqiVOFDy27JE5ELc4Nx6Hs2e4YwCk=
+github.com/PixarV/aws-sdk-go v0.0.3-ritt h1:KdIi5xMRFOzxc990AExJXo6K3XFFpvb30K3iOVvxRTA=
+github.com/PixarV/aws-sdk-go v0.0.3-ritt/go.mod h1:+mfmu7JqPT4d86CqiVOFDy27JE5ELc4Nx6Hs2e4YwCk=
 github.com/ProtonMail/go-crypto v0.0.0-20210428141323-04723f9f07d7 h1:YoJbenK9C67SkzkDfmQuVln04ygHj3vjZfd9FL+GmQQ=
 github.com/ProtonMail/go-crypto v0.0.0-20210428141323-04723f9f07d7/go.mod h1:z4/9nQmJSSwwds7ejkxaJwO37dru3geImFUdJlaLzQo=
 github.com/acomagu/bufpipe v1.0.3 h1:fxAGrHZTgQ9w5QqVItgzwj235/uYZYgbXitB+dLupOk=

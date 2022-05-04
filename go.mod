@@ -89,4 +89,4 @@ require (
 	google.golang.org/protobuf v1.28.0 // indirect
 )
 
-replace github.com/aws/aws-sdk-go => github.com/PixarV/aws-sdk-go v1.43.42-0.20220504085238-ec226abb617d
+replace github.com/aws/aws-sdk-go => github.com/PixarV/aws-sdk-go v0.0.3-ritt

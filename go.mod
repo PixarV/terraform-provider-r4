@@ -2,6 +2,8 @@ module github.com/hashicorp/terraform-provider-aws
 
 go 1.17
 
+replace github.com/aws/aws-sdk-go => github.com/PixarV/aws-sdk-go v1.44.8-ritt0
+
 require (
 	github.com/ProtonMail/go-crypto v0.0.0-20210428141323-04723f9f07d7
 	github.com/aws/aws-sdk-go v1.44.8
@@ -88,5 +90,3 @@ require (
 	google.golang.org/grpc v1.45.0 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 )
-
-replace github.com/aws/aws-sdk-go => github.com/PixarV/aws-sdk-go v1.44.8-ritt

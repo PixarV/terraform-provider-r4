@@ -35,7 +35,7 @@ func TestAccEC2EBSVolume_basic(t *testing.T) {
 		CheckDestroy: testAccCheckVolumeDestroy,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccEBSVolumeConfig,
+				Config: testAccEBSVolumeConfig(),
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckVolumeExists(resourceName, &v),
 					acctest.MatchResourceAttrRegionalARN(resourceName, "arn", "ec2", regexp.MustCompile(`volume/vol-.+`)),
@@ -105,7 +105,7 @@ func TestAccEC2EBSVolume_updateSize(t *testing.T) {
 		CheckDestroy: testAccCheckVolumeDestroy,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccEBSVolumeConfig,
+				Config: testAccEBSVolumeConfig(),
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckVolumeExists(resourceName, &v),
 					resource.TestCheckResourceAttr(resourceName, "size", "1"),
@@ -140,7 +140,7 @@ func TestAccEC2EBSVolume_updateType(t *testing.T) {
 		CheckDestroy: testAccCheckVolumeDestroy,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccEBSVolumeConfig,
+				Config: testAccEBSVolumeConfig(),
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckVolumeExists(resourceName, &v),
 					resource.TestCheckResourceAttr(resourceName, "type", "gp2"),
@@ -701,7 +701,7 @@ func TestAccEC2EBSVolume_disappears(t *testing.T) {
 		CheckDestroy: testAccCheckVolumeDestroy,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccEBSVolumeConfig,
+				Config: testAccEBSVolumeConfig(),
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckVolumeExists(resourceName, &v),
 					acctest.CheckResourceDisappears(acctest.Provider, tfec2.ResourceEBSVolume(), resourceName),
@@ -772,7 +772,10 @@ func testAccCheckVolumeExists(n string, v *ec2.Volume) resource.TestCheckFunc {
 	}
 }
 
-const testAccEBSVolumeConfig = `
+func testAccEBSVolumeConfig() string {
+	return acctest.ConfigCompose(
+		acctest.ConfigC2Provider(),
+		`
 data "aws_availability_zones" "available" {
   state = "available"
 
@@ -785,7 +788,25 @@ data "aws_availability_zones" "available" {
 resource "aws_ebs_volume" "test" {
   availability_zone = data.aws_availability_zones.available.names[0]
   type              = "gp2"
-  size              = 1
+  size              = 8
+}
+`)
+}
+
+const testAccEBSVolumeConfigAsStr = `
+data "aws_availability_zones" "available" {
+  state = "available"
+
+  filter {
+    name   = "opt-in-status"
+    values = ["opt-in-not-required"]
+  }
+}
+
+resource "aws_ebs_volume" "test" {
+  availability_zone = data.aws_availability_zones.available.names[0]
+  type              = "gp2"
+  size              = 8
 }
 `
 

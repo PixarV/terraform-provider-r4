@@ -209,7 +209,17 @@ func PreCheck(t *testing.T) {
 		region := Region()
 		os.Setenv(conns.EnvVarDefaultRegion, region)
 
-		err := Provider.Configure(context.Background(), terraform.NewResourceConfigRaw(nil))
+		c2Config := map[string]interface{}{
+			"endpoints": map[string]interface{}{
+				"ec2": "https://api.cloud.croc.ru:443",
+			},
+			"region":                      "croc",
+			"skip_credentials_validation": true,
+			"skip_requesting_account_id":  true,
+			"skip_region_validation":      true,
+		}
+
+		err := Provider.Configure(context.Background(), terraform.NewResourceConfigRaw(c2Config))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -909,6 +919,22 @@ provider "aws" {
   region = %[1]q
 }
 `, region)
+}
+
+func ConfigC2Provider() string {
+	return `
+		provider "aws" {
+		  endpoints {
+		    # NOTE: specify custom EC2 endpoint URL
+			#       due to different region name
+			ec2 = "https://api.cloud.croc.ru:443"
+		  }
+
+		  skip_credentials_validation = true
+		  skip_requesting_account_id  = true
+		  skip_region_validation      = true
+		}
+	`
 }
 
 func RegionProviderFunc(region string, providers *[]*schema.Provider) func() *schema.Provider {

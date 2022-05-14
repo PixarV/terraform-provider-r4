@@ -46,8 +46,8 @@ release:
   extra_files:
     - glob: 'terraform-registry-manifest.json'
       name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
-  ids:
-    - none
+  #ids:
+  #  - none
 signs:
   - artifacts: checksum
     args:  
@@ -62,5 +62,6 @@ signs:
       - "${artifact}"
 snapshot:
   name_template: "{{ .Tag }}-next"
-#changelog:
-#  skip: true
+changelog:
+  # skip release changelog generation
+  skip: true

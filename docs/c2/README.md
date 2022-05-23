@@ -44,7 +44,7 @@
 (ранее - *aws*) форк переименован в  
 *terraform-provider-croccloud*.
 
-[todo: добавить ссылку на provider в официиальном registry после регистрации](!)
+todo: добавить ссылку на provider в официиальном registry после регистрации
 
 ## Начало работы
 
@@ -134,7 +134,7 @@ replace github.com/aws/aws-sdk-go => <path-to-aws-sdk-go>
 В проекте есть два типа тестов: **unit** и **acceptance**. Они лежат рядом с функционалом (файлы: *_test.go).
 
 Тесты написаны с помощью [go testing](https://go.dev/doc/code#Testing), для приемочных дополнительно используется
-пакет [acctest](/internal/acctest/acctest.go).
+пакет [acctest](../../internal/acctest/acctest.go).
 
 ### Unit
 
@@ -148,7 +148,7 @@ replace github.com/aws/aws-sdk-go => <path-to-aws-sdk-go>
 **Важно!** Тесты используют реальные облачные ресурсы. **Требуется доработка тестов для запуска на C2.**
 
 По запуску и написанию приемочных тестов есть
-[документация](/docs/contributing/running-and-writing-acceptance-tests.md).
+[документация](../../docs/contributing/running-and-writing-acceptance-tests.md).
 
 Команды:
 
@@ -375,7 +375,7 @@ providers/
 Их можно получить из официального terraform registry, если провайдер уже опубликован,
 или сделать самостоятельно в соответствии с [протоколом](https://www.terraform.io/internals/provider-registry-protocol).
 
-Если требуется создание s3 бакета и директорий, см. [структура s3 бакета](#cтруктура-s3-бакета).
+Если требуется создание s3 бакета и директорий, см. [структура s3 бакета](#структура-s3-бакета).
 
 Порядок загрузки:
 
@@ -411,7 +411,7 @@ todo: проверить после публикации провайдера + 
 
 Примеры использования **Terraform** для C2: [C2Devel/terraform-examples](https://github.com/C2Devel/terraform-examples)
 
-Конфигурация провайдера **C2Devel/croccloud** после его публикации в официальном [terraform registry](!):
+Конфигурация провайдера **C2Devel/croccloud** после его публикации в официальном terraform registry:
 
 ```
 # provider.tf

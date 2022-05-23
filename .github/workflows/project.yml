@@ -9,6 +9,7 @@ env:
 
 jobs:
   WorkingBoardReview:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
     - name: Move team PRs to Review column

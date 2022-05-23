@@ -5,6 +5,7 @@ on:
       - opened
 jobs:
   PermissionsCheck:
+    if: ${{ false }}
     env:
       MAINTAINER_CAN_MODIFY: ${{ github.event.pull_request.maintainer_can_modify }}
       IN_MAINTAINER_LIST: ${{ contains( secrets.MAINTAINER_LIST, github.actor) }}

@@ -8,6 +8,7 @@ on:
 
 jobs:
   RemoveTriagingLabelsFromClosedIssueOrPR:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - name: Remove triaging labels from closed issues and PRs

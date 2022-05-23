@@ -8,7 +8,7 @@ on:
       - labeled
 jobs:
   slack-notification:
-    if: ${{ github.event.label.name == 'regression' }}
+    if: ${{ false && github.event.label.name == 'regression' }}
     runs-on: ubuntu-latest
     steps:
       - name: Issues
@@ -34,7 +34,7 @@ jobs:
             :warning: The following pull request has been labeled as a regression:
             https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}
   AddToWorkingBoard:
-    if: ${{ github.event.label.name == 'regression' }}
+    if: ${{ false && github.event.label.name == 'regression' }}
     runs-on: ubuntu-latest
     steps:
       - name: Add regressions to To Do column

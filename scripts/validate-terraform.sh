@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# test gha
+
 set -eo pipefail
 
 # This script works from stdin and expects one filename per line.

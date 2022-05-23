@@ -29,6 +29,7 @@ jobs:
         configuration-path: .github/labeler-pr-needs-triage.yml
         repo-token: ${{ secrets.GITHUB_TOKEN }}
   SizeLabeler:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       # See also: https://github.com/CodelyTV/pr-size-labeler/pull/26

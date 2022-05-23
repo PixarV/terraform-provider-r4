@@ -16,6 +16,7 @@ env:
 
 jobs:
   changes:
+    if: ${{ false }}
     name: Filter Changes
     runs-on: ubuntu-latest
     outputs:
@@ -30,7 +31,7 @@ jobs:
               - CHANGELOG.md
   comment:
     needs: changes
-    if: ${{ needs.changes.outputs.changed == 'true' }}
+    if: ${{ false && needs.changes.outputs.changed == 'true' }}
     name: Comment
     runs-on: ubuntu-latest
     steps:
@@ -56,6 +57,7 @@ jobs:
 
             Remove any changes to the `CHANGELOG.md` file and commit them in this pull request to prevent delays with reviewing and potentially merging this pull request.
   misspell:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

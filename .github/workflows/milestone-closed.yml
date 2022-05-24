@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   Comment:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - uses: bflad/action-milestone-comment@v1

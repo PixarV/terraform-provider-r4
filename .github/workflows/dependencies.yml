@@ -12,6 +12,7 @@ env:
 
 jobs:
   changes:
+    if: ${{ false }}
     name: Filter Changes
     runs-on: ubuntu-latest
     outputs:
@@ -28,7 +29,7 @@ jobs:
               - go.sum
   comment:
     needs: changes
-    if: ${{ needs.changes.outputs.changed == 'true' }}
+    if: ${{ false && needs.changes.outputs.changed == 'true' }}
     name: Comment
     runs-on: ubuntu-latest
     steps:
@@ -60,6 +61,7 @@ jobs:
               * Ensure the new AWS service changes are following the [Contributing Guide section on new services](https://github.com/hashicorp/terraform-provider-aws/blob/main/docs/contributing/contribution-checklists.md#new-service), in particular that the dependency addition and initial provider support are in a separate pull request from other changes (e.g. new resources). Contributions not following this item will not be reviewed until the changes are split.
               * If this pull request is already a separate pull request from the above item, you can ignore this message.
   go_mod:
+    if: ${{ false }}
     name: go mod
     runs-on: ubuntu-latest
     steps:

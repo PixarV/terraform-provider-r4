@@ -9,6 +9,7 @@ env:
 
 jobs:
   issue_comment_triage:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions-ecosystem/action-remove-labels@v1

@@ -125,6 +125,7 @@ jobs:
         terraform providers schema -json > terraform-providers-schema/schema.json
 
   providerlint:
+    if: ${{ false }}
     # needs: [go_build]
     runs-on: ubuntu-latest
     steps:
@@ -279,6 +280,7 @@ jobs:
         fi
   golangci-lint:
     needs: [go_build]
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3

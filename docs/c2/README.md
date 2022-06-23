@@ -223,15 +223,18 @@ $ make docscheck
 
 2. Создание **GPG** ключа
    ([инструкция от github](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key))
+    - **Важно!** Ключ должен быть без пароля
     - **Опционально.** Привязка ключа к github аккаунту
 3. Установка переменной `GPG_FINGERPRINT`
 
    ```
-   $ gpg --list-secret-keys --keyid-format=long
+   $ gpg --list-secret-keys --keyid-format LONG
    ...
    sec   rsa4096/<id> 2022-04-19 [SC]
-         <fingerprint>
    ...
+   $ gpg --list-secret-keys --with-colons --fingerprint <id> | grep fpr | cut -f 10 -d :
+   <fingerprint>
+
    $ export GPG_FINGERPRINT=<fingerprint>
    ```
 
@@ -312,10 +315,9 @@ $ make docscheck
     (см. [настройка окружения](#настройка-окружения), шаг 2) в [настройках профиля](https://registry.terraform.io/settings/gpg-keys)
 
    ```
-   $ gpg --list-secret-keys --keyid-format=long
+   $ gpg --list-secret-keys --keyid-format LONG
    ...
    sec   rsa4096/<id> 2022-04-19 [SC]
-         <fingerprint>
    ...
    $ gpg --armor --export <id>
    -----BEGIN PGP PUBLIC KEY BLOCK-----

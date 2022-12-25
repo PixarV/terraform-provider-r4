@@ -10,6 +10,8 @@ description: |-
 
 Provides an Auto Scaling Group resource.
 
+!> Resource is currently unsupported by Croc Cloud.
+
 -> **Note:** You must specify either `launch_configuration`, `launch_template`, or `mixed_instances_policy`.
 
 ~> **NOTE on Auto Scaling Groups and ASG Attachments:** Terraform currently provides

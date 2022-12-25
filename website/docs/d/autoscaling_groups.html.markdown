@@ -11,6 +11,8 @@ description: |-
 The Autoscaling Groups data source allows access to the list of AWS
 ASGs within a specific region. This will allow you to pass a list of AutoScaling Groups to other resources.
 
+!> Resource is currently unsupported by Croc Cloud.
+
 ## Example Usage
 
 ```terraform

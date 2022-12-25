@@ -15,11 +15,11 @@ Adds permission to create volumes off of a given EBS Snapshot.
 ```terraform
 resource "aws_snapshot_create_volume_permission" "example_perm" {
   snapshot_id = aws_ebs_snapshot.example_snapshot.id
-  account_id  = "12345678"
+  account_id  = "project@customer"
 }
 
 resource "aws_ebs_volume" "example" {
-  availability_zone = "us-west-2a"
+  availability_zone = "ru-msk-vol52"
   size              = 40
 }
 
@@ -32,8 +32,8 @@ resource "aws_ebs_snapshot" "example_snapshot" {
 
 The following arguments are supported:
 
-* `snapshot_id` - (required) A snapshot ID
-* `account_id` - (required) An AWS Account ID to add create volume permissions
+* `snapshot_id` - (required) A snapshot ID.
+* `account_id` - (required) The Croc Cloud project ID (`project@customer`).
 
 ## Attributes Reference
 

@@ -14,7 +14,7 @@ criteria.
 ## Example Usage
 
 ```terraform
-data "aws_ebs_snapshot_ids" "ebs_volumes" {
+data "aws_ebs_snapshot_ids" "ebs_snapshot_ids" {
   owners = ["self"]
 
   filter {
@@ -33,17 +33,11 @@ data "aws_ebs_snapshot_ids" "ebs_volumes" {
 
 The following arguments are supported:
 
-* `owners` - (Optional) Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
-
-* `restorable_by_user_ids` - (Optional) One or more AWS accounts IDs that can create volumes from the snapshot.
-
-* `filter` - (Optional) One or more name/value pairs to filter off of. There are
-several valid keys, for a full reference, check out
-[describe-volumes in the AWS CLI reference][1].
+* `owners` - (Optional) Returns the snapshots owned by the specified owner ID. Multiple owners can be specified.
+* `restorable_by_user_ids` - (Optional) One or more Croc Cloud project IDs that can create volumes from the snapshot.
+* `filter` - (Optional) One or more name/value pairs to filter off of. Supported filters are specified in [`ebs_snapshot`](ebs_snapshot.html) datasource description.
 
 ## Attributes Reference
 
-* `id` - AWS Region.
+* `id` - Region (for example, `croc`).
 * `ids` - Set of EBS snapshot IDs, sorted by creation time in descending order.
-
-[1]: http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-snapshots.html

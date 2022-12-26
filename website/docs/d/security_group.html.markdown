@@ -40,28 +40,37 @@ security group whose data will be exported as attributes.
 
 
 * `filter` - (Optional) Custom filter block as described below.
-
-* `id` - (Optional) The id of the specific security group to retrieve.
-
+* `id` - (Optional) ID of the specific security group to retrieve.
 * `name` - (Optional) The name that the desired security group must have.
-
 * `tags` - (Optional) A map of tags, each pair of which must exactly match
   a pair on the desired security group.
-
 * `vpc_id` - (Optional) The id of the VPC that the desired security group belongs to.
 
 More complex filters can be expressed using one or more `filter` sub-blocks,
 which take the following arguments:
 
-* `name` - (Required) The name of the field to filter by, as defined by
-  [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
-
+* `name` - (Required) The name of the field to filter by it.
 * `values` - (Required) Set of values that are accepted for the given field.
   A Security Group will be selected if any one of the given values matches.
 
+Supported filters:
+
+* `description` - The description of the security group.
+* `group-id` - ID of the security group.
+* `owner-id` - ID of the project.
+* `vpc-id` - ID of the VPC in which the security group is created.
+* `group-name` - The name of the security group.
+* `ip-permission.cidr` - The IPv4 CIDR of the network that was granted access to the security group.
+* `ip-permission.from-port` - The start of port range for the TCP and UDP protocols, or an ICMP code.
+* `ip-permission.to-port` - The end of port range for the TCP and UDP protocols, or an ICMP code.
+* `ip-permission.group-id` - ID of a security group for which access is granted.
+* `ip-permission.protocol` - IP protocol name or number.
+* `tag:<tag-key>` – The key/value combination of a tag. Use the tag key in the filter name and the tag value as the filter value.
+* `tag-key` - The key of a tag assigned to the resource. This filter is used to find all tagged resources with the specific key tag and any tag value
+
 ## Attributes Reference
 
-All of the argument attributes except `filter` blocks are also exported as
+All argument attributes except `filter` blocks are also exported as
 result attributes. This data source will complete the data by populating
 any fields that are not included in the configuration with the data for
 the selected Security Group.
@@ -71,4 +80,4 @@ The following fields are also exported:
 * `description` - The description of the security group.
 * `arn` - The computed ARN of the security group.
 
-~> **Note:** The [default security group for a VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html#DefaultSecurityGroup) has the name `default`.
+~> **Note:** The default security group for a VPC has the name `default`.

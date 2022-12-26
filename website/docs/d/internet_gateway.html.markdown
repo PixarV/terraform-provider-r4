@@ -8,6 +8,8 @@ description: |-
 
 # Data Source: aws_internet_gateway
 
+-> This resource is currently unsupported by CROC Cloud.
+
 `aws_internet_gateway` provides details about a specific Internet Gateway.
 
 ## Example Usage

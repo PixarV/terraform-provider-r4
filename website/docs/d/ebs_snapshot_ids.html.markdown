@@ -35,7 +35,7 @@ The following arguments are supported:
 
 * `owners` - (Optional) Returns the snapshots owned by the specified owner ID. Multiple owners can be specified.
 * `restorable_by_user_ids` - (Optional) One or more Croc Cloud project IDs that can create volumes from the snapshot.
-* `filter` - (Optional) One or more name/value pairs to filter off of. Supported filters are specified in [`ebs_snapshot`](ebs_snapshot.html) datasource description.
+* `filter` - (Optional) One or more name/value pairs to filter off of. Supported filters are specified in [`aws_ebs_snapshot`](ebs_snapshot.html) datasource description.
 
 ## Attributes Reference
 

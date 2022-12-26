@@ -60,7 +60,7 @@ data "aws_ebs_volumes" "ten_or_twenty_gb_volumes" {
 * `values` - (Required) Set of values that are accepted for the given field.
   EBS Volume IDs will be selected if any one of the given values match.
 
-Supported filters are specified in [`ebs_volume`](ebs_volume.html) datasource description.
+Supported filters are specified in [`aws_ebs_volume`](ebs_volume.html) datasource description.
 
 ## Attributes Reference
 

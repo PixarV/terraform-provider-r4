@@ -8,6 +8,8 @@ description: |-
 
 # Resource: aws_cloudwatch_metric_alarm
 
+-> This resource is currently unsupported by CROC Cloud.
+
 Provides a CloudWatch Metric Alarm resource.
 
 ## Example Usage

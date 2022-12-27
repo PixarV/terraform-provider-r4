@@ -12,7 +12,7 @@ This resource can be useful for getting back a set of subnet IDs.
 
 ## Example Usage
 
-The following shows outputing all CIDR blocks for every subnet ID in a VPC.
+The following shows all CIDR blocks for every subnet ID in a VPC.
 
 ```terraform
 variable vpc_id {}
@@ -54,7 +54,7 @@ data "aws_subnets" "private" {
 
 resource "aws_instance" "app" {
   for_each      = toset(data.aws_subnets.example.ids)
-  ami           = "cmi-21f78e11"
+  ami           = "cmi-12345678" # add image id, change instance type if needed
   instance_type = "m1.micro"
   subnet_id     = each.value
 }
@@ -88,7 +88,7 @@ For more information about filtering, see the [EC2 API documentation][describe-s
 
 ## Attributes Reference
 
-* `ids` - A list of all the subnet ids found.
+* `ids` - A list of all the subnet IDs found.
 
 [describe-subnets]: https://docs.cloud.croc.ru/en/api/ec2/subnets/DescribeSubnets.html
 [tf-subnet]: subnet.html

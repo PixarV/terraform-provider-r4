@@ -12,8 +12,8 @@ Provides a resource to create a VPC routing table.
 
 ~> **NOTE on Route Tables and Routes:** Terraform currently
 provides both a standalone [`aws_route` resource][tf-route] and a Route Table resource with routes
-defined in-line. At this time you cannot use a Route Table with in-line routes
-in conjunction with any Route resources. Doing so will cause
+defined in-line. At this time you cannot use a route table with in-line routes
+in conjunction with any route resources. Doing so will cause
 a conflict of rule settings and will overwrite rules.
 
 ~> **NOTE on `propagating_vgws` and the `aws_vpn_gateway_route_propagation` resource:**
@@ -90,7 +90,7 @@ One of the following destination arguments must be supplied:
 
 One of the following target arguments must be supplied:
 
-* `gateway_id` - (Optional) ID of an Internet Gateway or Virtual Private Gateway.
+* `gateway_id` - (Optional) ID of an internet gateway or virtual private gateway.
 * `instance_id` - (Optional) ID of an EC2 instance.
 * `network_interface_id` - (Optional) ID of an EC2 network interface.
 
@@ -105,7 +105,8 @@ attribute once the route resource is created.
 * `arn` - ARN of the route table.
 * `tags_all` - A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `carrier_gateway_id` - ID of a carrier gateway. Always `""`.
 * `destination_prefix_list_id` - ID of a managed prefix list destination of the route. Always `""`.
@@ -130,13 +131,13 @@ Exported but unsupported attributes:
 ## Import
 
 Route Tables can be imported using the route table `id`. For example, to import
-route table `rtb-89A386A8`, use this command:
+route table `rtb-12345678`, use this command:
 
 ```
-$ terraform import aws_route_table.example rtb-89A386A8
+$ terraform import aws_route_table.example rtb-12345678
 ```
 
-[default-tags]: ../index.html#default_tags-configuration-block
+[default-tags]: /docs/providers/aws/index.html#default_tags-configuration-block
 [route-tables]: https://docs.cloud.croc.ru/en/services/networks/routetables.html
 [tf-route]: route.html
 [tf-vpn-gateway-route-propagation]: vpn_gateway_route_propagation.html

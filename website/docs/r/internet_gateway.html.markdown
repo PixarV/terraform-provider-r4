@@ -12,7 +12,7 @@ description: |-
 
 Provides a resource to create a VPC Internet Gateway.
 
--> In CROC Cloud the terms VPC, Internet Gateway, Vpn Gateway are equivalent.
+-> In CROC Cloud the terms VPC, Internet Gateway, Vpn Gateway are equivalent
 
 ## Example Usage
 

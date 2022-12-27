@@ -47,17 +47,18 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the association
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `gateway_id` - Gateway ID to create an association. Always `""`.
 
 ## Import
 
-EC2 Route Table Associations can be imported using the associated resource ID and Route Table ID
+EC2 Route Table Associations can be imported using the associated resource ID and route table ID
 separated by a forward slash (`/`).
 
-For example with EC2 Subnets:
+For example with EC2 subnets:
 
 ```
-$ terraform import aws_route_table_association.assoc subnet-D569BA00/rtb-6F78E00
+$ terraform import aws_route_table_association.assoc subnet-12345678/rtb-6F78E00
 ```

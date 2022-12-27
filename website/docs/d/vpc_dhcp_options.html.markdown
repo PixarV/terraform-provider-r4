@@ -8,11 +8,11 @@ description: |-
 
 # Data Source: aws_vpc_dhcp_options
 
-Retrieve information about an EC2 DHCP Options configuration.
+Retrieve information about an EC2 DHCP options configuration.
 
 ## Example Usage
 
-### Lookup by DHCP Options ID
+### Lookup by DHCP options ID
 
 ```terraform
 variable dopts_id {}
@@ -40,7 +40,7 @@ data "aws_vpc_dhcp_options" "example" {
 
 ## Argument Reference
 
-* `dhcp_options_id` - (Optional) The EC2 DHCP Options ID.
+* `dhcp_options_id` - (Optional) The EC2 DHCP options ID.
 * `filter` - (Optional) List of custom filters as described below.
 
 ### filter
@@ -52,17 +52,18 @@ For more information about filtering, see the [EC2 API documentation][describe-d
 
 ## Attributes Reference
 
-* `arn` - The ARN of the DHCP Options Set.
-* `dhcp_options_id` - EC2 DHCP Options ID.
+* `arn` - The ARN of the DHCP options Set.
+* `dhcp_options_id` - EC2 DHCP options ID.
 * `domain_name` - The suffix domain name to used when resolving non Fully Qualified Domain Names e.g., the `search` value in the `/etc/resolv.conf` file.
 * `domain_name_servers` - List of name servers.
-* `id` - EC2 DHCP Options ID.
+* `id` - EC2 DHCP options ID.
 * `netbios_name_servers` - List of NETBIOS name servers.
 * `netbios_node_type` - The NetBIOS node type (1, 2, 4, or 8). For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
 * `ntp_servers` - List of NTP servers.
 * `tags` - A map of tags assigned to the resource.
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `owner_id` - The ID of the CROC Cloud account that owns the DHCP options set.
 

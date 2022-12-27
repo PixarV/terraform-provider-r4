@@ -69,7 +69,8 @@ resource "aws_default_security_group" "example" {
 
 ### Removing `aws_default_security_group` From Your Configuration
 
-Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the Security Group. All ingress or egress rules will be left as they are at the time of removal. You can resume managing them via the CROC Cloud Console.
+Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the security group.
+All ingress or egress rules will be left as they are at the time of removal. You can resume managing them via the CROC Cloud Console.
 
 ## Argument Reference
 
@@ -91,7 +92,7 @@ Both `egress` and `ingress` objects have the same arguments.
 * `from_port` - (Required) Start port (or ICMP type number if protocol is `icmp`)
 * `ipv6_cidr_blocks` - (Optional) List of IPv6 CIDR blocks.
 * `protocol` - (Required) Protocol. If you select a protocol of "-1" (semantically equivalent to `all`, which is not a valid value here), you must specify a `from_port` and `to_port` equal to `0`. If not `icmp`, `tcp`, `udp`, or `-1` use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-* `security_groups` - (Optional) List of security group Group Names or Group IDs.
+* `security_groups` - (Optional) List of security group names or IDs.
 * `self` - (Optional) Whether the security group itself will be added as a source to this egress rule.
 * `to_port` - (Required) End range port (or ICMP code if protocol is `icmp`).
 
@@ -106,7 +107,8 @@ In addition to all arguments above, the following attributes are exported:
 * `owner_id` - The CROC Cloud project name.
 * `tags_all` - A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `prefix_list_ids` - List of prefix list IDs (for allowing access to VPC endpoints). Always empty.
 
@@ -115,10 +117,10 @@ Exported but unsupported attributes:
 Security Groups can be imported using the `security group id`, e.g.,
 
 ```
-$ terraform import aws_default_security_group.default_sg sg-903004f8
+$ terraform import aws_default_security_group.default_sg sg-12345678
 ```
 
-[default-tags]: ../index.html#default_tags-configuration-block
+[default-tags]: /docs/providers/aws/index.html#default_tags-configuration-block
 [default-security-groups]: https://docs.cloud.croc.ru/en/services/networks/securitygroups.html#id3
 [tf-security-group]: security_group.html
 [tf-security-group-rule]: security_group_rule.html

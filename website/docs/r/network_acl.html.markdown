@@ -21,7 +21,7 @@ a conflict of rule settings and will overwrite rules.
 resource and a network ACL resource with a `subnet_ids` attribute. Do not use the same subnet ID in both a network ACL
 resource and a network ACL association resource. Doing so will cause a conflict of associations and will overwrite the association.
 
-For more information about Network ACLs, see the documentation on [Network ACL][network-acl].
+For more information about network ACLs, see the documentation on [Network ACL][network-acl].
 
 ## Example Usage
 
@@ -62,7 +62,7 @@ resource "aws_network_acl" "example" {
 The following arguments are supported:
 
 * `vpc_id` - (Required) ID of the associated VPC.
-* `subnet_ids` - (Optional) A list of Subnet IDs to apply the ACL to
+* `subnet_ids` - (Optional) A list of subnet IDs to apply the ACL to.
 * `ingress` - (Optional) Specifies an ingress rule. Parameters defined below.
   This argument is processed in [attribute-as-blocks mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html).
 * `egress` - (Optional) Specifies an egress rule. Parameters defined below.
@@ -96,7 +96,8 @@ In addition to all arguments above, the following attributes are exported:
 * `arn` - ARN of the network ACL.
 * `tags_all` - A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `ipv6_cidr_block` - The IPv6 CIDR block. Always `""`.
 * `owner_id` - ID of the CROC Cloud account that owns the Network ACL. Always `""`.
@@ -106,10 +107,10 @@ Exported but unsupported attributes:
 Network ACLs can be imported using the `id`, e.g.,
 
 ```
-$ terraform import aws_network_acl.main acl-E8EEB508
+$ terraform import aws_network_acl.main acl-12345678
 ```
 
-[default-tags]: ../index.html#default_tags-configuration-block
+[default-tags]: /docs/providers/aws/index.html#default_tags-configuration-block
 [network-acl]: https://docs.cloud.croc.ru/en/services/networks/networkacl.html
 [tf-network-acl-association]: network_acl_association.html
 [tf-network-acl-rule]: network_acl_rule.html

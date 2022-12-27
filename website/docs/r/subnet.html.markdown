@@ -8,9 +8,9 @@ description: |-
 
 # Resource: aws_subnet
 
-Provides an VPC Subnet resource.
+Provides an VPC subnet resource.
 
-For more information, see the documentation on [Subnets][subnets].
+For more information, see the documentation on [subnets][subnets].
 
 ## Example Usage
 
@@ -47,7 +47,8 @@ In addition to all arguments above, the following attributes are exported:
 * `id` - The ID of the subnet
 * `tags_all` - A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `arn` - ARN of the subnet. Always `""`.
 * `assign_ipv6_address_on_creation` - Whether an IPv6 address is assigned on creation. Always `false`.
@@ -77,8 +78,8 @@ configuration options:
 Subnets can be imported using the `subnet id`, e.g.,
 
 ```
-$ terraform import aws_subnet.public_subnet subnet-6E62EF40
+$ terraform import aws_subnet.public_subnet subnet-12345678
 ```
 
-[default-tags]: ../index.html#default_tags-configuration-block
+[default-tags]: /docs/providers/aws/index.html#default_tags-configuration-block
 [subnets]: https://docs.cloud.croc.ru/en/services/networks/subnets.html

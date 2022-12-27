@@ -75,6 +75,7 @@ For more information about filtering, see the [EC2 API documentation][describe-s
 
 ## Attributes Reference
 
+->  **Unsupported attributes**
 In addition to the attributes above, the following attributes are exported but unsupported:
 
 * `arn` - ARN of the subnet. Always `""`.

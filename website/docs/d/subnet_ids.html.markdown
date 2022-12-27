@@ -14,7 +14,7 @@ This resource can be useful for getting back a set of subnet ids for a vpc.
 
 ## Example Usage
 
-The following shows outputing all cidr blocks for every subnet id in a vpc.
+The following shows all cidr blocks for every subnet id in a vpc.
 
 ```terraform
 variable vpc_id {}
@@ -56,7 +56,7 @@ data "aws_subnets" "private" {
 
 resource "aws_instance" "app" {
   for_each      = toset(data.aws_subnets.example.ids)
-  ami           = "cmi-21f78e11"
+  ami           = "cmi-12345678" # add image id, change instance type if needed
   instance_type = "m1.micro"
   subnet_id     = each.value
 }

@@ -11,9 +11,9 @@ description: |-
 Creates an entry (a rule) in a network ACL with the specified rule number.
 
 ~> **NOTE on Network ACLs and Network ACL Rules:** Terraform currently
-provides both a standalone Network ACL Rule resource and an [aws_network_acl][tf-network-acl] resource with rules
+provides both a standalone network ACL rule resource and an [aws_network_acl][tf-network-acl] resource with rules
 defined in-line. At this time you cannot use a Network ACL with in-line rules
-in conjunction with any Network ACL Rule resources. Doing so will cause
+in conjunction with any network ACL rule resources. Doing so will cause
 a conflict of rule settings and will overwrite rules.
 
 ## Example Usage
@@ -69,7 +69,8 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - ID of the network ACL Rule
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `ipv6_cidr_block` - The IPv6 CIDR block. Always `""`.
 
@@ -82,13 +83,13 @@ For more information on protocol numbers and keywords, see here: https://www.ian
 For example, import a network ACL Rule with an argument like this:
 
 ```console
-$ terraform import aws_network_acl_rule.my_rule acl-885AAB2D:100:tcp:false
+$ terraform import aws_network_acl_rule.my_rule acl-12345678:100:tcp:false
 ```
 
 Or by the protocol's decimal value:
 
 ```console
-$ terraform import aws_network_acl_rule.my_rule acl-885AAB2D:100:6:false
+$ terraform import aws_network_acl_rule.my_rule acl-12345678:100:6:false
 ```
 
 [tf-network-acl]: network_acl.html

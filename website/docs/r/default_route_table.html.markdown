@@ -14,7 +14,7 @@ Provides a resource to manage a default route table of a VPC. This resource can 
 
 Every VPC has a default route table that can be managed but not destroyed. When Terraform first adopts a default route table, it **immediately removes all defined routes**. It then proceeds to create any routes specified in the configuration. This step is required so that only the routes specified in the configuration exist in the default route table.
 
-For more information, see the documentation on [Route Tables][route-tables]. For information about managing normal route tables in Terraform, see [`aws_route_table`][tf-route-table].
+For more information, see the documentation on [route tables][route-tables]. For information about managing normal route tables in Terraform, see [`aws_route_table`][tf-route-table].
 
 ## Example Usage
 
@@ -83,7 +83,7 @@ One of the following destination arguments must be supplied:
 
 One of the following target arguments must be supplied:
 
-* `gateway_id` - (Optional) ID of an Internet gateway or virtual private gateway.
+* `gateway_id` - (Optional) ID of an internet gateway or virtual private gateway.
 * `instance_id` - (Optional) ID of an EC2 instance.
 * `network_interface_id` - (Optional) ID of an EC2 network interface.
 
@@ -96,7 +96,8 @@ In addition to all arguments above, the following attributes are exported:
 * `tags_all` - A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
 * `vpc_id` - ID of the VPC.
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `destination_prefix_list_id` - ID of a managed prefix list destination of the route. Always `""`.
 * `ipv6_cidr_block` - The Ipv6 CIDR block of the route. Always `""`.
@@ -121,10 +122,10 @@ Exported but unsupported attributes:
 Default VPC route tables can be imported using the `vpc_id`, e.g.,
 
 ```
-$ terraform import aws_default_route_table.example vpc-CFE7ADB5
+$ terraform import aws_default_route_table.example vpc-12345678
 ```
 
-[default-tags]: ../index.html#default_tags-configuration-block
+[default-tags]: /docs/providers/aws/index.html#default_tags-configuration-block
 [route-tables]: https://docs.cloud.croc.ru/en/services/networks/routetables.html
 [tf-main-route-table-association]: main_route_table_association.html
 [tf-route-table]: route_table.html

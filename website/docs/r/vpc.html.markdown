@@ -56,7 +56,8 @@ In addition to all arguments above, the following attributes are exported:
 * `default_route_table_id` - ID of the route table created by default on VPC creation
 * `tags_all` - A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `assign_generated_ipv6_cidr_block` - (Optional) Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC. Always `false`.
 * `enable_classiclink` - Whether the VPC has Classiclink enabled. Always `false`.
@@ -77,9 +78,9 @@ Exported but unsupported attributes:
 VPCs can be imported using the `vpc id`, e.g.,
 
 ```
-$ terraform import aws_vpc.test_vpc vpc-CFE7ADB5
+$ terraform import aws_vpc.test_vpc vpc-12345678
 ```
 
-[default-tags]: ../index.html#default_tags-configuration-block
+[default-tags]: /docs/providers/aws/index.html#default_tags-configuration-block
 [tf-main-route-table-association]: main_route_table_association.html
 [vpc]: https://docs.cloud.croc.ru/en/services/networks/privatecloud.html

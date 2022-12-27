@@ -12,7 +12,7 @@ description: |-
 
 `aws_internet_gateway` provides details about a specific Internet Gateway.
 
--> In CROC Cloud the terms VPC, Internet Gateway, Vpn Gateway are equivalent.
+-> In CROC Cloud the terms VPC, Internet Gateway, Vpn Gateway are equivalent
 
 ## Example Usage
 

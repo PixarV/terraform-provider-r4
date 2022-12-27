@@ -37,7 +37,7 @@ One of the following destination arguments must be supplied:
 
 One of the following target arguments must be supplied:
 
-* `gateway_id` - (Optional) ID of an Internet Gateway or Virtual Private Gateway.
+* `gateway_id` - (Optional) ID of an internet gateway or virtual private gateway.
 * `instance_id` - (Optional) ID of an EC2 instance.
 * `network_interface_id` - (Optional) ID of an EC2 network interface.
 
@@ -52,7 +52,8 @@ In addition to all arguments above, the following attributes are exported:
 * `origin` - How the route was created - `CreateRouteTable`, `CreateRoute` or `EnableVgwRoutePropagation`.
 * `state` - The state of the route - `active` or `blackhole`.
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `carrier_gateway_id` - ID of a carrier gateway. Always `""`.
 * `core_network_arn` - ARN of a core network. Always `""`.
@@ -77,10 +78,10 @@ Exported but unsupported attributes:
 
 Individual routes can be imported using `ROUTETABLEID_DESTINATION`.
 
-For example, import a route in route table `rtb-C8DC8967` with an IPv4 destination CIDR of `10.1.0.0/16` like this:
+For example, import a route in route table `rtb-12345678` with an IPv4 destination CIDR of `10.1.0.0/16` like this:
 
 ```console
-$ terraform import aws_route.my_route rtb-C8DC8967_10.1.0.0/16
+$ terraform import aws_route.my_route rtb-12345678_10.1.0.0/16
 ```
 
 [tf-route-table]: route_table.html

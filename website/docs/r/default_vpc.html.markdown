@@ -8,7 +8,7 @@ description: |-
 
 # Resource: aws_default_vpc
 
-Provides a resource to manage the default VPC in the current AWS Region.
+Provides a resource to manage the default VPC.
 
 **This is an advanced resource** and has special caveats to be aware of when using it. Please read this document in its entirety before using this resource.
 
@@ -43,7 +43,8 @@ In addition to all arguments above, the following attributes are exported:
 * `cidr_block` - The primary IPv4 CIDR block for the VPC
 * `instance_tenancy` - The allowed tenancy of instances launched into the VPC
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `force_destroy` - Whether destroying the resource deletes the default VPC. Always: `false`.
 
@@ -52,7 +53,7 @@ Exported but unsupported attributes:
 Default VPCs can be imported using the `vpc id`, e.g.,
 
 ```
-$ terraform import aws_default_vpc.default vpc-CFE7ADB5
+$ terraform import aws_default_vpc.default vpc-12345678
 ```
 
 [tf-vpc]: vpc.html

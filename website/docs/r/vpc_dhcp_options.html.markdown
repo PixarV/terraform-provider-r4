@@ -8,9 +8,9 @@ description: |-
 
 # Resource: aws_vpc_dhcp_options
 
-Provides a VPC DHCP Options resource.
+Provides a VPC DHCP options resource.
 
-For more information, see the documentation on [DHCP Options][dhcp-options].
+For more information, see the documentation on [DHCP options][dhcp-options].
 
 ## Example Usage
 
@@ -53,19 +53,20 @@ The following arguments are supported:
 
 * Notice that all arguments are optional, but you have to specify at least one argument.
 * `domain_name_servers`, `netbios_name_servers`, `ntp_servers` are limited to maximum four servers only.
-* To actually use the DHCP Options Set you need to associate it to a VPC using [`aws_vpc_dhcp_options_association`][tf-main-route-table-association].
-* If you delete a DHCP Options Set, all VPCs using it will be associated to `default` DHCP Option Set.
+* To actually use the DHCP options set you need to associate it to a VPC using [`aws_vpc_dhcp_options_association`][tf-main-route-table-association].
+* If you delete a DHCP options set, all VPCs using it will be associated to `default` DHCP Option Set.
 * In most cases unless you're configuring your own DNS you'll want to set `domain_name_servers` to `AmazonProvidedDNS`.
 
 ## Attributes Reference
 
 In addition to all arguments above, the following attributes are exported:
 
-* `id` - ID of the DHCP Options Set.
-* `arn` - ARN of the DHCP Options Set.
+* `id` - ID of the DHCP options Set.
+* `arn` - ARN of the DHCP options Set.
 * `tags_all` - A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `owner_id` - ID of the CROC Cloud account that owns the DHCP options set.
 
@@ -74,9 +75,9 @@ Exported but unsupported attributes:
 VPC DHCP Options can be imported using the `dhcp options id`, e.g.,
 
 ```
-$ terraform import aws_vpc_dhcp_options.my_options dopt-d9070ebb
+$ terraform import aws_vpc_dhcp_options.my_options dopt-12345678
 ```
 
-[default-tags]: ../index.html#default_tags-configuration-block
+[default-tags]: /docs/providers/aws/index.html#default_tags-configuration-block
 [dhcp-options]: https://docs.cloud.croc.ru/en/services/networks/dhcpattrs.html
 [tf-main-route-table-association]: main_route_table_association.html

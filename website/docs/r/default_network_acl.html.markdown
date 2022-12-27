@@ -170,5 +170,5 @@ Default Network ACLs can be imported using the `id`, e.g.,
 $ terraform import aws_default_network_acl.sample acl-11E3C265
 ```
 
-[default-tags]: ../index.html#default_tags-configuration-block
+[default-tags]: ../#default_tags-configuration-block
 [network-acl]: https://docs.cloud.croc.ru/en/services/networks/networkacl.html

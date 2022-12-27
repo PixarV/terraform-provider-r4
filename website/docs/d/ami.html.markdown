@@ -47,7 +47,7 @@ recent AMI.
 * `executable_users` - (Optional) Limit search to users with *explicit* launch permission on
  the image. Valid items are the numeric account ID or `self`.
 
-* `filter` - (Optional) One or more name/value pairs to filter off of. There are
+* `filter` - (Optional) One or more name/value pairs to filter. There are
 several valid keys, for a full reference, check out
 [describe-images in the AWS CLI reference][1].
 

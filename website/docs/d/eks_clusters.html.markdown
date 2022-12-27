@@ -8,6 +8,8 @@ description: |-
 
 # Data Source: aws_eks_cluster
 
+-> This resource is currently unsupported by CROC Cloud.
+
 Retrieve EKS Clusters list
 
 ## Example Usage

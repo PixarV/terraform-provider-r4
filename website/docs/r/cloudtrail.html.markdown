@@ -8,6 +8,8 @@ description: |-
 
 # Resource: aws_cloudtrail
 
+-> This resource is currently unsupported by CROC Cloud.
+
 Provides a CloudTrail resource.
 
 -> **Tip:** For a multi-region trail, this resource must be in the home region of the trail.

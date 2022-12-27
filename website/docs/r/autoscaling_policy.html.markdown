@@ -46,7 +46,8 @@ In addition to all arguments above, the following attributes are exported:
 * `adjustment_type` - The scaling policy's adjustment type.
 * `policy_type` - The scaling policy's type.
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `estimated_instance_warmup` - The estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Always `0`.
 * `metric_aggregation_type` - The aggregation type for the policy's metrics. Always `""`.

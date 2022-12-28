@@ -8,7 +8,7 @@ description: |-
 
 # Resource: aws_ebs_snapshot
 
-Creates a Snapshot of an EBS Volume.
+Creates a snapshot of an EBS volume.
 
 ## Example Usage
 
@@ -35,13 +35,11 @@ resource "aws_ebs_snapshot" "example_snapshot" {
 
 The following arguments are supported:
 
-* `volume_id` - (Required) The Volume ID of which to make a snapshot.
+* `volume_id` - (Required) The volume ID of which to make a snapshot.
 * `description` - (Optional) A description of what the snapshot is.
 * `tags` - (Optional) A map of tags to assign to the snapshot. If configured with a provider [`default_tags` configuration block][default-tags] present, tags with matching keys will overwrite those defined at the provider-level.
 
 ### Timeouts
-
-todo: check support
 
 `aws_ebs_snapshot` provides the following
 [Timeouts](https://www.terraform.io/docs/configuration/blocks/resources/syntax.html#operation-timeouts) configuration options:
@@ -53,14 +51,15 @@ todo: check support
 
 In addition to all arguments above, the following attributes are exported:
 
-* `arn` - Amazon Resource Name (ARN) of the EBS Snapshot.
-* `id` - The snapshot ID (e.g., snap-10F5F8DF).
+* `arn` - Amazon Resource Name (ARN) of the EBS snapshot.
+* `id` - The snapshot ID (e.g., snap-12345678).
 * `owner_id` - The CROC Cloud project ID.
 * `owner_alias` - The alias of the EBS snapshot owner.
-* `volume_size` - The size of the drive in GiBs.
+* `volume_size` - The size of the drive in GiB.
 * `tags_all` - A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `data_encryption_key_id` - The data encryption key identifier for the snapshot. Always `""`.
 * `encrypted` - Whether the snapshot is encrypted. Always `false`.
@@ -75,7 +74,7 @@ Exported but unsupported attributes:
 EBS Snapshot can be imported using the `id`, e.g.,
 
 ```
-$ terraform import aws_ebs_snapshot.id snap-10F5F8DF
+$ terraform import aws_ebs_snapshot.id snap-12345678
 ```
 
-[default-tags]: ../index.html#default_tags-configuration-block
+[default-tags]: /docs/providers/aws/index.html#default_tags-configuration-block

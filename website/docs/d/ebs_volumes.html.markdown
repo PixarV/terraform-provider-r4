@@ -58,14 +58,14 @@ data "aws_ebs_volumes" "ten_or_twenty_gb_volumes" {
 ```
 
 * `values` - (Required) Set of values that are accepted for the given field.
-  EBS Volume IDs will be selected if any one of the given values match.
+  EBS volume IDs will be selected if any one of the given values match.
 
 For more information about filtering, see the [EC2 API documentation][describe-volumes].
 
 ## Attributes Reference
 
 * `id` - Region (for example, `croc`).
-* `ids` - A set of all the EBS Volume IDs found.
+* `ids` - A set of all the EBS volume IDs found.
 
 [describe-volumes]: https://docs.cloud.croc.ru/en/api/ec2/volumes/DescribeVolumes.html
 [tf-ebs-volume]: ebs_volume.html

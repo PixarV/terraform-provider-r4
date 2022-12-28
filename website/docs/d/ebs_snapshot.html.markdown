@@ -3,12 +3,12 @@ subcategory: "EBS (EC2)"
 layout: "aws"
 page_title: "AWS: aws_ebs_snapshot"
 description: |-
-  Get information on an EBS Snapshot.
+  Get information on an EBS snapshot.
 ---
 
 # Data Source: aws_ebs_snapshot
 
-Use this data source to get information about an EBS Snapshot for use when provisioning EBS Volumes
+Use this data source to get information about an EBS snapshot for use when provisioning EBS volumes
 
 ## Example Usage
 
@@ -45,18 +45,19 @@ For more information about filtering, see the [EC2 API documentation][describe-s
 
 In addition to all arguments above, the following attributes are exported:
 
-* `arn` - Amazon Resource Name (ARN) of the EBS Snapshot.
-* `id` - The snapshot ID (e.g., snap-10F5F8DF).
-* `snapshot_id` - The snapshot ID (e.g., snap-10F5F8DF).
+* `arn` - Amazon Resource Name (ARN) of the EBS snapshot.
+* `id` - The snapshot ID (e.g., snap-12345678).
+* `snapshot_id` - The snapshot ID (e.g., snap-12345678).
 * `description` - A description for the snapshot
 * `owner_id` - The CROC Cloud project ID.
 * `owner_alias` - The alias of the EBS snapshot owner.
-* `volume_id` - The volume ID (e.g., vol-BE84BFA0).
-* `volume_size` - The size of the drive in GiBs.
+* `volume_id` - The volume ID (e.g., vol-12345678).
+* `volume_size` - The size of the drive in GiB.
 * `state` - The snapshot state.
 * `tags` - A map of tags for the resource.
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `data_encryption_key_id` - The data encryption key identifier for the snapshot. Always `""`.
 * `encrypted` - Whether the snapshot is encrypted. Always `false`.

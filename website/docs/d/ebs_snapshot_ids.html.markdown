@@ -8,8 +8,7 @@ description: |-
 
 # Data Source: aws_ebs_snapshot_ids
 
-Use this data source to get a list of EBS Snapshot IDs matching the specified
-criteria.
+Use this data source to get a list of EBS snapshot IDs matching the specified criteria.
 
 ## Example Usage
 

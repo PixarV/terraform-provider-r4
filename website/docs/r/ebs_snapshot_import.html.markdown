@@ -8,7 +8,7 @@ description: |-
 
 # Resource: aws_ebs_snapshot_import
 
-Imports a disk image from S3 as a Snapshot.
+Imports a disk image from S3 as a snapshot.
 
 ## Example Usage
 
@@ -60,14 +60,15 @@ The following arguments are supported:
 
 In addition to all arguments above, the following attributes are exported:
 
-* `arn` - Amazon Resource Name (ARN) of the EBS Snapshot.
-* `id` - The snapshot ID (e.g., snap-10F5F8DF).
+* `arn` - Amazon Resource Name (ARN) of the EBS snapshot.
+* `id` - The snapshot ID (e.g., snap-12345678).
 * `owner_id` - The CROC Cloud project ID.
 * `owner_alias` - The alias of the EBS snapshot owner.
-* `volume_size` - The size of the drive in GiBs.
+* `volume_size` - The size of the drive in GiB.
 * `tags_all` - A map of tags assigned to the resource.
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `client_data` - The client-specific data. Always empty.
 * `data_encryption_key_id` - The data encryption key identifier for the snapshot. Always `""`.

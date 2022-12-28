@@ -31,7 +31,7 @@ The following arguments are supported:
 
 * `availability_zone` - (Required) The AZ where the EBS volume will exist.
 * `iops` - (Optional) The amount of IOPS to provision for the disk. Only valid for `type` of `io2`.
-* `size` - (Optional) The size of the drive in GiBs.
+* `size` - (Optional) The size of the drive in GiB.
 * `snapshot_id` (Optional) A snapshot to base the EBS volume on.
 * `type` - (Optional) The type of EBS volume. Can be `st2`, `gp2` or `io2` (Default: `st2`).
 * `tags` - (Optional) A map of tags to assign to the resource. If configured with a provider [`default_tags` configuration block][default-tags] present, tags with matching keys will overwrite those defined at the provider-level.
@@ -41,10 +41,11 @@ The following arguments are supported:
 In addition to all arguments above, the following attributes are exported:
 
 * `arn` - Amazon Resource Name (ARN) of the volume.
-* `id` - The volume ID (e.g., vol-59FCB34E).
+* `id` - The volume ID (e.g., vol-12345678).
 * `tags_all` - A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `encrypted` - Whether the disk is encrypted. Always `false`.
 * `kms_key_id` - The ARN for the KMS encryption key. Always `""`.
@@ -65,7 +66,7 @@ Exported but unsupported attributes:
 EBS Volumes can be imported using the `id`, e.g.,
 
 ```
-$ terraform import aws_ebs_volume.id vol-59FCB34E
+$ terraform import aws_ebs_volume.id vol-12345678
 ```
 
-[default-tags]: ../index.html#default_tags-configuration-block
+[default-tags]: /docs/providers/aws/index.html#default_tags-configuration-block

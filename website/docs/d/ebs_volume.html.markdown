@@ -8,8 +8,7 @@ description: |-
 
 # Data Source: aws_ebs_volume
 
-Use this data source to get information about an EBS volume for use in other
-resources.
+Use this data source to get information about an EBS volume for use in other resources.
 
 ## Example Usage
 
@@ -42,17 +41,18 @@ For more information about filtering, see the [EC2 API documentation][describe-v
 
 In addition to all arguments above, the following attributes are exported:
 
-* `id` - The volume ID (e.g., vol-59FCB34E).
-* `volume_id` - The volume ID (e.g., vol-59FCB34E).
+* `id` - The volume ID (e.g., vol-12345678).
+* `volume_id` - The volume ID (e.g., vol-12345678).
 * `arn` - Amazon Resource Name (ARN) of the volume.
 * `availability_zone` - The AZ where the EBS volume exists.
 * `iops` - The amount of IOPS for the disk.
-* `size` - The size of the drive in GiBs.
+* `size` - The size of the drive in GiB.
 * `snapshot_id` - The snapshot_id the EBS volume is based off.
 * `volume_type` - The type of EBS volume.
 * `tags` - A map of tags for the resource.
 
-Exported but unsupported attributes:
+->  **Unsupported attributes**
+These exported attributes are currently unsupported by CROC Cloud:
 
 * `encrypted` - Whether the snapshot is encrypted. Always `false`.
 * `kms_key_id` - The ARN for the KMS encryption key. Always `""`.

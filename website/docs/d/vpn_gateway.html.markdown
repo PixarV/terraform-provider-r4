@@ -11,7 +11,7 @@ description: |-
 The VPN Gateway data source provides details about
 a specific VPN gateway.
 
--> In CROC Cloud the terms VPC, Internet Gateway, Vpn Gateway are equivalent.
+-> In CROC Cloud the terms VPC, internet gateway, VPN gateway are equivalent
 
 ## Example Usage
 
@@ -33,13 +33,13 @@ output "vpn_gateway_id" {
 The arguments of this data source act as filters for querying the available VPN gateways.
 The given filters must match exactly one VPN gateway whose data will be exported as attributes.
 
-* `id` - (Optional) ID of the specific VPN Gateway to retrieve.
-* `state` - (Optional) The state of the specific VPN Gateway to retrieve.
-* `availability_zone` - (Optional) The Availability Zone of the specific VPN Gateway to retrieve.
-* `attached_vpc_id` - (Optional) ID of a VPC attached to the specific VPN Gateway to retrieve.
+* `id` - (Optional) ID of the specific VPN gateway to retrieve.
+* `state` - (Optional) The state of the specific VPN gateway to retrieve.
+* `availability_zone` - (Optional) The availability zone of the specific VPN gateway to retrieve.
+* `attached_vpc_id` - (Optional) ID of a VPC attached to the specific VPN gateway to retrieve.
 * `filter` - (Optional) Custom filter block as described below.
 * `tags` - (Optional) A map of tags, each pair of which must exactly match
-  a pair on the desired VPN Gateway.
+  a pair on the desired VPN gateway.
 
 More complex filters can be expressed using one or more `filter` sub-blocks,
 which take the following arguments:

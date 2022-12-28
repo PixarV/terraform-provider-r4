@@ -16,7 +16,7 @@ propagation not explicitly listed in its value will be removed.
 
 ## Example Usage
 
--> In CROC Cloud the terms VPC, Internet Gateway, Vpn Gateway are equivalent.
+-> In CROC Cloud the terms VPC, internet gateway, VPN gateway are equivalent
 
 ```terraform
 resource "aws_vpc" "example" {
@@ -41,8 +41,8 @@ resource "aws_vpn_gateway_route_propagation" "example" {
 
 The following arguments are required:
 
-* `vpn_gateway_id` - ID of the VPN Gateway to propagate routes from.
-* `route_table_id` - ID of the Route Table to propagate routes into.
+* `vpn_gateway_id` - ID of the VPN gateway to propagate routes from.
+* `route_table_id` - ID of the route table to propagate routes into.
 
 ## Attributes Reference
 

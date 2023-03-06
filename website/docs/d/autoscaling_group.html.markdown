@@ -1,9 +1,10 @@
 ---
-subcategory: "Auto Scaling"
-layout: "aws"
-page_title: "AWS: aws_autoscaling_group"
+subcategory: "Test custom category"
+layout: "test"
+page_title: "Test page title: aws_autoscaling_group"
+title: "Test title: aws_autoscaling_group"
 description: |-
-  Get information on an Auto Scaling Group.
+  Test. Get information on an Auto Scaling Group.
 ---
 
 # Data Source: aws_autoscaling_group

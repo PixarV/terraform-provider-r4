@@ -87,14 +87,14 @@ interpolation.
 * `platform` — The value is `Windows` for Windows images; otherwise blank.
 * `public` — `true` if the image has public launch permissions.
 * `root_device_name` — The device name of the root device.
-* `root_device_type` — The type of root device
+* `root_device_type` — The type of root device.
   * Valid values: `ebs` | `instance-store`
-* `root_snapshot_id` — The snapshot id associated with the root device, if any
+* `root_snapshot_id` — The snapshot id associated with the root device, if any.
   * Constraints: Only applies to `ebs` root devices
 * `state` — The current state of the image. If the state is `available`, the image
   is successfully registered and can be used to launch an instance.
 * `tags` — Any tags assigned to the image.
-* `virtualization_type` — The type of virtualization of the image
+* `virtualization_type` — The type of virtualization of the image.
   * Valid values: `hvm` | `hvm-legacy`
 
 <a id="device-mappings-block"></a>

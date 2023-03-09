@@ -92,7 +92,7 @@ The `ebs_block_device` block has the following structure:
 * `volume_type` — The type of EBS volume to create.
   * Required: No
   * Valid values: `st2` | `gp2` | `io2`
-  * Default value: `st2`.
+  * Default value: `st2`
 
 <a id="ephemeral_block_device_block"></a>
 The `ephemeral_block_device` block has the following structure:
@@ -128,7 +128,7 @@ In addition to all arguments above, the following attributes are exported:
 * `owner_id` — The CROC Cloud project ID.
 * `platform` — This value is set to windows for Windows images; otherwise, it is blank.
 * `public` — Indicates whether the image has public launch permissions.
-* `root_snapshot_id` — The Snapshot ID for the root volume (for EBS-backed images)
+* `root_snapshot_id` — The Snapshot ID for the root volume (for EBS-backed images).
 * `tags_all` — A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
 
 ### Unsupported Attributes

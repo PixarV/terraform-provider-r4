@@ -26,7 +26,7 @@ For compatibility with AWS provider configurations, we retained the ``aws`` pref
 To learn the basics of Terraform using this provider, follow the
 hands-on [get started tutorials][hashicorp-tutorials] on HashiCorp's Learn platform.
 
-Examples of using CROC Cloud services with Terraform can be found in [reference test suite on github][c2-tutorials].
+Examples of using CROC Cloud services with Terraform can be found in [reference test suite on GitHub][c2-tutorials].
 
 CROC Cloud API is based on AWS API so you can also see examples of using AWS services with Terraform: [AWS services tutorials][aws-tutorials].
 

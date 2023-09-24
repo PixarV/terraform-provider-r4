@@ -1,7 +1,7 @@
 ---
 subcategory: "S3 (Simple Storage)"
 layout: "aws"
-page_title: "AWS: aws_s3_objects"
+page_title: "CROC Cloud: aws_s3_objects"
 description: |-
     Returns keys and metadata of S3 objects
 ---
@@ -32,19 +32,19 @@ data "aws_s3_object" "object_info" {
 
 The following arguments are supported:
 
-* `bucket` - (Required) Lists object keys in this S3 bucket. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
-* `prefix` - (Optional) Limits results to object keys with this prefix (Default: none)
-* `delimiter` - (Optional) A character used to group keys (Default: none)
-* `encoding_type` - (Optional) Encodes keys using this method (Default: none; besides none, only "url" can be used)
-* `max_keys` - (Optional) Maximum object keys to return (Default: 1000)
-* `start_after` - (Optional) Returns key names lexicographically after a specific object key in your bucket (Default: none; S3 lists object keys in UTF-8 character encoding in lexicographical order)
-* `fetch_owner` - (Optional) Boolean specifying whether to populate the owner list (Default: false)
+* `bucket` - (Required) Lists object keys in this S3 bucket.
+* `prefix` - (Optional) Limits results to object keys with this prefix. Defaults to none.
+* `delimiter` - (Optional) A character used to group keys. Defaults to none.
+* `encoding_type` - (Optional) Encodes keys using this method. Defaults to none. besides none, only `url` can be used.
+* `max_keys` - (Optional) Maximum object keys to return. Defaults to 1000.
+* `start_after` - (Optional) Returns key names lexicographically after a specific object key in your bucket. Defaults to none. S3 lists object keys in UTF-8 character encoding in lexicographical order.
+* `fetch_owner` - (Optional) Boolean specifying whether to populate the owner list. Defaults to `false`.
 
 ## Attributes Reference
 
 In addition to all arguments above, the following attributes are exported:
 
-* `keys` - List of strings representing object keys
-* `common_prefixes` - List of any keys between `prefix` and the next occurrence of `delimiter` (i.e., similar to subdirectories of the `prefix` "directory"); the list is only returned when you specify `delimiter`
+* `keys` - List of strings representing object keys.
+* `common_prefixes` - List of any keys between `prefix` and the next occurrence of `delimiter` (i.e., similar to subdirectories of the `prefix` "directory"); the list is only returned when you specify `delimiter`.
 * `id` - S3 Bucket.
-* `owners` - List of strings representing object owner IDs (see `fetch_owner` above)
+* `owners` - List of strings representing object owner IDs (see `fetch_owner` above).

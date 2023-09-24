@@ -30,6 +30,7 @@ const (
 var managers = map[string]ServiceManager{
 	ElasticSearch.ServiceType(): ElasticSearch,
 	Memcached.ServiceType():     Memcached,
+	PostgreSQL.ServiceType():    PostgreSQL,
 }
 
 func GetServiceManager(serviceType string) ServiceManager {

@@ -224,6 +224,7 @@ func DataSourceService() *schema.Resource {
 				Computed: true,
 			},
 			services.ElasticSearch.ServiceType(): services.ElasticSearch.DataSourceSchema(),
+			services.Memcached.ServiceType():     services.Memcached.DataSourceSchema(),
 		},
 	}
 }

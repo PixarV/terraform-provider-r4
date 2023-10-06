@@ -1,10 +1,13 @@
 ---
 subcategory: "EC2 (Elastic Compute Cloud)"
 layout: "aws"
-page_title: "AWS: aws_eip"
+page_title: "CROC Cloud: aws_eip"
 description: |-
   Provides an Elastic IP resource.
 ---
+
+[elastic-ips]: https://docs.cloud.croc.ru/en/services/networks/addresses/operations.html
+[default-tags]: https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block
 
 # Resource: aws_eip
 
@@ -12,9 +15,7 @@ Provides an Elastic IP resource.
 
 ~> **Note:** EIP may require IGW to exist prior to association. Use `depends_on` to set an explicit dependency on the IGW.
 
-For more information, see the documentation on [EIPs][elastic-ips].
-
-[elsatic-ips]: https://docs.cloud.croc.ru/en/services/networks/addresses/operations.html
+For more information about EIPs, see [user documentation][elastic-ips].
 
 ## Example Usage
 
@@ -130,5 +131,3 @@ EIPs can be imported using their Public IP, e.g.,
 ```
 $ terraform import aws_eip.bar 1.1.1.1
 ```
-
-[default-tags]: https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block

@@ -1,14 +1,14 @@
 ---
 subcategory: "EC2 (Elastic Compute Cloud)"
 layout: "aws"
-page_title: "AWS: aws_instances"
+page_title: "CROC Cloud: aws_instances"
 description: |-
-  Get information on an Amazon EC2 instances.
+  Provides information about an EC2 instances.
 ---
 
 # Data Source: aws_instances
 
-Use this data source to get IDs or IPs of EC2 instances to be referenced elsewhere,
+Provides information about an EC2 instances. This data source can be used to get IDs or IPs of EC2 instances to be referenced elsewhere,
 e.g., to allow easier migration from another management solution
 or to make it easier for an operator to connect through bastion host(s).
 

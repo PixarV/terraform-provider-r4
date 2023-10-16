@@ -13,7 +13,7 @@ func DataSourceService() *schema.Resource {
 		ReadContext: dataSourceServiceRead,
 
 		Schema: map[string]*schema.Schema{
-			"arbitrator_required": {
+			"arbitrator_required": { // todo: remove
 				Type:     schema.TypeBool,
 				Computed: true,
 			},

@@ -13,10 +13,6 @@ func DataSourceService() *schema.Resource {
 		ReadContext: dataSourceServiceRead,
 
 		Schema: map[string]*schema.Schema{
-			"arbitrator_required": {
-				Type:     schema.TypeBool,
-				Computed: true,
-			},
 			"auto_created_security_group_ids": {
 				Type:     schema.TypeSet,
 				Computed: true,
@@ -77,10 +73,6 @@ func DataSourceService() *schema.Resource {
 						},
 					},
 				},
-			},
-			"delete_interfaces_on_destroy": {
-				Type:     schema.TypeBool,
-				Computed: true,
 			},
 			"endpoints": {
 				Type:     schema.TypeSet,
@@ -213,14 +205,6 @@ func DataSourceService() *schema.Resource {
 			},
 			"total_memory": {
 				Type:     schema.TypeInt,
-				Computed: true,
-			},
-			"user_data": {
-				Type:     schema.TypeString,
-				Computed: true,
-			},
-			"user_data_content_type": {
-				Type:     schema.TypeString,
 				Computed: true,
 			},
 			services.ElasticSearch.ServiceType(): services.ElasticSearch.DataSourceSchema(),

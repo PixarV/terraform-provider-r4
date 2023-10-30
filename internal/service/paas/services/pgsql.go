@@ -1,10 +1,8 @@
 package services
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/hashicorp/terraform-provider-aws/internal/flex"
 )
 
 type postgreSQLManager struct {
@@ -56,7 +54,7 @@ func (s postgreSQLManager) serviceParametersSchema() map[string]*schema.Schema {
 			Default:  -1,
 			ValidateFunc: validation.Any(
 				validation.IntInSlice([]int{-1}),
-				validation.IntBetween(1, 100),
+				validation.IntBetween(1, 10000),
 			),
 		},
 		"autovacuum_analyze_scale_factor": {
@@ -91,6 +89,11 @@ func (s postgreSQLManager) serviceParametersSchema() map[string]*schema.Schema {
 			Type:     schema.TypeInt,
 			Optional: true,
 			ForceNew: true,
+			Default:  64 * Megabyte,
+			ValidateFunc: validation.All(
+				validation.IntBetween(1*Megabyte, 2*Gigabyte),
+				validation.IntDivisibleBy(Kilobyte),
+			),
 		},
 		"max_connections": {
 			Type:         schema.TypeInt,
@@ -103,6 +106,11 @@ func (s postgreSQLManager) serviceParametersSchema() map[string]*schema.Schema {
 			Type:     schema.TypeInt,
 			Optional: true,
 			ForceNew: true,
+			Default:  1 * Gigabyte,
+			ValidateFunc: validation.All(
+				validation.IntBetween(2*Megabyte, 2147483647*Megabyte),
+				validation.IntDivisibleBy(Megabyte),
+			),
 		},
 		// TODO: add validation that depends on version value
 		"max_parallel_maintenance_workers": {
@@ -137,6 +145,11 @@ func (s postgreSQLManager) serviceParametersSchema() map[string]*schema.Schema {
 			Type:     schema.TypeInt,
 			Optional: true,
 			ForceNew: true,
+			Default:  80 * Megabyte,
+			ValidateFunc: validation.All(
+				validation.IntBetween(32*Megabyte, 2147483647*Megabyte),
+				validation.IntDivisibleBy(Megabyte),
+			),
 		},
 		"monitoring": {
 			Type:     schema.TypeBool,
@@ -198,6 +211,11 @@ func (s postgreSQLManager) serviceParametersSchema() map[string]*schema.Schema {
 			Type:     schema.TypeInt,
 			Optional: true,
 			ForceNew: true,
+			Default:  4 * Megabyte,
+			ValidateFunc: validation.All(
+				validation.IntBetween(64*Kilobyte, 2147483647*Kilobyte),
+				validation.IntDivisibleBy(Kilobyte),
+			),
 		},
 	}
 }
@@ -310,7 +328,6 @@ func (s postgreSQLManager) userParametersSchema() map[string]*schema.Schema {
 			Type:      schema.TypeString,
 			Optional:  true,
 			Sensitive: true,
-			ForceNew:  true,
 			ValidateFunc: validation.All(
 				validation.StringLenBetween(8, 128),
 				validation.StringDoesNotContainAny("`'\"\\"),
@@ -333,22 +350,19 @@ func (s postgreSQLManager) databaseParametersSchema() map[string]*schema.Schema 
 		"backup_id": {
 			Type:     schema.TypeString,
 			Optional: true,
-			ForceNew: true,
 		},
 		"backup_db_name": {
 			Type:     schema.TypeString,
 			Optional: true,
-			ForceNew: true,
 		},
 		// TODO: add validation that depends on locale value
 		"encoding": {
 			Type:     schema.TypeString,
 			Optional: true,
-			ForceNew: true,
 			Default:  "UTF8",
 		},
 		"extensions": {
-			Type:     schema.TypeList,
+			Type:     schema.TypeSet,
 			Optional: true,
 			Elem: &schema.Schema{
 				Type:         schema.TypeString,
@@ -358,7 +372,6 @@ func (s postgreSQLManager) databaseParametersSchema() map[string]*schema.Schema 
 		"locale": {
 			Type:         schema.TypeString,
 			Optional:     true,
-			ForceNew:     true,
 			Default:      "ru_RU.UTF-8",
 			ValidateFunc: validation.StringInSlice(postgreSQLDatabaseLocales(), false),
 		},
@@ -538,8 +551,8 @@ func (s postgreSQLManager) expandDatabaseParameters(tfMap map[string]interface{}
 		databaseParameters["encoding"] = v
 	}
 
-	if v, ok := tfMap["extensions"].([]interface{}); ok && len(v) > 0 {
-		databaseParameters["extensions"] = aws.StringValueSlice(flex.ExpandStringList(v))
+	if v, ok := tfMap["extensions"].(*schema.Set); ok && v.Len() > 0 {
+		databaseParameters["extensions"] = v.List()
 	}
 
 	if v, ok := tfMap["locale"].(string); ok && v != "" {

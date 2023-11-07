@@ -19,6 +19,8 @@ var Redis = redisManager{
 		dataVolumeRequired: true,
 		usersEnabled:       false,
 		databasesEnabled:   false,
+		loggingEnabled:     true,
+		monitoringEnabled:  true,
 	},
 }
 
@@ -52,12 +54,6 @@ func (s redisManager) serviceParametersSchema() map[string]*schema.Schema {
 				"volatile-random",
 				"volatile-ttl",
 			}, false),
-		},
-		"monitoring": {
-			Type:     schema.TypeBool,
-			Optional: true,
-			ForceNew: true,
-			Default:  false,
 		},
 		"options": {
 			Type:     schema.TypeMap,
@@ -131,10 +127,6 @@ func (s redisManager) serviceParametersDataSourceSchema() map[string]*schema.Sch
 			Type:     schema.TypeString,
 			Computed: true,
 		},
-		"monitoring": {
-			Type:     schema.TypeBool,
-			Optional: true,
-		},
 		"options": {
 			Type:     schema.TypeMap,
 			Computed: true,
@@ -171,7 +163,7 @@ func (s redisManager) serviceParametersDataSourceSchema() map[string]*schema.Sch
 	}
 }
 
-func (s redisManager) ExpandServiceParameters(tfMap map[string]interface{}) ServiceParameters {
+func (s redisManager) expandServiceParameters(tfMap map[string]interface{}) ServiceParameters {
 	if tfMap == nil {
 		return nil
 	}
@@ -188,10 +180,6 @@ func (s redisManager) ExpandServiceParameters(tfMap map[string]interface{}) Serv
 
 	if v, ok := tfMap["maxmemory_policy"].(string); ok && v != "" {
 		serviceParameters["maxmemory-policy"] = v
-	}
-
-	if v, ok := tfMap["monitoring"].(bool); ok {
-		serviceParameters["monitoring"] = v
 	}
 
 	if v, ok := tfMap["password"].(string); ok && v != "" {
@@ -246,10 +234,6 @@ func (s redisManager) flattenServiceParameters(serviceParameters ServiceParamete
 
 	if v, ok := serviceParameters["maxmemory-policy"].(string); ok {
 		tfMap["maxmemory_policy"] = v
-	}
-
-	if v, ok := serviceParameters["monitoring"].(bool); ok {
-		tfMap["monitoring"] = v
 	}
 
 	if v, ok := serviceParameters["password"].(string); ok {

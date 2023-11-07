@@ -30,13 +30,13 @@ type schemaBuilder interface {
 	serviceParametersSchema() map[string]*schema.Schema
 	userParametersSchema() map[string]*schema.Schema
 	databaseParametersSchema() map[string]*schema.Schema
-	databaseUsersParametersSchema() map[string]*schema.Schema
+	databaseUserParametersSchema() map[string]*schema.Schema
 
 	DataSourceSchema() *schema.Schema
 	serviceParametersDataSourceSchema() map[string]*schema.Schema
 	userParametersDataSourceSchema() map[string]*schema.Schema
 	databaseParametersDataSourceSchema() map[string]*schema.Schema
-	databaseUsersParametersDataSourceSchema() map[string]*schema.Schema
+	databaseUserParametersDataSourceSchema() map[string]*schema.Schema
 }
 
 // Interface converter provides methods for mapping service parameters
@@ -90,5 +90,5 @@ func (s service) ServiceType() string {
 // toInterface returns implementation of ServiceManager for specified service type.
 // It is used to call overridden methods in ServiceManager implementations.
 func (s service) toInterface() ServiceManager {
-	return GetServiceManager(s.ServiceType())
+	return Manager(s.ServiceType())
 }

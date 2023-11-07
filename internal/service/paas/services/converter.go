@@ -107,7 +107,7 @@ func (s service) ExpandDatabase(tfParameters map[string]interface{}) *paas.Datab
 }
 
 // expandUserParameters converts terraform representation of service-specific user parameters
-// // to api representation.
+// to api representation.
 //
 // If PaaS service has specific user parameters, it should override this method.
 func (s service) expandUserParameters(_ map[string]interface{}) UserParameters {
@@ -125,7 +125,7 @@ func (s service) expandDatabaseParameters(_ map[string]interface{}) DatabasePara
 // expandDatabaseUserParameters converts terraform representation of service-specific database user parameters
 // to api representation.
 //
-// If PaaS service has specific database users parameters, it should override this method.
+// If PaaS service has specific database user parameters, it should override this method.
 func (s service) expandDatabaseUserParameters(_ map[string]interface{}) DatabaseUserParameters {
 	return nil
 }
@@ -192,7 +192,7 @@ func (s service) FlattenUser(user *paas.UserResponse, forDatabase bool) map[stri
 
 	var parameters map[string]interface{}
 	if forDatabase {
-		parameters = s.toInterface().flattenDatabaseParameters(user.Parameters)
+		parameters = s.toInterface().flattenDatabaseUserParameters(user.Parameters)
 	} else {
 		parameters = s.toInterface().flattenUserParameters(user.Parameters)
 	}
@@ -273,7 +273,7 @@ func (s service) flattenDatabaseParameters(_ DatabaseParameters) map[string]inte
 // flattenDatabaseUserParameters converts api representation of service-specific database user parameters
 // to terraform representation.
 //
-// If PaaS service has specific database users parameters, it should override this method.
+// If PaaS service has specific database user parameters, it should override this method.
 func (s service) flattenDatabaseUserParameters(_ DatabaseUserParameters) map[string]interface{} {
 	return nil
 }

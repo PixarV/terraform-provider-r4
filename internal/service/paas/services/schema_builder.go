@@ -53,7 +53,7 @@ func (s service) ResourceSchema() *schema.Schema {
 		MaxItems:      1,
 		Optional:      true,
 		ForceNew:      true,
-		ExactlyOneOf:  ServiceTypeValues(),
+		ExactlyOneOf:  ManagedServiceTypes(),
 		ConflictsWith: conflictsWith,
 		RequiredWith:  requiredWith,
 		Elem: &schema.Resource{
@@ -117,7 +117,7 @@ func (s service) databaseSchema(databaseParametersSchema map[string]*schema.Sche
 	}
 
 	if s.usersEnabled {
-		databaseSchema["user"] = s.userSchema(s.toInterface().databaseUsersParametersSchema())
+		databaseSchema["user"] = s.userSchema(s.toInterface().databaseUserParametersSchema())
 	}
 
 	for k, v := range databaseParametersSchema {
@@ -155,10 +155,10 @@ func (s service) databaseParametersSchema() map[string]*schema.Schema {
 	return nil
 }
 
-// databaseUsersParametersSchema represents resource schema for service-specific database users parameters.
+// databaseUserParametersSchema represents resource schema for service-specific database user parameters.
 //
 // If PaaS service has specific database user parameters, it should override this method.
-func (s service) databaseUsersParametersSchema() map[string]*schema.Schema {
+func (s service) databaseUserParametersSchema() map[string]*schema.Schema {
 	return nil
 }
 
@@ -242,7 +242,7 @@ func (s service) databaseDataSourceSchema(databaseParametersSchema map[string]*s
 	}
 
 	if s.usersEnabled {
-		databaseSchema["user"] = s.userDataSourceSchema(s.toInterface().databaseUsersParametersDataSourceSchema())
+		databaseSchema["user"] = s.userDataSourceSchema(s.toInterface().databaseUserParametersDataSourceSchema())
 	}
 
 	for k, v := range databaseParametersSchema {
@@ -273,16 +273,16 @@ func (s service) userParametersDataSourceSchema() map[string]*schema.Schema {
 	return nil
 }
 
-// databaseParametersDataSourceSchema represents datasource schema for service-specific database users parameters.
+// databaseParametersDataSourceSchema represents datasource schema for service-specific database parameters.
 //
-// If PaaS service has specific database users parameters, it should override this method.
+// If PaaS service has specific database parameters, it should override this method.
 func (s service) databaseParametersDataSourceSchema() map[string]*schema.Schema {
 	return nil
 }
 
-// databaseUsersParametersDataSourceSchema represents datasource schema for service-specific database users parameters.
+// databaseUserParametersDataSourceSchema represents datasource schema for service-specific database user parameters.
 //
 // If PaaS service has specific database user parameters, it should override this method.
-func (s service) databaseUsersParametersDataSourceSchema() map[string]*schema.Schema {
+func (s service) databaseUserParametersDataSourceSchema() map[string]*schema.Schema {
 	return nil
 }

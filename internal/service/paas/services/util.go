@@ -11,15 +11,6 @@ const (
 	ServiceTypeRedis         = "redis"
 )
 
-func ServiceTypeValues() []string {
-	return []string{
-		ServiceTypeElasticSearch,
-		ServiceTypeMemcached,
-		ServiceTypePostgreSQL,
-		ServiceTypeRedis,
-	}
-}
-
 const (
 	ServiceClassCacher   = "cacher"
 	ServiceClassDatabase = "database"
@@ -40,11 +31,20 @@ var managers = map[string]ServiceManager{
 	Redis.ServiceType():         Redis,
 }
 
-func GetServiceManager(serviceType string) ServiceManager {
+func ManagedServiceTypes() []string {
+	keys := make([]string, 0, len(managers))
+
+	for k := range managers {
+		keys = append(keys, k)
+	}
+	return keys
+}
+
+func Manager(serviceType string) ServiceManager {
 	if v, ok := managers[serviceType]; ok {
 		return v
 	}
 
-	log.Printf("[ERROR] Can't found parameters manager for service type %s", serviceType)
+	log.Printf("[ERROR] Unknown service type: %s", serviceType)
 	return nil
 }

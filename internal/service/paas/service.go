@@ -400,7 +400,9 @@ func resourceServiceRead(ctx context.Context, d *schema.ResourceData, meta inter
 		return diag.Errorf("error reading PaaS Service (%s): %+v", id, err)
 	}
 
-	d.Set("backup_settings", flattenBackupSettings(service.BackupSettings))
+	if v := flattenBackupSettings(service.BackupSettings); len(v) > 0 {
+		d.Set("backup_settings", v)
+	}
 
 	dataVolumeMap := []map[string]interface{}{
 		{
@@ -426,7 +428,7 @@ func resourceServiceRead(ctx context.Context, d *schema.ResourceData, meta inter
 	d.Set("network_interface_ids", service.NetworkInterfaceIds)
 
 	serviceType := aws.StringValue(service.ServiceType)
-	manager := services.GetServiceManager(serviceType)
+	manager := services.Manager(serviceType)
 	parametersMap := manager.FlattenServiceParametersUsersDatabases(
 		service.Parameters,
 		service.Users,
@@ -552,11 +554,11 @@ func databaseFieldKey(d *schema.ResourceData) string {
 }
 
 func getServiceManagerForResource(d *schema.ResourceData) services.ServiceManager {
-	for _, serviceType := range services.ServiceTypeValues() {
+	for _, serviceType := range services.ManagedServiceTypes() {
 		_, exists := d.GetOk(serviceType)
 
 		if exists {
-			return services.GetServiceManager(serviceType)
+			return services.Manager(serviceType)
 		}
 	}
 
@@ -663,6 +665,11 @@ func flattenBackupSettings(backupSettings *paas.BackupSettingsResponse) []map[st
 
 	if v := backupSettings.UserLogin; v != nil {
 		tfMap["user_login"] = v
+	}
+
+	// ignore when api returns `"backupSettings": {}` (block is omitted in config)
+	if len(tfMap) == 0 {
+		return []map[string]interface{}{}
 	}
 
 	return []map[string]interface{}{tfMap}

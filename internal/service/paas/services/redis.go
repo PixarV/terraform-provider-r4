@@ -34,6 +34,7 @@ func (s redisManager) serviceParametersSchema() map[string]*schema.Schema {
 			Type:         schema.TypeInt,
 			Optional:     true,
 			ForceNew:     true,
+			Default:      16,
 			ValidateFunc: validation.IntBetween(1, 2147483647),
 		},
 		"maxmemory_policy": {

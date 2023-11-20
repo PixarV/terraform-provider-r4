@@ -108,7 +108,8 @@ the following attributes are exported only for an Elasticsearch service:
 
 * `class` - The service class.
 * `kibana` - Indicates whether Kibana deployment is enabled.
-* `monitoring` - Indicates whether the monitoring agent is enabled.
+* `logging` - The logging settings for the service. The structure of this block is [described below](#logging).
+* `monitoring` - The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 * `options` - Other Elasticsearch parameters.
 * `password` - The Elasticsearch user password.
 * `version` - The installed version.
@@ -121,7 +122,8 @@ In addition to the common attributes for all services [described above](#attribu
 the following attributes are exported only for a Memcached service:
 
 * `class` - The service class.
-* `monitoring` - Indicates whether the monitoring agent is enabled.
+* `logging` - The logging settings for the service. The structure of this block is [described below](#logging).
+* `monitoring` - The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 
 ## PostgreSQL Attribute Reference
 
@@ -144,6 +146,7 @@ the following attributes are exported only for a PostgreSQL service:
 * `effective_cache_size` - The planner’s assumption about the effective size of the disk cache
   that is available to a single query.
 * `effective_io_concurrency` -  The number of concurrent disk I/O operations.
+* `logging` - The logging settings for the service. The structure of this block is [described below](#logging).
 * `maintenance_work_mem` -  The maximum amount of memory in bytes used by maintenance operations,
   such as `VACUUM`, `CREATE INDEX`, and `ALTER TABLE ADD FOREIGN KEY`.
 * `max_connections` - The maximum number of simultaneous connections to the database server.
@@ -154,7 +157,7 @@ the following attributes are exported only for a PostgreSQL service:
 * `max_worker_processes` - The maximum number of background processes that the system can support.
 * `min_wal_size` - The minimum size in bytes to shrink the WAL to. As long as WAL disk usage stays below this setting,
   old WAL files are always recycled for future use at a checkpoint, rather than removed.
-* `monitoring` - Indicates whether the monitoring agent is enabled.
+* `monitoring` - The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 * `options` - Other PostgreSQL parameters.
 * `replication_mode` - The replication mode in the _Patroni_ cluster.
 * `shared_buffers` - The amount of memory the database server uses for shared memory buffers.
@@ -206,8 +209,9 @@ the following attributes are exported only for a Redis service:
 * `class` - The service class.
 * `cluster_type` - The clustering option.
 * `databases` - The number of databases.
+* `logging` - The logging settings for the service. The structure of this block is [described below](#logging).
 * `maxmemory_policy` - The memory management mode.
-* `monitoring` - Indicates whether the monitoring agent is enabled.
+* `monitoring` - The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 * `options` - Other Redis parameters.
 * `password` - The Redis user password.
 * `persistence_aof` - Indicates whether AOF storage mode is enabled.
@@ -217,3 +221,19 @@ the following attributes are exported only for a Redis service:
 * `tcp_keepalive` - The time in seconds for which the service sends ACKs to detect dead peers
   (clients that cannot be reached even if they look connected).
 * `version` - The installed version.
+
+## Common Service Attribute Reference
+
+### logging
+
+The `logging` block has the following structure:
+
+* `log_to` - The ID of the logging service.
+* `logging_tags` - List of tags that are assigned to the log records of the service.
+
+### monitoring
+
+The `monitoring` block has the following structure:
+
+* `monitor_by` - The ID of the monitoring service.
+* `monitoring_labels` - Map containing labels that are assigned to the metrics of the service.

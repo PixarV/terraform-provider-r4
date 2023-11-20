@@ -62,7 +62,7 @@ resource "aws_paas_service" "elasticsearch" {
 }
 ```
 
-### Memcached Service
+### Memcached Service with Enabled Monitoring
 
 ~> This example uses the VPC and subnet defined in [elasticsearch service example](#elasticsearch-service).
 
@@ -86,7 +86,13 @@ resource "aws_paas_service" "memcached" {
   subnet_ids                   = [aws_subnet.example.id]
 
   memcached {
-    monitoring = false
+    monitoring {
+      monitor_by = "fm-cluster-12345678"
+      monitoring_labels = {
+        key1 = "value1"
+        key3 = "value3"
+      }
+    }
   }
 }
 ```
@@ -179,7 +185,6 @@ resource "aws_paas_service" "pgsql" {
     max_wal_size                    = 85 * 1024 * 1024
     work_mem                        = 4 * 1024 * 1024
     maintenance_work_mem            = 1024 * 1024
-    monitoring                      = false
     wal_keep_segments               = 0
     replication_mode                = "synchronous"
 
@@ -205,7 +210,7 @@ resource "aws_paas_service" "pgsql" {
 }
 ```
 
-### Redis Service
+### Redis Service with Enabled Logging
 
 ~> This example uses the VPC and subnet defined in [elasticsearch service example](#elasticsearch-service).
 
@@ -243,6 +248,11 @@ resource "aws_paas_service" "redis" {
     timeout       = 50
     tcp_backlog   = 300
     tcp_keepalive = 600
+
+    logging {
+      log_to       = "fm-cluster-87654321"
+      logging_tags = ["tag1", "tag2", "tag3"]
+    }
   }
 }
 ```
@@ -317,7 +327,8 @@ the `elasticsearch` block can contain the following arguments:
 
 * `class` - (Optional) The service class. Valid value is `search`. Defaults to `search`.
 * `kibana` - (Optional) Indicates whether Kibana deployment is enabled. Defaults to `false`.
-* `monitoring` - (Optional) Indicates whether the monitoring agent is enabled. Defaults to `false`.
+* `logging` - (Optional) The logging settings for the service. The structure of this block is [described below](#logging).
+* `monitoring` - (Optional) The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 * `options` - (Optional) Map containing other Elasticsearch parameters.
   Parameter names must be in camelCase. Values are strings.
 
@@ -335,7 +346,8 @@ In addition to the common arguments for all services [described above](#argument
 the `memcached` block can contain the following arguments:
 
 * `class` - (Optional) The service class. Valid value is `cacher`. Defaults to `cacher`.
-* `monitoring` - (Optional) Indicates whether the monitoring agent is enabled. Defaults to `false`.
+* `logging` - (Optional) The logging settings for the service. The structure of this block is [described below](#logging).
+* `monitoring` - (Optional) The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 
 ## PostgreSQL Argument Reference
 
@@ -359,6 +371,7 @@ the `pgsql` block can contain the following arguments:
 * `effective_cache_size` - (Optional) The planner’s assumption about the effective size of the disk cache
   that is available to a single query. Valid values are from 1 to 2147483647. Defaults to `524288`.
 * `effective_io_concurrency` -  (Optional) The number of concurrent disk I/O operations. Valid values are from 0 to 1000. Defaults to `1`.
+* `logging` - (Optional) The logging settings for the service. The structure of this block is [described below](#logging).
 * `maintenance_work_mem` -  (Optional) The maximum amount of memory in bytes (multiple of 1 KiB) used by maintenance operations,
   such as `VACUUM`, `CREATE INDEX`, and `ALTER TABLE ADD FOREIGN KEY`.
   Valid values are from 1 MiB to 2 GiB. Defaults to `67108864` (64 MiB).
@@ -376,7 +389,7 @@ the `pgsql` block can contain the following arguments:
 * `min_wal_size` - (Optional) The minimum size in bytes (multiple of 1 MiB) to shrink the WAL to. As long as WAL disk usage stays below this setting,
   old WAL files are always recycled for future use at a checkpoint, rather than removed.
   Valid values are from 32 to 2147483647 MiB. Defaults to `83886080` (80 MiB).
-* `monitoring` - (Optional) Indicates whether the monitoring agent is enabled. Defaults to `false`.
+* `monitoring` - (Optional) The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 * `options` - (Optional) Map containing other PostgreSQL parameters.
   Parameter names must be in camelCase. Values are strings.
 
@@ -449,10 +462,11 @@ the `redis` block can contain the following arguments:
 * `cluster_type` - (Optional) The clustering option. Valid values are `native`, `sentinel`.
   The parameter must be set if `high_availability` is `true`.
 * `databases` - (Optional) The number of databases. Valid values are from 1 to 2147483647. Defaults to `16`.
+* `logging` - (Optional) The logging settings for the service. The structure of this block is [described below](#logging).
 * `maxmemory_policy` - (Optional) The memory management mode.
   Valid values are `noeviction`, `allkeys-lru`, `allkeys-lfu`, `volatile-lru`, `volatile-lfu`, `allkeys-random`, `volatile-random`, `volatile-ttl`.
   Defaults to `noeviction`.
-* `monitoring` - (Optional) Indicates whether the monitoring agent is enabled. Defaults to `false`.
+* `monitoring` - (Optional) The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 * `options` - (Optional) Map containing other Redis parameters.
   Parameter names must be in camelCase. Values are strings.
 
@@ -469,6 +483,28 @@ If you need to use such a parameter, contact [technical support].
 * `tcp_keepalive` - (Optional) The time in seconds for which the service sends ACKs to detect dead peers
   (clients that cannot be reached even if they look connected). The value must be non-negative. Defaults to `300`.
 * `version` - (Required) The version to install. Valid values are `5.0.14`, `6.2.6`, `7.0.11`.
+
+## Common Service Argument Reference
+
+### logging
+
+~> All the parameters in the `logging` block are editable.
+
+The `logging` block has the following structure:
+
+* `log_to` - (Required) The ID of the logging service. It must run in the same VPC as the service.
+* `logging_tags` - (Optional) List of tags that are assigned to the log records of the service.
+  Each value in the list must be 1 to 256 characters long.
+
+### monitoring
+
+~> All the parameters in the `monitoring` block are editable.
+
+The `monitoring` block has the following structure:
+
+* `monitor_by` - (Required) The ID of the monitoring service. It must run in the same VPC as the service.
+* `monitoring_labels` - (Optional) Map containing labels that are assigned to the metrics of the service.
+  Keys must be 1 to 64 characters long.
 
 ## Attribute Reference
 

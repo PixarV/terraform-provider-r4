@@ -57,6 +57,7 @@ In addition to all arguments above, the following attributes are exported:
 * `supported_features` - List of service features.
 * `total_cpu_count` - Total number of CPU cores in use.
 * `total_memory` - Total RAM in use in MiB.
+* `vpc_id` - The ID of the VPC.
 
 ### backup_settings
 

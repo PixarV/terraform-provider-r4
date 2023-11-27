@@ -389,7 +389,7 @@ func (s postgreSQLManager) databaseParametersDataSourceSchema() map[string]*sche
 			Computed: true,
 		},
 		"extensions": {
-			Type:     schema.TypeList,
+			Type:     schema.TypeSet,
 			Computed: true,
 			Elem:     &schema.Schema{Type: schema.TypeString},
 		},

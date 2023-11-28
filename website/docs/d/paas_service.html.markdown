@@ -108,7 +108,7 @@ In addition to the common attributes for all services [described above](#attribu
 the following attributes are exported only for an Elasticsearch service:
 
 * `class` - The service class.
-* `kibana` - Indicates whether Kibana deployment is enabled.
+* `kibana` - Indicates whether the Kibana deployment is enabled.
 * `logging` - The logging settings for the service. The structure of this block is [described below](#logging).
 * `monitoring` - The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 * `options` - Other Elasticsearch parameters.
@@ -135,7 +135,7 @@ the following attributes are exported only for a PostgreSQL service:
 
 * `autovacuum` - Indicates whether the server must run the autovacuum launcher daemon.
 * `autovacuum_max_workers` - The maximum number of autovacuum processes (other than the autovacuum launcher)
-  that can be running simultaneously.
+  that can run simultaneously.
 * `autovacuum_vacuum_cost_delay` - The cost delay value in milliseconds used in automatic `VACUUM` operations.
 * `autovacuum_vacuum_cost_limit` - The cost limit value used in automatic `VACUUM` operations.
 * `autovacuum_analyze_scale_factor` - The fraction of the table size to add to `autovacuum_analyze_threshold`
@@ -215,12 +215,11 @@ the following attributes are exported only for a Redis service:
 * `monitoring` - The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 * `options` - Other Redis parameters.
 * `password` - The Redis user password.
-* `persistence_aof` - Indicates whether AOF storage mode is enabled.
-* `persistence_rdb` - Indicates whether RDB storage mode is enabled.
-* `timeout` - The time in seconds for which connection to an inactive client is maintained.
+* `persistence_aof` - Indicates whether the AOF storage mode is enabled.
+* `persistence_rdb` - Indicates whether the RDB storage mode is enabled.
+* `timeout` - The time in seconds during which the connection to an inactive client is retained.
 * `tcp_backlog` - The size of a connection queue.
-* `tcp_keepalive` - The time in seconds for which the service sends ACKs to detect dead peers
-  (clients that cannot be reached even if they look connected).
+* `tcp_keepalive` - The time in seconds during which the service sends ACKs to detect dead peers (unreachable clients).
 * `version` - The installed version.
 
 ## Common Service Attribute Reference

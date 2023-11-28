@@ -64,7 +64,7 @@ resource "aws_paas_service" "elasticsearch" {
 
 ### Memcached Service with Enabled Monitoring
 
-~> This example uses the VPC and subnet defined in [elasticsearch service example](#elasticsearch-service).
+~> This example uses the VPC and subnet defined in [Elasticsearch Service example](#elasticsearch-service).
 
 ```terraform
 resource "aws_paas_service" "memcached" {
@@ -141,7 +141,7 @@ resource "aws_subnet" "subnet_comp1p" {
 resource "aws_s3_bucket" "example" {
   bucket = "tf-paas-backup"
 
-  # Use the predefined provider configuration to connect to CROC Cloud S3 storage
+  # Use the predefined provider configuration to connect to CROC Cloud object storage
   # https://docs.cloud.croc.ru/en/api/tools/terraform.html#providers-tf
   provider = aws.noregion
 }
@@ -212,7 +212,7 @@ resource "aws_paas_service" "pgsql" {
 
 ### Redis Service with Enabled Logging
 
-~> This example uses the VPC and subnet defined in [elasticsearch service example](#elasticsearch-service).
+~> This example uses the VPC and subnet defined in [Elasticsearch Service example](#elasticsearch-service).
 
 ```terraform
 resource "aws_paas_service" "redis" {
@@ -259,17 +259,18 @@ resource "aws_paas_service" "redis" {
 
 ## Argument Reference
 
-~> Arguments are not editable (changes force new resource) except for blocks with service parameters and `backup_settings`.
+~> Arguments are not editable (changes lead to a new resource) except for the blocks with service parameters and `backup_settings`.
 
 * `arbitrator_required` - (Optional) Indicates whether to create a cluster with an arbitrator. Defaults to `false`.
   The parameter can be set to `true` only if `high_availability` is `true`.
   The parameter is supported only for [Elasticsearch](#elasticsearch-argument-reference) and [PostgreSQL](#postgresql-argument-reference) services.
 * `backup_settings` - (Optional) The backup settings for the service. The structure of this block is [described below](#backup_settings).
-  The parameter is supported only for [PostgreSQL](#postgresql-argument-reference) service.
+  The parameter is supported only for a [PostgreSQL](#postgresql-argument-reference) service.
 * `data_volume` - (Optional) The data volume parameters for the service. The structure of this block is [described below](#data_volume).
   The parameter is required for [Elasticsearch](#elasticsearch-argument-reference), [Memcached](#memcached-argument-reference),
   [PostgreSQL](#postgresql-argument-reference) and [Redis](#redis-argument-reference) services.
-* `delete_interfaces_on_destroy` - (Optional) Indicates whether to delete instance network interfaces when the service is destroyed. Defaults to `false`.
+* `delete_interfaces_on_destroy` - (Optional) Indicates whether to delete the instance network interfaces
+  when the service is destroyed. Defaults to `false`.
 * `high_availability` - (Optional) Indicates whether to create a high availability service. Defaults to `false`.
   The parameter is supported only for [Elasticsearch](#elasticsearch-argument-reference),
   [PostgreSQL](#postgresql-argument-reference) and [Redis](#redis-argument-reference) services.
@@ -331,13 +332,13 @@ In addition to the common arguments for all services [described above](#argument
 the `elasticsearch` block can contain the following arguments:
 
 * `class` - (Optional) The service class. Valid value is `search`. Defaults to `search`.
-* `kibana` - (Optional) Indicates whether Kibana deployment is enabled. Defaults to `false`.
+* `kibana` - (Optional) Indicates whether the Kibana deployment is enabled. Defaults to `false`.
 * `logging` - (Optional) The logging settings for the service. The structure of this block is [described below](#logging).
 * `monitoring` - (Optional) The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 * `options` - (Optional) Map containing other Elasticsearch parameters.
   Parameter names must be in camelCase. Values are strings.
 
-~> If the parameter name includes a dot, then it cannot be passed in the `options`.
+~> If the parameter name includes a dot, then it cannot be passed in `options`.
 If you need to use such a parameter, contact [technical support].
 
 * `password` - (Optional) The Elasticsearch user password.
@@ -362,7 +363,7 @@ the `pgsql` block can contain the following arguments:
 * `autovacuum` - (Optional) Indicates whether the server must run the autovacuum launcher daemon.
   Valid values are `ON`, `OFF`. Defaults to `ON`.
 * `autovacuum_max_workers` - (Optional) The maximum number of autovacuum processes (other than the autovacuum launcher)
-  that can be running simultaneously. Valid values are from 1 to 262143. Defaults to `3`.
+  that can run simultaneously. Valid values are from 1 to 262143. Defaults to `3`.
 * `autovacuum_vacuum_cost_delay` - (Optional) The cost delay value in milliseconds used in automatic `VACUUM` operations.
   Valid values are `-1`, from 1 to 100.
 * `autovacuum_vacuum_cost_limit` - (Optional) The cost limit value used in automatic `VACUUM` operations.
@@ -398,7 +399,7 @@ the `pgsql` block can contain the following arguments:
 * `options` - (Optional) Map containing other PostgreSQL parameters.
   Parameter names must be in camelCase. Values are strings.
 
-~> If the parameter name includes a dot, then it cannot be passed in the `options`.
+~> If the parameter name includes a dot, then it cannot be passed in `options`.
 If you need to use such a parameter, contact [technical support].
 
 * `replication_mode` - (Optional) The replication mode in the _Patroni_ cluster.
@@ -475,18 +476,18 @@ the `redis` block can contain the following arguments:
 * `options` - (Optional) Map containing other Redis parameters.
   Parameter names must be in camelCase. Values are strings.
 
-~> If the parameter name includes a dot, then it cannot be passed in the `options`.
+~> If the parameter name includes a dot, then it cannot be passed in `options`.
 If you need to use such a parameter, contact [technical support].
 
 * `password` - (Optional) The Redis user password.
   The value must be 8 to 128 characters long and must not contain `'`, `"`,  `` ` `` and `\`.
-* `persistence_aof` - (Optional) Indicates whether AOF storage mode is enabled. Defaults to `false`.
-* `persistence_rdb` - (Optional) Indicates whether RDB storage mode is enabled. Defaults to `false`.
-* `timeout` - (Optional) The time in seconds for which connection to an inactive client is maintained.
+* `persistence_aof` - (Optional) Indicates whether the AOF storage mode is enabled. Defaults to `false`.
+* `persistence_rdb` - (Optional) Indicates whether the RDB storage mode is enabled. Defaults to `false`.
+* `timeout` - (Optional) The time in seconds during which the connection to an inactive client is retained.
   Valid values are from 0 to 2147483647. Defaults to `0`.
 * `tcp_backlog` - (Optional) The size of a connection queue. Valid values are from 1 to 4096. Defaults to `511`.
-* `tcp_keepalive` - (Optional) The time in seconds for which the service sends ACKs to detect dead peers
-  (clients that cannot be reached even if they look connected). The value must be non-negative. Defaults to `300`.
+* `tcp_keepalive` - (Optional) The time in seconds during which the service sends ACKs to detect dead peers (unreachable clients).
+  The value must be non-negative. Defaults to `300`.
 * `version` - (Required) The version to install. Valid values are `5.0.14`, `6.2.6`, `7.0.11`.
 
 ## Common Service Argument Reference
@@ -521,7 +522,7 @@ In addition to all arguments above, the following attributes are exported:
 * `error_description` - The detailed description of the service error.
 * `id` - The ID of the PaaS service.
 * `instances` - List of instances that refers to the service. The structure of this block is [described below](#instances).
-* `service_class` - The service class. The value matches `class` parameter of the specified block with service parameters.
+* `service_class` - The service class. The value matches the `class` parameter of the specified block with service parameters.
 * `service_type` - The service type. The value matches the name of the specified block with service parameters.
 * `status` - The current status of the service.
 * `supported_features` - List of service features.

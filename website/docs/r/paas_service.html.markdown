@@ -19,6 +19,7 @@ description: |-
 
 [Elasticsearch]: #elasticsearch-argument-reference
 [Memcached]: #memcached-argument-reference
+[MongoDB]: #mongodb-argument-reference
 [MySQL]: #mysql-argument-reference
 [PostgreSQL]: #postgresql-argument-reference
 [RabbitMQ]: #rabbitmq-argument-reference
@@ -277,14 +278,14 @@ resource "aws_paas_service" "redis" {
 
 * `arbitrator_required` - (Optional) Indicates whether to create a cluster with an arbitrator. Defaults to `false`.
   The parameter can be set to `true` only if `high_availability` is `true`.
-  The parameter is supported only for [Elasticsearch], [MySQL] and [PostgreSQL] services.
+  The parameter is supported only for [Elasticsearch], [MongoDB], [MySQL] and [PostgreSQL] services.
 * `backup_settings` - (Optional) The backup settings for the service. The structure of this block is [described below](#backup_settings).
   The parameter is supported only for [MySQL] and [PostgreSQL] services.
 * `data_volume` - (Optional) The data volume parameters for the service. The structure of this block is [described below](#data_volume).
-  The parameter is required for [Elasticsearch], [Memcached], [MySQL], [PostgreSQL], [RabbitMQ] and [Redis] services.
+  The parameter is required for [Elasticsearch], [Memcached], [MongoDB], [MySQL], [PostgreSQL], [RabbitMQ] and [Redis] services.
 * `delete_interfaces_on_destroy` - (Optional) Indicates whether to delete the instance network interfaces when the service is destroyed. Defaults to `false`.
 * `high_availability` - (Optional) Indicates whether to create a high availability service. Defaults to `false`.
-  The parameter is supported only for [Elasticsearch], [MySQL], [PostgreSQL], [RabbitMQ] and [Redis] services.
+  The parameter is supported only for [Elasticsearch], [MongoDB], [MySQL], [PostgreSQL], [RabbitMQ] and [Redis] services.
 * `instance_type` - (Required) The instance type.
 * `name` - (Required) The service name. The value must start and end with a Latin letter or number and
   can only contain lowercase Latin letters, numbers, periods (.) and hyphens (-).
@@ -300,7 +301,8 @@ One of the following blocks with service parameters must be specified:
 
 * `elasticsearch` - Elasticsearch parameters. The structure of this block is [described below](#elasticsearch-argument-reference).
 * `memcached` - Memcached parameters. The structure of this block is [described below](#memcached-argument-reference).
-* `mysql` - Memcached parameters. The structure of this block is [described below](#mysql-argument-reference).
+* `mongodb` - MongoDB parameters. The structure of this block is [described below](#mongodb-argument-reference).
+* `mysql` - MySQL parameters. The structure of this block is [described below](#mysql-argument-reference).
 * `pgsql` - PostgreSQL parameters. The structure of this block is [described below](#postgresql-argument-reference).
 * `rabbitmq` - RabbitMQ parameters. The structure of this block is [described below](#rabbitmq-argument-reference).
 * `redis` - Redis parameters. The structure of this block is [described below](#redis-argument-reference).
@@ -367,6 +369,60 @@ the `memcached` block can contain the following arguments:
 * `class` - (Optional) The service class. Valid value is `cacher`. Defaults to `cacher`.
 * `logging` - (Optional) The logging settings for the service. The structure of this block is [described below](#logging).
 * `monitoring` - (Optional) The monitoring settings for the service. The structure of this block is [described below](#monitoring).
+
+## MongoDB Argument Reference
+
+In addition to the common arguments for all services [described above](#argument-reference),
+the `mongodb` block can contain the following arguments:
+
+* `class` - (Optional) The service class. Valid value is `database`. Defaults to `database`.
+* `database` - (Optional) List of MongoDB databases with parameters. The structure of this block is [described below](#mongodb-database).
+* `journal_commit_interval` - (Optional) The maximum interval in milliseconds between saving log data.
+  Valid values are from 1 to 500. Defaults to `100`.
+* `logging` - (Optional) The logging settings for the service. The structure of this block is [described below](#logging).
+* `maxconns` - (Optional) The maximum number of concurrent connections allowed for _mongos_ or _mongod_.
+  Valid values are from 10 to 51200. Defaults to `51200`.
+* `monitoring` - (Optional) The monitoring settings for the service. The structure of this block is [described below](#monitoring).
+* `options` - (Optional) Map containing other MongoDB parameters.
+  Parameter names must be in camelCase. Values are strings.
+
+~> If the parameter name includes a dot, then it cannot be passed in `options`.
+If you need to use such a parameter, contact [technical support].
+
+* `profile` - (Optional) Indicates which operations to profile. Valid values are `off`, `slowOp`, `all`. Defaults to `slowOp`.
+* `slowms` - The operation time threshold in milliseconds, above which the operation is considered slow.
+  Valid values are from 0 to 36000000. Defaults to `100`.
+* `storage_engine_cache_size` - (Optional) The maximum size of internal cache in GiB used to store all data.
+  A floating-point number. Valid values are from `0.25`.
+* `user` - (Optional) List of MongoDB users with parameters. The structure of this block is [described below](#mongodb-user).
+* `quiet` - (Optional) Indicates whether the quiet mode of _mongos_ or _mongod_ is enabled. Defaults to `false`.
+* `verbositylevel` - (Optional) The level of message detail in the message log. Valid values are `v`, `vv`, `vvv`, `vvvv`, `vvvvv`.
+* `version` - (Required) The version to install. Valid values are `3.6.23`, `4.0.28`, `4.2.23`, `4.4.17`, `5.0.13`.
+
+### MongoDB database
+
+~> All the parameters in the `database` block are editable.
+
+The `database` block has the following structure:
+
+* `backup_enabled` - (Optional) Indicates whether backup is enabled for the database. Defaults to `false`.
+* `name` - (Required) The database name.
+* `user` - (Optional) List of database users with parameters. The structure of this block is [described below](#mongodb-database-user).
+
+### MongoDB database user
+
+~> All the parameters in the `user` block are editable.
+
+* `name` - (Required) The MongoDB user name.
+* `roles` - (Optional) List of user roles. Valid values are `read`, `readWrite`, `dbAdmin`, `dbOwner`.
+
+### MongoDB user
+
+~> All the parameters in the `user` block are editable.
+
+* `name` - (Required) The MongoDB user name.
+* `password` - (Required) The MongoDB user password. The value must not contain `'`, `"`,  `` ` `` and `\`.
+
 
 ## MySQL Argument Reference
 

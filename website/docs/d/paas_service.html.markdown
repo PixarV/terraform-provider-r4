@@ -49,6 +49,7 @@ In addition to all arguments above, the following attributes are exported:
 * `service_type` - The service type. This value determines which service parameters are included in the corresponding block.
     * `elasticsearch` - Elasticsearch parameters. The structure of this block is [described below](#elasticsearch-attribute-reference).
     * `memcached` - Memcached parameters. The structure of this block is [described below](#memcached-attribute-reference).
+    * `mongodb` - MongoDB parameters. The structure of this block is [described below](#mongodb-attribute-reference).
     * `mysql` - MySQL parameters. The structure of this block is [described below](#mysql-attribute-reference).
     * `pgsql` - PostgreSQL parameters. The structure of this block is [described below](#postgresql-attribute-reference).
     * `rabbitmq` - RabbitMQ parameters. The structure of this block is [described below](#rabbitmq-attribute-reference).
@@ -127,6 +128,53 @@ the following attributes are exported only for a Memcached service:
 * `class` - The service class.
 * `logging` - The logging settings for the service. The structure of this block is [described below](#logging).
 * `monitoring` - The monitoring settings for the service. The structure of this block is [described below](#monitoring).
+
+## MongoDB Attribute Reference
+
+~> **Note** The following attributes contain default parameter values or user-defined values when the service is created.
+
+In addition to the common attributes for all services [described above](#attribute-reference),
+the following attributes are exported only for a Memcached service:
+
+* `class` - The service class.
+* `database` - List of MongoDB databases with parameters. The structure of this block is [described below](#mongodb-database).
+* `journal_commit_interval` - The maximum interval in milliseconds between saving log data.
+* `logging` - The logging settings for the service. The structure of this block is [described below](#logging).
+* `maxconns` - The maximum number of concurrent connections allowed for _mongos_ or _mongod_.
+* `monitoring` - The monitoring settings for the service. The structure of this block is [described below](#monitoring).
+* `options` - Other MongoDB parameters.
+* `profile` - Indicates which operations to profile.
+* `slowms` - The operation time threshold in milliseconds, above which the operation is considered slow.
+* `storage_engine_cache_size` - The maximum size of internal cache in GiB used to store all data.
+* `user` - List of MongoDB users with parameters. The structure of this block is [described below](#mongodb-user).
+* `quiet` - Indicates whether the quiet mode of _mongos_ or _mongod_ is enabled.
+* `verbositylevel` - The level of message detail in the message log.
+* `version` - The installed version.
+
+### MongoDB database
+
+The `database` block has the following structure:
+
+* `backup_enabled` - Indicates whether backup is enabled for the database.
+* `id` - The ID of the database.
+* `name` - The database name.
+* `user` - List of database users with parameters. The structure of this block is [described below](#mongodb-database-user).
+
+### MongoDB database user
+
+The `user` block has the following structure:
+
+* `id` - The ID of the user.
+* `name` - The MongoDB user name.
+* `roles` - List of user roles.
+
+### MongoDB user
+
+The `user` block has the following structure:
+
+* `id` - The ID of the user.
+* `name` - The MongoDB user name.
+* `password` - The MongoDB user password.
 
 ## MySQL Attribute Reference
 

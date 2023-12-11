@@ -405,7 +405,6 @@ If you need to use such a parameter, contact [technical support].
 
 The `database` block has the following structure:
 
-* `backup_enabled` - (Optional) Indicates whether backup is enabled for the database. Defaults to `false`.
 * `name` - (Required) The database name.
 * `user` - (Optional) List of database users with parameters. The structure of this block is [described below](#mongodb-database-user).
 

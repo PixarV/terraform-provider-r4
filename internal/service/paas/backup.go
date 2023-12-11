@@ -71,11 +71,12 @@ func ResourceBackup() *schema.Resource {
 				Optional:     true,
 				ValidateFunc: nullable.ValidateTypeStringNullableBool,
 			},
-			"force_delete": {
-				Type:     schema.TypeBool,
-				Optional: true,
-				Default:  false,
-			},
+			// TODO: temporarily remove this parameter from the schema until it is approved.
+			//"force_delete": {
+			//	Type:     schema.TypeBool,
+			//	Optional: true,
+			//	Default:  false,
+			//},
 			"protected": {
 				Type:     schema.TypeBool,
 				Computed: true,

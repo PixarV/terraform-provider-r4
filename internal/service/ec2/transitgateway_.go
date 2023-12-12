@@ -55,7 +55,6 @@ func ResourceTransitGateway() *schema.Resource {
 				Type:     schema.TypeInt,
 				Optional: true,
 				ForceNew: true,
-				Default:  64512,
 			},
 			"arn": {
 				Type:     schema.TypeString,
@@ -68,7 +67,6 @@ func ResourceTransitGateway() *schema.Resource {
 			"auto_accept_shared_attachments": {
 				Type:         schema.TypeString,
 				Optional:     true,
-				Default:      ec2.AutoAcceptSharedAttachmentsValueDisable,
 				ValidateFunc: validation.StringInSlice(ec2.AutoAcceptSharedAttachmentsValue_Values(), false),
 			},
 			"default_route_table_association": {
@@ -80,7 +78,6 @@ func ResourceTransitGateway() *schema.Resource {
 			"default_route_table_propagation": {
 				Type:         schema.TypeString,
 				Optional:     true,
-				Default:      ec2.DefaultRouteTablePropagationValueEnable,
 				ValidateFunc: validation.StringInSlice(ec2.DefaultRouteTablePropagationValue_Values(), false),
 			},
 			"description": {
@@ -90,14 +87,12 @@ func ResourceTransitGateway() *schema.Resource {
 			"dns_support": {
 				Type:         schema.TypeString,
 				Optional:     true,
-				Default:      ec2.DnsSupportValueEnable,
 				ValidateFunc: validation.StringInSlice(ec2.DnsSupportValue_Values(), false),
 			},
 			"multicast_support": {
 				Type:         schema.TypeString,
 				Optional:     true,
 				ForceNew:     true,
-				Default:      ec2.MulticastSupportValueDisable,
 				ValidateFunc: validation.StringInSlice(ec2.MulticastSupportValue_Values(), false),
 			},
 			"owner_id": {
@@ -107,6 +102,11 @@ func ResourceTransitGateway() *schema.Resource {
 			"propagation_default_route_table_id": {
 				Type:     schema.TypeString,
 				Computed: true,
+			},
+			"shared_owners": {
+				Type:     schema.TypeSet,
+				Optional: true,
+				Elem:     &schema.Schema{Type: schema.TypeString},
 			},
 			"tags":     tftags.TagsSchema(),
 			"tags_all": tftags.TagsSchemaComputed(),
@@ -128,7 +128,6 @@ func ResourceTransitGateway() *schema.Resource {
 			"vpn_ecmp_support": {
 				Type:         schema.TypeString,
 				Optional:     true,
-				Default:      ec2.VpnEcmpSupportValueEnable,
 				ValidateFunc: validation.StringInSlice(ec2.VpnEcmpSupportValue_Values(), false),
 			},
 		},
@@ -142,12 +141,7 @@ func resourceTransitGatewayCreate(d *schema.ResourceData, meta interface{}) erro
 
 	input := &ec2.CreateTransitGatewayInput{
 		Options: &ec2.TransitGatewayRequestOptions{
-			AutoAcceptSharedAttachments:  aws.String(d.Get("auto_accept_shared_attachments").(string)),
 			DefaultRouteTableAssociation: aws.String(d.Get("default_route_table_association").(string)),
-			DefaultRouteTablePropagation: aws.String(d.Get("default_route_table_propagation").(string)),
-			DnsSupport:                   aws.String(d.Get("dns_support").(string)),
-			MulticastSupport:             aws.String(d.Get("multicast_support").(string)),
-			VpnEcmpSupport:               aws.String(d.Get("vpn_ecmp_support").(string)),
 		},
 		TagSpecifications: ec2TagSpecificationsFromKeyValueTags(tags, ec2.ResourceTypeTransitGateway),
 	}
@@ -158,6 +152,10 @@ func resourceTransitGatewayCreate(d *schema.ResourceData, meta interface{}) erro
 
 	if v, ok := d.GetOk("description"); ok {
 		input.Description = aws.String(v.(string))
+	}
+
+	if v, ok := d.GetOk("shared_owners"); ok && v.(*schema.Set).Len() > 0 {
+		input.Options.SharedOwners = flex.ExpandStringSet(v.(*schema.Set))
 	}
 
 	if v, ok := d.GetOk("transit_gateway_cidr_blocks"); ok && v.(*schema.Set).Len() > 0 {
@@ -208,6 +206,7 @@ func resourceTransitGatewayRead(d *schema.ResourceData, meta interface{}) error 
 	d.Set("multicast_support", transitGateway.Options.MulticastSupport)
 	d.Set("owner_id", transitGateway.OwnerId)
 	d.Set("propagation_default_route_table_id", transitGateway.Options.PropagationDefaultRouteTableId)
+	d.Set("shared_owners", aws.StringValueSlice(transitGateway.Options.SharedOwners))
 	d.Set("transit_gateway_cidr_blocks", aws.StringValueSlice(transitGateway.Options.TransitGatewayCidrBlocks))
 	d.Set("vpn_ecmp_support", transitGateway.Options.VpnEcmpSupport)
 
@@ -252,6 +251,19 @@ func resourceTransitGatewayUpdate(d *schema.ResourceData, meta interface{}) erro
 
 		if d.HasChange("dns_support") {
 			input.Options.DnsSupport = aws.String(d.Get("dns_support").(string))
+		}
+
+		if d.HasChange("shared_owners") {
+			oRaw, nRaw := d.GetChange("shared_owners")
+			o, n := oRaw.(*schema.Set), nRaw.(*schema.Set)
+
+			if add := n.Difference(o); add.Len() > 0 {
+				input.Options.AddSharedOwners = flex.ExpandStringSet(add)
+			}
+
+			if del := o.Difference(n); del.Len() > 0 {
+				input.Options.RemoveSharedOwners = flex.ExpandStringSet(del)
+			}
 		}
 
 		if d.HasChange("transit_gateway_cidr_blocks") {

@@ -173,7 +173,7 @@ func resourceBackupDelete(ctx context.Context, d *schema.ResourceData, meta inte
 	conn := meta.(*conns.AWSClient).PaaSConn
 	id := d.Id()
 
-	if d.Get("force_delete").(bool) {
+	if v, ok := d.Get("force_delete").(bool); ok && v {
 		input := &paas.DeleteBackupsInput{
 			ServiceId: aws.String(d.Get("service_id").(string)),
 			BackupIds: []*string{aws.String(id)},

@@ -13,8 +13,10 @@ description: |-
 
 Manages a PaaS service backup.
 
-~> Terraform does not _create_ a backup for the PaaS service, instead attempts to "adopt" it into management.
+~> Terraform does not create backups, but tries to gain control over an already created backup.
 Use `backup_settings` section in [`aws_paas_service`](paas_service.html.markdown) resource to control the creation of backups.
+
+~> Terraform does not delete the backup when running `terraform destroy`, it will only be removed from the Terraform state.
 
 ## Example Usage
 
@@ -34,10 +36,8 @@ resource "aws_paas_backup" "example" {
 
 The following arguments are supported:
 
-* `backup_id` - (Required) The ID of the existed PaaS service backup (e.g. `paas-backup-12345678`).
-* `enable_deletion_protection` - (Optional) Indicates whether the backup must be protected from **automatic** deletion.
-
-~> Terraform does not delete the backup when running `terraform destroy`, it will only be removed from Terraform state.
+* `backup_id` - (Required) The ID of the existing PaaS service backup (e.g. `paas-backup-12345678`).
+* `enable_deletion_protection` - (Optional) Indicates whether the backup must be protected from automatic scheduled deletion.
 
 ## Attribute Reference
 
@@ -45,7 +45,7 @@ In addition to all arguments above, the following attributes are exported:
 
 * `databases` - List of databases. The structure of this block is [described below](#databases).
 * `id` - The ID of the PaaS service backup.
-* `protected` -  Indicates whether the backup is protected from automatic deletion.
+* `protected` - Indicates whether the backup is protected from automatic deletion.
 * `service_class` - The class of the PaaS service.
 * `service_deleted` - Indicates whether the service is deleted.
 * `service_id` - The ID of the PaaS service.

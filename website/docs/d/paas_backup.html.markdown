@@ -12,7 +12,7 @@ description: |-
 
 Provides information about a PaaS service backup.
 
-~> If more than one backup matches specified criteria, the most recently created backup is returned.
+~> If more than one backup meets the specified criteria, the most recently created backup is returned.
 
 ## Example Usage
 
@@ -40,7 +40,7 @@ The following arguments are supported:
 * `service_type` - (Optional) The type of the PaaS service.
   Valid values are `elasticsearch`, `memcached`, `mongodb`, `mysql`, `pgsql`, `rabbitmq`, `redis`.
 
-~> `id` cannot be specified together with other parameters.
+~> `id` cannot be specified together with the other parameters.
 
 ## Attribute Reference
 
@@ -48,7 +48,7 @@ In addition to all arguments above, the following attributes are exported:
 
 * `databases` - List of databases. The structure of this block is [described below](#databases).
 * `id` - The region (e.g., `croc`) if `id` is not specified as an argument.
-* `protected` -  Indicates whether the backup is protected from automatic deletion.
+* `protected` - Indicates whether the backup is protected from automatic scheduled deletion.
 * `service_deleted` - Indicates whether the service is deleted.
 * `service_name` - The service name.
 * `status` - The current status of the backup creation process.

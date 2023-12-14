@@ -257,8 +257,6 @@ resource "aws_paas_service" "redis" {
     persistence_rdb = false
     persistence_aof = true
 
-    monitoring = true
-
     databases     = 1
     timeout       = 50
     tcp_backlog   = 300
@@ -315,7 +313,7 @@ The `backup_settings` block has the following structure:
 
 * `bucket_name` - (Optional) The name of the bucket in object storage where the service backup is saved.
   The parameter must be set if `enabled` is `true`.
-* `enabled` -  (Optional) Indicates whether backup is enabled for the service. Defaults to `false`.
+* `enabled` - (Optional) Indicates whether backup is enabled for the service. Defaults to `false`.
 * `expiration_days` - (Optional) The backup retention period in days. Valid values are from 1 to 3650.
 * `notification_email` - (Optional) The email address to which a notification that backup was created is sent.
 * `start_time` - (Optional) The time when the daily backup process starts. It is set as a string in the HH:MM format Moscow time.
@@ -353,11 +351,11 @@ the `elasticsearch` block can contain the following arguments:
 * `options` - (Optional) Map containing other Elasticsearch parameters.
   Parameter names must be in camelCase. Values are strings.
 
-~> If the parameter name includes a dot, then it cannot be passed in `options`.
+~> If a parameter name includes a dot, it cannot be passed in `options`.
 If you need to use such a parameter, contact [technical support].
 
 * `password` - (Optional) The Elasticsearch user password.
-  The value must be 8 to 128 characters long and must not contain `-`, `!`, `:`, `;`, `%`, `'`, `"`,  `` ` `` and `\`.
+  The value must be 8 to 128 characters long and must not contain `-`, `!`, `:`, `;`, `%`, `'`, `"`, `` ` `` and `\`.
 * `version` - (Required) The version to install.
   Valid values are `7.11.2`, `7.12.1`, `7.13.1`, `7.14.2`, `7.15.2`, `7.16.3`, `7.17.4`, `8.0.1`, `8.1.3`, `8.2.2`.
 
@@ -386,14 +384,14 @@ the `mongodb` block can contain the following arguments:
 * `options` - (Optional) Map containing other MongoDB parameters.
   Parameter names must be in camelCase. Values are strings.
 
-~> If the parameter name includes a dot, then it cannot be passed in `options`.
+~> If a parameter name includes a dot, it cannot be passed in `options`.
 If you need to use such a parameter, contact [technical support].
 
 * `profile` - (Optional) Indicates which operations to profile. Valid values are `off`, `slowOp`, `all`. Defaults to `slowOp`.
 * `slowms` - (Optional) The operation time threshold in milliseconds, above which the operation is considered slow.
   Valid values are from 0 to 36000000. Defaults to `100`.
 * `storage_engine_cache_size` - (Optional) The maximum size of internal cache in GiB used to store all data.
-  A floating-point number. Valid values are from `0.25`.
+  A floating-point number. Valid values are greater or equal to `0.25`.
 * `user` - (Optional) List of MongoDB users with parameters. The structure of this block is [described below](#mongodb-user).
 * `quiet` - (Optional) Indicates whether the quiet mode of _mongos_ or _mongod_ is enabled. Defaults to `false`.
 * `verbositylevel` - (Optional) The level of message detail in the message log. Valid values are `v`, `vv`, `vvv`, `vvvv`, `vvvvv`.
@@ -420,7 +418,7 @@ The `database` block has the following structure:
 ~> All the parameters in the `user` block are editable.
 
 * `name` - (Required) The MongoDB user name.
-* `password` - (Required) The MongoDB user password. The value must not contain `'`, `"`,  `` ` `` and `\`.
+* `password` - (Required) The MongoDB user password. The value must not contain `'`, `"`, `` ` `` and `\`.
 
 
 ## MySQL Argument Reference
@@ -436,24 +434,24 @@ the `mysql` block can contain the following arguments:
 * `galera_options` - (Optional) Map containing other Galera parameters.
   Parameter names must be in camelCase. Values are strings.
 
-~> If the parameter name includes a dot, then it cannot be passed in `galera_options`.
+~> If a parameter name includes a dot, it cannot be passed in `galera_options`.
 If you need to use such a parameter, contact [technical support].
 
-* `gcache_size` - (Optional) Galera parameter. The size of GCache circular buffer storage preallocated on startup in bytes. Galera parameter.
+* `gcache_size` - (Optional) A Galera parameter. The size of GCache circular buffer storage preallocated on startup in bytes.
   Valid values are from 128 MiB. The parameter can be set only if `high_availability` is `true`.
-* `gcs_fc_factor` - (Optional) Galera parameter. The fraction of `gcs_fc_limit` at which replication is resumed
+* `gcs_fc_factor` - (Optional) A Galera parameter. The fraction of `gcs_fc_limit` at which replication is resumed
   when the recv queue length falls below this value. Valid values are from 0.0 to 1.0.
   The parameter can be set only if `high_availability` is `true`.
-* `gcs_fc_limit` - (Optional) Galera parameter. The number of writesets. If the recv queue length exceeds it replication is suspended.
+* `gcs_fc_limit` - (Optional) A Galera parameter. The number of writesets. If the recv queue length exceeds it replication is suspended.
   Replication will resume according to the `gcs_fc_factor` setting. Valid values are from 1 to 2147483647.
   The parameter can be set only if `high_availability` is `true`.
-* `gcs_fc_master_slave` - (Optional) Galera parameter. Indicates whether the cluster has only one source node.
+* `gcs_fc_master_slave` - (Optional) A Galera parameter. Indicates whether the cluster has only one source node.
   The parameter can be set only if `high_availability` is `true`.
 
 ~> `gcs_fc_master_slave` is deprecated. This parameter is relevant for Percona 5.7, MySQL 5.7, and MariaDB 10.2 and 10.3.
 Use `gcs_fc_single_primary` instead.
 
-* `gcs_fc_single_primary` - (Optional) Galera parameter. Indicates whether there is more than one replication source.
+* `gcs_fc_single_primary` - (Optional) A Galera parameter. Indicates whether there is more than one replication source.
   The parameter can be set only if `high_availability` is `true`.
 
 ~> `gcs_fc_single_primary` replaces the deprecated `gcs_fc_master_slave` parameter.
@@ -485,7 +483,7 @@ This parameter is relevant for Percona 8.0, MySQL 8.0, and MariaDB 10.4, 10.5, 1
   For more information about the parameter, see the [MySQL documentation][doc-innodb_strict_mode].
 * `innodb_sync_array_size` - (Optional) The size of the mutex/lock wait array.
   This parameter is relevant for Percona 5.7, 8.0 and MariaDB 10.2, 10.3, 10.4. Valid values are from 1 to 1024.
-* `max_allowed_packet` - (Optional) The maximum size of one packet or any generated/intermediate string,
+* `max_allowed_packet` - (Optional) The maximum size of one packet, any generated/intermediate string
   or any parameter sent by the _mysql_stmt_send_long_data()_ C API function.
   Valid values are from 16 MiB to 1 GiB. Defaults to `16777216` (16 MiB).
 * `max_connect_errors` - (Optional) The maximum number of connection errors, at which the server blocks the host from further connections.
@@ -493,13 +491,13 @@ This parameter is relevant for Percona 8.0, MySQL 8.0, and MariaDB 10.4, 10.5, 1
 * `max_connections` - (Optional) The maximum permitted number of simultaneous client connections that a host can handle.
   Valid values are from 1 to 100000. Defaults to `151`.
 * `max_heap_table_size` - (Optional) The maximum size in bytes to which user-created `MEMORY` tables are permitted to grow.
-  Valid values are from 16384 (16 KiB) to 4294966272. Defaults to  `16777216` (16 MiB).
+  Valid values are from 16384 (16 KiB) to 4294966272. Defaults to `16777216` (16 MiB).
 * `logging` - (Optional) The logging settings for the service. The structure of this block is [described below](#logging).
 * `monitoring` - (Optional) The monitoring settings for the service. The structure of this block is [described below](#monitoring).
 * `options` - (Optional) Map containing other MySQL parameters.
   Parameter names must be in camelCase. Values are strings.
 
-~> If the parameter name includes a dot, then it cannot be passed in `options`.
+~> If a parameter name includes a dot, it cannot be passed in `options`.
 If you need to use such a parameter, contact [technical support].
 
 * `pxc_strict_mode` - (Optional) PXC mode. For more information about the parameter, see the [Percona documentation][doc-pxc_strict_mode].
@@ -564,7 +562,7 @@ The `user` block has the following structure:
 
 * `host` - (Optional) The hostname or IP address. The value must be 1 to 60 characters long.
 * `name` - (Required) The MySQL user name.
-* `password` - (Required) The MySQL user password. The value must not contain `'`, `"`,  `` ` `` and `\`.
+* `password` - (Required) The MySQL user password. The value must not contain `'`, `"`, `` ` `` and `\`.
 
 ## PostgreSQL Argument Reference
 
@@ -588,9 +586,9 @@ the `pgsql` block can contain the following arguments:
   The structure of this block is [described below](#postgresql-database).
 * `effective_cache_size` - (Optional) The planner’s assumption about the effective size of the disk cache
   that is available to a single query. Valid values are from 1 to 2147483647. Defaults to `524288`.
-* `effective_io_concurrency` -  (Optional) The number of concurrent disk I/O operations. Valid values are from 0 to 1000. Defaults to `1`.
+* `effective_io_concurrency` - (Optional) The number of concurrent disk I/O operations. Valid values are from 0 to 1000. Defaults to `1`.
 * `logging` - (Optional) The logging settings for the service. The structure of this block is [described below](#logging).
-* `maintenance_work_mem` -  (Optional) The maximum amount of memory in bytes (multiple of 1 KiB) used by maintenance operations,
+* `maintenance_work_mem` - (Optional) The maximum amount of memory in bytes (multiple of 1 KiB) used by maintenance operations,
   such as `VACUUM`, `CREATE INDEX`, and `ALTER TABLE ADD FOREIGN KEY`.
   Valid values are from 1 MiB to 2 GiB. Defaults to `67108864` (64 MiB).
 * `max_connections` - (Optional) The maximum number of simultaneous connections to the database server.
@@ -611,7 +609,7 @@ the `pgsql` block can contain the following arguments:
 * `options` - (Optional) Map containing other PostgreSQL parameters.
   Parameter names must be in camelCase. Values are strings.
 
-~> If the parameter name includes a dot, then it cannot be passed in `options`.
+~> If a parameter name includes a dot, it cannot be passed in `options`.
 If you need to use such a parameter, contact [technical support].
 
 * `replication_mode` - (Optional) The replication mode in the _Patroni_ cluster.
@@ -669,7 +667,7 @@ The `user` block has the following structure:
 
 * `name` - (Required) The PostgreSQL user name.
 * `password` - (Required) The PostgreSQL user password.
-  The value must be 8 to 128 characters long and must not contain `'`, `"`,  `` ` `` and `\`.
+  The value must be 8 to 128 characters long and must not contain `'`, `"`, `` ` `` and `\`.
 
 ## RabbitMQ Argument Reference
 
@@ -682,11 +680,11 @@ the `rabbitmq` block can contain the following arguments:
 * `options` - (Optional) Map containing other RabbitMQ parameters.
   Parameter names must be in camelCase. Values are strings.
 
-~> If the parameter name includes a dot, then it cannot be passed in the `options`.
+~> If a parameter name includes a dot, it cannot be passed in the `options`.
 If you need to use such a parameter, contact [technical support].
 
 * `password` - (Required) The RabbitMQ admin password.
-  The value must be 8 to 128 characters long and must not contain `'`, `"`,  `` ` `` and `\`.
+  The value must be 8 to 128 characters long and must not contain `'`, `"`, `` ` `` and `\`.
 * `version` - (Required) The version to install. Valid values are `3.8.30`, `3.9.16`, `3.10.0`.
 
 ## Redis Argument Reference
@@ -706,11 +704,11 @@ the `redis` block can contain the following arguments:
 * `options` - (Optional) Map containing other Redis parameters.
   Parameter names must be in camelCase. Values are strings.
 
-~> If the parameter name includes a dot, then it cannot be passed in `options`.
+~> If a parameter name includes a dot, it cannot be passed in `options`.
 If you need to use such a parameter, contact [technical support].
 
 * `password` - (Optional) The Redis user password.
-  The value must be 8 to 128 characters long and must not contain `'`, `"`,  `` ` `` and `\`.
+  The value must be 8 to 128 characters long and must not contain `'`, `"`, `` ` `` and `\`.
 * `persistence_aof` - (Optional) Indicates whether the AOF storage mode is enabled. Defaults to `false`.
 * `persistence_rdb` - (Optional) Indicates whether the RDB storage mode is enabled. Defaults to `false`.
 * `timeout` - (Optional) The time in seconds during which the connection to an inactive client is retained.

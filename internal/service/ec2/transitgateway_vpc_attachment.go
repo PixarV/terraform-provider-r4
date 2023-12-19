@@ -55,6 +55,7 @@ func ResourceTransitGatewayVPCAttachment() *schema.Resource {
 			"subnet_ids": {
 				Type:     schema.TypeSet,
 				Required: true,
+				ForceNew: true, // FIXME: Remove after ModifyTransitGatewayVpcAttachment is supported in C2 EC2 API.
 				MinItems: 1,
 				Elem:     &schema.Schema{Type: schema.TypeString},
 			},
@@ -98,11 +99,6 @@ func resourceTransitGatewayVPCAttachmentCreate(d *schema.ResourceData, meta inte
 	transitGatewayID := d.Get("transit_gateway_id").(string)
 
 	input := &ec2.CreateTransitGatewayVpcAttachmentInput{
-		Options: &ec2.CreateTransitGatewayVpcAttachmentRequestOptions{
-			ApplianceModeSupport: aws.String(d.Get("appliance_mode_support").(string)),
-			DnsSupport:           aws.String(d.Get("dns_support").(string)),
-			Ipv6Support:          aws.String(d.Get("ipv6_support").(string)),
-		},
 		SubnetIds:         flex.ExpandStringSet(d.Get("subnet_ids").(*schema.Set)),
 		TransitGatewayId:  aws.String(transitGatewayID),
 		TagSpecifications: ec2TagSpecificationsFromKeyValueTags(tags, ec2.ResourceTypeTransitGatewayAttachment),
@@ -130,15 +126,22 @@ func resourceTransitGatewayVPCAttachmentCreate(d *schema.ResourceData, meta inte
 		return fmt.Errorf("error describing EC2 Transit Gateway (%s): missing options", transitGatewayID)
 	}
 
-	// We cannot modify Transit Gateway Route Tables for Resource Access Manager shared Transit Gateways
+	// We cannot modify Transit Gateway Route Tables for shared Transit Gateways
 	if aws.StringValue(transitGateway.OwnerId) == aws.StringValue(output.TransitGatewayVpcAttachment.VpcOwnerId) {
-		if err := transitGatewayRouteTableAssociationUpdate(conn, aws.StringValue(transitGateway.Options.AssociationDefaultRouteTableId), d.Id(), d.Get("transit_gateway_default_route_table_association").(bool)); err != nil {
-			return fmt.Errorf("error updating EC2 Transit Gateway Attachment (%s) Route Table (%s) association: %s", d.Id(), aws.StringValue(transitGateway.Options.AssociationDefaultRouteTableId), err)
+		associationRtbId := aws.StringValue(transitGateway.Options.AssociationDefaultRouteTableId)
+		associate := d.Get("transit_gateway_default_route_table_association").(bool)
+
+		if err := transitGatewayRouteTableAssociationUpdate(conn, associationRtbId, d.Id(), associate); err != nil {
+			return fmt.Errorf(
+				"error updating EC2 Transit Gateway Attachment (%s) Route Table (%s) association: %s",
+				d.Id(), associationRtbId, err,
+			)
 		}
 
-		if err := transitGatewayRouteTablePropagationUpdate(conn, aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId), d.Id(), d.Get("transit_gateway_default_route_table_propagation").(bool)); err != nil {
-			return fmt.Errorf("error updating EC2 Transit Gateway Attachment (%s) Route Table (%s) propagation: %s", d.Id(), aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId), err)
-		}
+		// FIXME: Uncomment after route table propagation is supported in C2 EC2 API.
+		//if err := transitGatewayRouteTablePropagationUpdate(conn, aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId), d.Id(), d.Get("transit_gateway_default_route_table_propagation").(bool)); err != nil {
+		//	return fmt.Errorf("error updating EC2 Transit Gateway Attachment (%s) Route Table (%s) propagation: %s", d.Id(), aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId), err)
+		//}
 	}
 
 	return resourceTransitGatewayVPCAttachmentRead(d, meta)
@@ -183,31 +186,31 @@ func resourceTransitGatewayVPCAttachmentRead(d *schema.ResourceData, meta interf
 		return fmt.Errorf("error describing EC2 Transit Gateway (%s): missing options", transitGatewayID)
 	}
 
-	// We cannot read Transit Gateway Route Tables for Resource Access Manager shared Transit Gateways
 	// Default these to a non-nil value so we can match the existing schema of Default: true
 	transitGatewayDefaultRouteTableAssociation := &ec2.TransitGatewayRouteTableAssociation{}
 	transitGatewayDefaultRouteTablePropagation := &ec2.TransitGatewayRouteTablePropagation{}
+
+	// We cannot read Transit Gateway Route Tables for shared Transit Gateways
 	if aws.StringValue(transitGateway.OwnerId) == aws.StringValue(transitGatewayVpcAttachment.VpcOwnerId) {
-		transitGatewayAssociationDefaultRouteTableID := aws.StringValue(transitGateway.Options.AssociationDefaultRouteTableId)
-		transitGatewayDefaultRouteTableAssociation, err = DescribeTransitGatewayRouteTableAssociation(conn, transitGatewayAssociationDefaultRouteTableID, d.Id())
+		associationRtbId := aws.StringValue(transitGateway.Options.AssociationDefaultRouteTableId)
+		transitGatewayDefaultRouteTableAssociation, err = DescribeTransitGatewayRouteTableAssociation(conn, associationRtbId, d.Id())
+
 		if err != nil {
-			return fmt.Errorf("error determining EC2 Transit Gateway Attachment (%s) association to Route Table (%s): %s", d.Id(), transitGatewayAssociationDefaultRouteTableID, err)
+			return fmt.Errorf(
+				"error determining EC2 Transit Gateway Attachment (%s) association to Route Table (%s): %s",
+				d.Id(), associationRtbId, err,
+			)
 		}
 
-		transitGatewayPropagationDefaultRouteTableID := aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId)
-		transitGatewayDefaultRouteTablePropagation, err = FindTransitGatewayRouteTablePropagation(conn, transitGatewayPropagationDefaultRouteTableID, d.Id())
-		if err != nil {
-			return fmt.Errorf("error determining EC2 Transit Gateway Attachment (%s) propagation to Route Table (%s): %s", d.Id(), transitGatewayPropagationDefaultRouteTableID, err)
-		}
-	}
+		// FIXME: Uncomment after route table propagation is supported in C2 EC2 API.
+		//transitGatewayPropagationDefaultRouteTableID := aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId)
+		//transitGatewayDefaultRouteTablePropagation, err = FindTransitGatewayRouteTablePropagation(conn, transitGatewayPropagationDefaultRouteTableID, d.Id())
+		//if err != nil {
+		//	return fmt.Errorf("error determining EC2 Transit Gateway Attachment (%s) propagation to Route Table (%s): %s", d.Id(), transitGatewayPropagationDefaultRouteTableID, err)
+		//}
 
-	if transitGatewayVpcAttachment.Options == nil {
-		return fmt.Errorf("error reading EC2 Transit Gateway VPC Attachment (%s): missing options", d.Id())
+		transitGatewayDefaultRouteTablePropagation = nil
 	}
-
-	d.Set("appliance_mode_support", transitGatewayVpcAttachment.Options.ApplianceModeSupport)
-	d.Set("dns_support", transitGatewayVpcAttachment.Options.DnsSupport)
-	d.Set("ipv6_support", transitGatewayVpcAttachment.Options.Ipv6Support)
 
 	if err := d.Set("subnet_ids", aws.StringValueSlice(transitGatewayVpcAttachment.SubnetIds)); err != nil {
 		return fmt.Errorf("error setting subnet_ids: %s", err)

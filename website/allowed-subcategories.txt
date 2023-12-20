@@ -8,5 +8,6 @@ EKS (Elastic Kubernetes)
 ELB (Elastic Load Balancing)
 Route 53
 S3 (Simple Storage)
+Transit Gateway
 VPC (Virtual Private Cloud)
 VPN (Site-to-Site)

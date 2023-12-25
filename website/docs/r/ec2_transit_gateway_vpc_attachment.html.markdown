@@ -63,9 +63,12 @@ The following arguments are supported:
   If configured with a provider [`default_tags` configuration block][default-tags] present,
   tags with matching keys will overwrite those defined at the provider-level.
 * `transit_gateway_default_route_table_association` - (Optional) Indicates whether the transit gateway VPC attachment
-  should be associated with the transit gateway default route table. Defaults to `true`.
+  should be associated with the transit gateway default association route table. Defaults to `true`.
+* `transit_gateway_default_route_table_propagation` - (Optional) Indicates whether the transit gateway VPC attachment
+  should propagate routes to the transit gateway default propagation route table. Defaults to `true`.
 
-~> `transit_gateway_default_route_table_association` cannot be configured for shared transit gateways.  
+~> `transit_gateway_default_route_table_association` and `transit_gateway_default_route_table_propagation`
+cannot be configured for shared transit gateways.  
 
 ## Attribute Reference
 
@@ -81,7 +84,6 @@ These attributes are currently unsupported by CROC Cloud:
 * `appliance_mode_support` - Whether Appliance Mode support is enabled. Always empty.
 * `dns_support` - Whether DNS support is enabled. Always empty.
 * `ipv6_support` - Whether IPv6 support is enabled. Always empty.
-* `transit_gateway_default_route_table_propagation` - Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. Always `true`.
 
 ## Import
 

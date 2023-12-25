@@ -78,6 +78,7 @@ func ResourceTransitGateway() *schema.Resource {
 			"default_route_table_propagation": {
 				Type:         schema.TypeString,
 				Optional:     true,
+				Default:      ec2.DefaultRouteTablePropagationValueEnable,
 				ValidateFunc: validation.StringInSlice(ec2.DefaultRouteTablePropagationValue_Values(), false),
 			},
 			"description": {
@@ -142,6 +143,7 @@ func resourceTransitGatewayCreate(d *schema.ResourceData, meta interface{}) erro
 	input := &ec2.CreateTransitGatewayInput{
 		Options: &ec2.TransitGatewayRequestOptions{
 			DefaultRouteTableAssociation: aws.String(d.Get("default_route_table_association").(string)),
+			DefaultRouteTablePropagation: aws.String(d.Get("default_route_table_propagation").(string)),
 		},
 		TagSpecifications: ec2TagSpecificationsFromKeyValueTags(tags, ec2.ResourceTypeTransitGateway),
 	}

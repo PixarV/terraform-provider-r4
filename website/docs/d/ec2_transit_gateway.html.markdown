@@ -51,10 +51,12 @@ The following arguments are supported:
 
 In addition to all arguments above, the following attributes are exported:
 
-* `association_default_route_table_id` - The ID of the default transit gateway route table.
-* `default_route_table_association` - Indicates whether the default transit gateway route table is created automatically.
+* `association_default_route_table_id` - The ID of the default association route table.
+* `default_route_table_association` - Indicates whether the association with default association route table is created automatically.
+* `default_route_table_propagation` - Indicates whether the routes are automatically propagated to the default propagation route table.
 * `description` - The description of the transit gateway
 * `owner_id` - The ID of CROC Cloud account that owns the transit gateway.
+* `propagation_default_route_table_id` - The ID of the default propagation route table.
 * `shared_owners` - List of CROC Cloud account IDs that are granted access to the transit gateway.
 * `tags` - Map of tags assigned to the transit gateway.
 
@@ -64,10 +66,8 @@ These attributes are currently unsupported by CROC Cloud:
 * `amazon_side_asn` - Private Autonomous System Number (ASN) for the Amazon side of a BGP session. Always `0`.
 * `arn` - The ARN of the transit gateway. Always `""`.
 * `auto_accept_shared_attachments` - Whether resource attachment requests are automatically accepted. Always `""`.
-* `default_route_table_propagation` - Whether resource attachments automatically propagate routes to the default propagation route table. Always `""`.
 * `dns_support` - Whether DNS support is enabled. Always `""`.
 * `multicast_support` - Whether Multicast support is enabled. Always `""`.
-* `propagation_default_route_table_id` - The ID of the default propagation route table. Always `""`.
 * `transit_gateway_cidr_blocks` - One or more IPv4 or IPv6 CIDR blocks for the transit gateway. Always empty.
 * `vpn_ecmp_support` - Whether VPN Equal Cost Multipath Protocol support is enabled. Always `""`.
 

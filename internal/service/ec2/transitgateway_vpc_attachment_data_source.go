@@ -92,15 +92,6 @@ func dataSourceTransitGatewayVPCAttachmentRead(d *schema.ResourceData, meta inte
 		return errors.New("error reading EC2 Transit Gateway VPC Attachments: empty result")
 	}
 
-	// todo: add comment
-	//if transitGatewayVpcAttachment.Options == nil {
-	//	return fmt.Errorf("error reading EC2 Transit Gateway VPC Attachment (%s): missing options", d.Id())
-	//}
-
-	//d.Set("appliance_mode_support", transitGatewayVpcAttachment.Options.ApplianceModeSupport)
-	//d.Set("dns_support", transitGatewayVpcAttachment.Options.DnsSupport)
-	//d.Set("ipv6_support", transitGatewayVpcAttachment.Options.Ipv6Support)
-
 	if err := d.Set("subnet_ids", aws.StringValueSlice(transitGatewayVpcAttachment.SubnetIds)); err != nil {
 		return fmt.Errorf("error setting subnet_ids: %w", err)
 	}

@@ -138,10 +138,15 @@ func resourceTransitGatewayVPCAttachmentCreate(d *schema.ResourceData, meta inte
 			)
 		}
 
-		// FIXME: Uncomment after route table propagation is supported in C2 EC2 API.
-		//if err := transitGatewayRouteTablePropagationUpdate(conn, aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId), d.Id(), d.Get("transit_gateway_default_route_table_propagation").(bool)); err != nil {
-		//	return fmt.Errorf("error updating EC2 Transit Gateway Attachment (%s) Route Table (%s) propagation: %s", d.Id(), aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId), err)
-		//}
+		propagationRtbId := aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId)
+		propagate := d.Get("transit_gateway_default_route_table_propagation").(bool)
+
+		if err := transitGatewayRouteTablePropagationUpdate(conn, propagationRtbId, d.Id(), propagate); err != nil {
+			return fmt.Errorf(
+				"error updating EC2 Transit Gateway Attachment (%s) Route Table (%s) propagation: %s",
+				d.Id(), propagationRtbId, err,
+			)
+		}
 	}
 
 	return resourceTransitGatewayVPCAttachmentRead(d, meta)
@@ -202,14 +207,14 @@ func resourceTransitGatewayVPCAttachmentRead(d *schema.ResourceData, meta interf
 			)
 		}
 
-		// FIXME: Uncomment after route table propagation is supported in C2 EC2 API.
-		//transitGatewayPropagationDefaultRouteTableID := aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId)
-		//transitGatewayDefaultRouteTablePropagation, err = FindTransitGatewayRouteTablePropagation(conn, transitGatewayPropagationDefaultRouteTableID, d.Id())
-		//if err != nil {
-		//	return fmt.Errorf("error determining EC2 Transit Gateway Attachment (%s) propagation to Route Table (%s): %s", d.Id(), transitGatewayPropagationDefaultRouteTableID, err)
-		//}
-
-		transitGatewayDefaultRouteTablePropagation = nil
+		propagationRtbId := aws.StringValue(transitGateway.Options.PropagationDefaultRouteTableId)
+		transitGatewayDefaultRouteTablePropagation, err = FindTransitGatewayRouteTablePropagation(conn, propagationRtbId, d.Id())
+		if err != nil {
+			return fmt.Errorf(
+				"error determining EC2 Transit Gateway Attachment (%s) propagation to Route Table (%s): %s",
+				d.Id(), propagationRtbId, err,
+			)
+		}
 	}
 
 	if err := d.Set("subnet_ids", aws.StringValueSlice(transitGatewayVpcAttachment.SubnetIds)); err != nil {

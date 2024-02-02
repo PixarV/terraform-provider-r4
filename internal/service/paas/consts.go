@@ -9,6 +9,7 @@ const (
 	ServiceStatusDeleted      = "DELETED"
 	ServiceStatusReady        = "READY"
 	ServiceStatusError        = "ERROR"
+	ServiceStatusRecovering   = "RECOVERING"
 )
 
 const (

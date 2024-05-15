@@ -735,7 +735,7 @@ func resourceBucketCreate(d *schema.ResourceData, meta interface{}) error {
 	// See "Request Elements: http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUT.html
 	if awsRegion != endpoints.UsEast1RegionID {
 		req.CreateBucketConfiguration = &s3.CreateBucketConfiguration{
-			LocationConstraint: aws.String(awsRegion),
+			//LocationConstraint: aws.String(awsRegion),
 		}
 	}
 

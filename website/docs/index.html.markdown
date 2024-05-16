@@ -13,7 +13,7 @@ description: |-
 
 # CROC Cloud Provider
 
-ritt -> pixarv renaming
+pixarv -> r4 renaming
 
 The CROC Cloud Provider is based on the AWS Provider.
 Use it to interact with CROC Cloud services.

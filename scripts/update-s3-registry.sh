@@ -120,7 +120,7 @@ if [[ -n "${S3_BACKUP_DIR}" ]]; then
 
   mkdir -p "${S3_BACKUP_DIR}"
 
-  s3cmd sync --quiet "s3://${S3_BUCKET_NAME}/" "${S3_BACKUP_DIR}/${S3_BUCKET_NAME}-${timestamp}/"
+  s3cmd sync --quiet --no-preserve "s3://${S3_BUCKET_NAME}/" "${S3_BACKUP_DIR}/${S3_BUCKET_NAME}-${timestamp}/"
 
   echo "Finish backup"
 fi

@@ -250,7 +250,7 @@ func dataSourceAMIRead(d *schema.ResourceData, meta interface{}) error {
 
 	log.Printf("[DEBUG] filtered ami: %v", filteredImages)
 
-	log.Printf("[DEBUG] hey v2")
+	log.Printf("[DEBUG] hey v3")
 
 	if len(filteredImages) < 1 {
 		return fmt.Errorf("Your query returned no results. Please change your search criteria and try again.")

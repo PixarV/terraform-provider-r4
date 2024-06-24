@@ -1,4 +1,4 @@
-# Terraform C2 Provider
+# Terraform Rockit Cloud Provider
 
 Адаптация [Terraform AWS Provider](https://github.com/hashicorp/terraform-provider-aws) от **HashiCorp**
 под **Rokit Cloud**.
@@ -43,7 +43,7 @@
 ресурсами некоего сервиса (например, облака или БД) через его API. Для каждого ресурса в провайдер добавляется
 схема и CRUD операции. Информация об API предоставляется в виде отдельного модуля.
 
-**Terraform C2 Provider** реализуется на базе **Terraform AWS Provider**.
+**Terraform Rockit Cloud Provider** реализуется на базе **Terraform AWS Provider**.
 Также создан форк модуля с AWS API: [C2Devel/aws-sdk-go](https://github.com/C2Devel/aws-sdk-go).
 
 Для публикации провайдера в официальном [terraform registry](https://registry.terraform.io/) под новым именем
@@ -262,7 +262,7 @@ $ make docscheck
 **Важно!** Не допускается обновление уже выпущенных версий, т.к. могут возникнуть проблемы со скачиванием провайдера
 из terraform registry.
 
-Стартовая версия: **v24.0.0**
+Стартовая версия: **v24.1.0**
 
 ### Релиз
 

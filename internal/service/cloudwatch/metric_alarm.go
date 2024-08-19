@@ -55,15 +55,17 @@ func ResourceMetricAlarm() *schema.Resource {
 				ValidateFunc: validation.IntAtLeast(1),
 			},
 			"metric_name": {
-				Type:          schema.TypeString,
-				Required:      true,
-				ConflictsWith: []string{"metric_query"},
-				ValidateFunc:  validation.StringLenBetween(1, 255),
+				Type:     schema.TypeString,
+				Required: true,
+				// Disabled due to metric_name is required and metric_query is unsupported.
+				// ConflictsWith: []string{"metric_query"},
+				ValidateFunc: validation.StringLenBetween(1, 255),
 			},
 			"metric_query": {
-				Type:          schema.TypeSet,
-				Optional:      true,
-				ConflictsWith: []string{"metric_name"},
+				Type:     schema.TypeSet,
+				Optional: true,
+				// Disabled due to metric_query is unsupported and metric_name is required.
+				// ConflictsWith: []string{"metric_name"},
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"id": {
@@ -142,38 +144,43 @@ func ResourceMetricAlarm() *schema.Resource {
 				},
 			},
 			"namespace": {
-				Type:          schema.TypeString,
-				Required:      true,
-				ConflictsWith: []string{"metric_query"},
+				Type:     schema.TypeString,
+				Required: true,
+				// Disabled due to namespace is required and metric_query is unsupported.
+				// ConflictsWith: []string{"metric_query"},
 				ValidateFunc: validation.All(
 					validation.StringLenBetween(1, 255),
 				),
 			},
 			"period": {
-				Type:          schema.TypeInt,
-				Required:      true,
-				ConflictsWith: []string{"metric_query"},
+				Type:     schema.TypeInt,
+				Required: true,
+				// Disabled due to period is required and metric_query is unsupported.
+				// ConflictsWith: []string{"metric_query"},
 				ValidateFunc: validation.All(
 					validation.IntDivisibleBy(60),
 					validation.IntAtLeast(60),
 				),
 			},
 			"statistic": {
-				Type:          schema.TypeString,
-				Required:      true,
-				ConflictsWith: []string{"extended_statistic", "metric_query"},
-				ValidateFunc:  validation.StringInSlice(cloudwatch.Statistic_Values(), false),
+				Type:     schema.TypeString,
+				Required: true,
+				// Disabled due to statistic is required, extended_statistic and metric_query is unsupported.
+				// ConflictsWith: []string{"extended_statistic", "metric_query"},
+				ValidateFunc: validation.StringInSlice(cloudwatch.Statistic_Values(), false),
 			},
 			"threshold": {
-				Type:          schema.TypeFloat,
-				Required:      true,
-				ConflictsWith: []string{"threshold_metric_id"},
+				Type:     schema.TypeFloat,
+				Required: true,
+				// Disabled due to threshold is required and threshold_metric_id is unsupported.
+				// ConflictsWith: []string{"threshold_metric_id"},
 			},
 			"threshold_metric_id": {
-				Type:          schema.TypeString,
-				Optional:      true,
-				ConflictsWith: []string{"threshold"},
-				ValidateFunc:  validation.StringLenBetween(1, 255),
+				Type:     schema.TypeString,
+				Optional: true,
+				// Disabled due to threshold_metric_id is unsupported and threshold is required.
+				// ConflictsWith: []string{"threshold"},
+				ValidateFunc: validation.StringLenBetween(1, 255),
 			},
 			"actions_enabled": {
 				Type:     schema.TypeBool,
@@ -201,11 +208,11 @@ func ResourceMetricAlarm() *schema.Resource {
 				ValidateFunc: validation.IntAtLeast(1),
 			},
 			"dimensions": {
-				Type:          schema.TypeMap,
-				Required:      true,
-				ConflictsWith: []string{"metric_query"},
-				MaxItems:      10,
-				Elem:          &schema.Schema{Type: schema.TypeString},
+				Type:     schema.TypeMap,
+				Required: true,
+				// Disabled due to dimensions is required and metric_query is unsupported.
+				// ConflictsWith: []string{"metric_query"},
+				Elem: &schema.Schema{Type: schema.TypeString},
 			},
 			"insufficient_data_actions": {
 				Type:     schema.TypeSet,
@@ -231,9 +238,13 @@ func ResourceMetricAlarm() *schema.Resource {
 				ValidateFunc: validation.StringInSlice(cloudwatch.StandardUnit_Values(), false),
 			},
 			"extended_statistic": {
-				Type:          schema.TypeString,
-				Optional:      true,
-				ConflictsWith: []string{"statistic", "metric_query"},
+				Type:     schema.TypeString,
+				Optional: true,
+				ConflictsWith: []string{
+					// Disabled due to extended_statistic is unsupported and statistic is required.
+					// "statistic",
+					"metric_query",
+				},
 				ValidateFunc: validation.StringMatch(
 					// doesn't catch: PR with %-values provided, TM/WM/PR/TC/TS with no values provided
 					regexp.MustCompile(`^((p|(tm)|(wm)|(tc)|(ts))((\d{1,2}(\.\d{1,2})?)|(100))|(IQM)|(((TM)|(WM)|(PR)|(TC)|(TS)))\((\d+(\.\d+)?%?)?:(\d+(\.\d+)?%?)?\))$`),
@@ -411,12 +422,6 @@ func resourceMetricAlarmRead(d *schema.ResourceData, meta interface{}) error {
 	}
 	d.Set("evaluate_low_sample_count_percentiles", resp.EvaluateLowSampleCountPercentile)
 
-	// Some partitions (i.e., ISO) may not support tagging, giving error
-	if verify.CheckISOErrorTagsUnsupported(err) {
-		log.Printf("[WARN] failed listing tags for CloudWatch Metric Alarm (%s): %s", d.Id(), err)
-		return nil
-	}
-
 	return nil
 }
 
@@ -430,23 +435,6 @@ func resourceMetricAlarmUpdate(d *schema.ResourceData, meta interface{}) error {
 		return fmt.Errorf("Updating metric alarm failed: %w", err)
 	}
 	log.Println("[INFO] CloudWatch Metric Alarm updated")
-
-	arn := d.Get("arn").(string)
-	if d.HasChange("tags_all") {
-		o, n := d.GetChange("tags_all")
-
-		err := UpdateTags(conn, arn, o, n)
-
-		// Some partitions (i.e., ISO) may not support tagging, giving error
-		if verify.CheckISOErrorTagsUnsupported(err) {
-			log.Printf("[WARN] failed updating tags for CloudWatch Metric Alarm (%s): %s", d.Id(), err)
-			return resourceMetricAlarmRead(d, meta)
-		}
-
-		if err != nil {
-			return fmt.Errorf("failed updating tags for CloudWatch Metric Alarm (%s): %w", d.Id(), err)
-		}
-	}
 
 	return resourceMetricAlarmRead(d, meta)
 }

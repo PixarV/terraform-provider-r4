@@ -1,0 +1,89 @@
+---
+subcategory: "IAM (Identity & Access Management)"
+layout: "aws"
+page_title: "aws_iam_user"
+description: |-
+  Provides an IAM user.
+---
+
+[iam-users-and-projects]: https://docs.cloud.croc.ru/en/services/iam/iam.html
+[RFC3339 format]: https://datatracker.ietf.org/doc/html/rfc3339#section-5.8
+
+# Resource: aws_iam_user
+
+Manages an IAM user. For details about IAM users, see the [user documentation][iam-users-and-projects].
+
+todo: check
+~> If policies are attached to the user via the [`aws_iam_policy_attachment` resource](/docs/providers/aws/r/iam_policy_attachment.html) and you are modifying the user `name` or `path`, the `force_destroy` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The [`aws_iam_user_policy_attachment` resource (recommended)](/docs/providers/aws/r/iam_user_policy_attachment.html) does not have this requirement.
+
+## Example Usage
+
+### Predefined Password
+
+```terraform
+resource "aws_iam_user" "example" {
+  name     = "tf-user"
+  password = "********"
+  email    = "example@mail.com"
+}
+```
+
+### Generated Password
+
+```terraform
+resource "aws_iam_user" "example" {
+  name = "tf-user"
+}
+
+output "tf-user-password" {
+  value = aws_iam_user.example.password
+}
+```
+
+## Argument Reference
+
+The following arguments are supported:
+
+* `display_name` - (Optional, Editable) The displayed name of the user.
+  If no value is specified, `name` will be used as the displayed name.
+* `email` - (Optional, Editable) The email of the user.
+* `name` - (Required) The name of the user. The value must start with a Latin letter and
+  can only contain Latin letters, numbers, underscores (_), periods (.) and hyphens (-) (`^[a-zA-Z][a-zA-Z0-9_.-]*$`).
+  The value must be 1 to 40 characters long.
+
+~> Usernames are not case-sensitive. For example, you cannot create users named both "TESTUSER" and "testuser".
+
+* `otp_required` - (Optional) Indicates whether the user is required to use two-factor authentication to log in to the web interface.
+  Defaults to `false`.
+* `password` - (Optional, Editable) The password of the user. If no value is specified, the password will be generated.
+* `phone` - (Optional, Editable) The phone number of the user.
+
+## Attribute Reference
+
+In addition to all arguments above, the following attributes are exported:
+
+* `arn` - The Amazon Resource Name (ARN) of the user.
+* `id` - The name of the user.
+todo * `enabled` - Indicates whether the user is locked.
+* `identity_provider` - The ID of the identity provider of the user. It is specified only for IdP users.
+* `last_login_date` - The time when the user last logged in to the web interface in [RFC3339 format].
+* `login` - The login of the user.
+* `unique_id` - The ID of the user.
+* `secret_key` - The secret key of the user. todo: after create only
+* `update_date` - The time the user was last updated in [RFC3339 format].
+
+->  **Unsupported attributes**
+These attributes are currently unsupported:
+
+* `force_destroy` - When destroying this user, destroy even if it
+  has non-Terraform-managed IAM access keys, login profile or MFA devices. Always `false`.
+* `path` - Path in which to create the user. Always `""`.
+* `permissions_boundary` - The ARN of the policy that is used to set the permissions boundary for the user. Always empty.
+
+## Import
+
+IAM user can be imported using `name`, e.g.,
+
+```
+$ terraform import aws_iam_user.example user
+```

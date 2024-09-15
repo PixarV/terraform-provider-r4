@@ -101,7 +101,7 @@ func dataSourceGroupUsersRead(iamUsers []*iam.User) []map[string]interface{} {
 	users := make([]map[string]interface{}, 0, len(iamUsers))
 	for _, i := range iamUsers {
 		u := make(map[string]interface{})
-		u["arn"] = aws.StringValue(i.Arn)
+		u["arn"] = aws.StringValue(i.UserArn)
 		u["user_id"] = aws.StringValue(i.UserId)
 		u["user_name"] = aws.StringValue(i.UserName)
 		u["path"] = aws.StringValue(i.Path)

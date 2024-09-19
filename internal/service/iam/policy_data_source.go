@@ -86,7 +86,6 @@ func dataSourcePolicyRead(d *schema.ResourceData, meta interface{}) error {
 	if arn == "" {
 		policies, err := FindPolicies(conn, arn, name, pathPrefix)
 
-		// todo: fix err messages
 		if err != nil {
 			return fmt.Errorf("error reading IAM policy (%s): %w", PolicySearchDetails(arn, name, pathPrefix), err)
 		}
@@ -123,7 +122,7 @@ func dataSourcePolicyRead(d *schema.ResourceData, meta interface{}) error {
 	d.Set("name", policy.PolicyName)
 	d.Set("owner", policy.Owner)
 	d.Set("path", policy.Path)
-	d.Set("policy", policy.Document) // todo: check if need call `url.QueryUnescape`
+	d.Set("policy", policy.Document)
 	d.Set("policy_id", policy.PolicyId)
 
 	if err := d.Set("tags", KeyValueTags(policy.Tags).IgnoreAWS().IgnoreConfig(ignoreTagsConfig).Map()); err != nil {
@@ -138,7 +137,7 @@ func dataSourcePolicyRead(d *schema.ResourceData, meta interface{}) error {
 		d.Set("update_date", nil)
 	}
 
-	// FIXME: Policy versions are unsupported
+	// FIXME: Policy versions are unsupported.
 	// // Retrieve policy
 	// policyVersionInput := &iam.GetPolicyVersionInput{
 	// 	PolicyArn: policy.Arn,

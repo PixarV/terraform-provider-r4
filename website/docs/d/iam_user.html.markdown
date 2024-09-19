@@ -3,19 +3,19 @@ subcategory: "IAM (Identity & Access Management)"
 layout: "aws"
 page_title: "aws_iam_user"
 description: |-
-  Provides information about a IAM user.
+  Provides information about an IAM user.
 ---
 
 [RFC3339 format]: https://datatracker.ietf.org/doc/html/rfc3339#section-5.8
 
 # Data Source: aws_iam_user
 
-Provides information about a IAM user.
+Provides information about an IAM user.
 
 ## Example Usage
 
 ```terraform
-data "aws_iam_user" "example" {
+data "aws_iam_user" "selected" {
   user_name = "user"
 }
 ```
@@ -44,4 +44,4 @@ These attributes are currently unsupported:
 
 * `path` - Path in which this user was created. Always `""`.
 * `permissions_boundary` - The ARN of the policy that is used to set the permissions boundary for the user. Always `""`.
-* `tags` - Map of tags assigned to the user. Always `{}`.
+* `tags` - Map of tags assigned to the user. Always empty.

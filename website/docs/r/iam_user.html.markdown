@@ -6,12 +6,12 @@ description: |-
   Provides an IAM user.
 ---
 
-[iam]: https://docs.cloud.croc.ru/en/services/iam/index.html
+[iam-users]: https://docs.cloud.croc.ru/en/services/iam/iam.html#iammanual
 [RFC3339 format]: https://datatracker.ietf.org/doc/html/rfc3339#section-5.8
 
 # Resource: aws_iam_user
 
-Manages an IAM user. For details about IAM, see the [user documentation][iam].
+Manages an IAM user. For details about IAM users, see the [user documentation][iam-users].
 
 todo: check
 ~> If policies are attached to the user via the [`aws_iam_policy_attachment` resource](/docs/providers/aws/r/iam_policy_attachment.html) and you are modifying the user `name` or `path`, the `force_destroy` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The [`aws_iam_user_policy_attachment` resource (recommended)](/docs/providers/aws/r/iam_user_policy_attachment.html) does not have this requirement.
@@ -34,7 +34,7 @@ The following arguments are supported:
 * `display_name` - (Required, Editable) The displayed name of the user.
 * `email` - (Optional, Editable) The email of the user.
 * `name` - (Required) The name of the user. The value must start with a Latin letter and
-  can only contain Latin letters, numbers, underscores (_), periods (.) and hyphens (-).
+  can only contain Latin letters, numbers, underscores (_), periods (.) and hyphens (-) (`^[a-zA-Z][a-zA-Z0-9_.-]*$`).
   The value must be 1 to 40 characters long.
 
 ~> Usernames are not case-sensitive. For example, you cannot create users named both "TESTUSER" and "testuser".
@@ -68,7 +68,7 @@ These attributes are currently unsupported:
 
 ## Import
 
-IAM User can be imported using `name`, e.g.,
+IAM user can be imported using `name`, e.g.,
 
 ```
 $ terraform import aws_iam_user.example user

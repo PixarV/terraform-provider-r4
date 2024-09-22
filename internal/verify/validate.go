@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
 )
 
-var accountIDRegexp = regexp.MustCompile(`^(aws|aws-managed|\d{12}|([A-z][\w\.-]+@)?[\w\.-])+$`)
+var accountIDRegexp = regexp.MustCompile(`^(aws|aws-managed|\d{12}|([A-z][\w.-]+@)?[\w.-])+$`)
 var partitionRegexp = regexp.MustCompile(`^(aws|c2)(-[a-z]+)*$`)
 var regionRegexp = regexp.MustCompile(`^[a-z][a-z\d\-]*$`)
 

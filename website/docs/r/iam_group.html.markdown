@@ -14,7 +14,11 @@ description: |-
 Manages an IAM group. For details about IAM groups, see the [user documentation][iam-policies-and-groups].
 
 todo: check
-~> **NOTE on user management:** Using `aws_iam_group_membership` or `aws_iam_user_group_membership` resources in addition to manually managing user/group membership using the console may lead to configuration drift or conflicts. For this reason, it's recommended to either manage membership entirely with Terraform or entirely within the AWS console.
+~> **NOTE on user management:** 
+Using `aws_iam_group_membership` or `aws_iam_user_group_membership` resources in addition 
+to manually managing user/group membership using the console may lead to configuration drift or conflicts. 
+For this reason, it's recommended to either manage membership entirely with Terraform 
+or entirely within the cloud console.
 
 ## Example Usage
 
@@ -40,9 +44,9 @@ In addition to all arguments above, the following attributes are exported:
 
 * `arn` - The Amazon Resource Name (ARN) of the group.
 * `create_date` - The time when the group was created in [RFC3339 format].
+* `group_id` - The ID of the group.
 * `id` - The ARN of the group.
 * `owner` - The owner of the group.
-* `unique_id` - The ID of the group.
 
 ->  **Unsupported attributes**
 These attributes are currently unsupported:

@@ -10,9 +10,6 @@ description: |-
 
 Attaches an IAM Policy to an IAM group.
 
-todo: check
-~> **NOTE:** The usage of this resource conflicts with the `aws_iam_policy_attachment` resource and will permanently show a difference if both are defined.
-
 ## Example Usage
 
 ```terraform

@@ -35,6 +35,10 @@ resource "aws_iam_user" "user2" {
   name = "tf-user-2"
 }
 
+resource "aws_iam_project" "project" {
+  name = "tf-project"
+}
+
 resource "aws_iam_group_membership" "global-group" {
   name = "tf-global-group-membership"
 
@@ -50,7 +54,7 @@ resource "aws_iam_group_membership" "project-group" {
   name = "tf-project-group-membership"
 
   group_arn = aws_iam_group.group2.arn
-  project   = "user" # todo: user resource
+  project   = aws_iam_project.example.name
 
   users = [
     aws_iam_user.user2.name,

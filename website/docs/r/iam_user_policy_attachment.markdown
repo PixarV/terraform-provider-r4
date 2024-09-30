@@ -10,14 +10,15 @@ description: |-
 
 Attaches an IAM Policy to an IAM user.
 
-todo: check
-~> **NOTE:** The usage of this resource conflicts with the `aws_iam_policy_attachment` resource and will permanently show a difference if both are defined.
-
 ## Example Usage
 
 ```terraform
 resource "aws_iam_user" "example" {
   name = "tf-user"
+}
+
+resource "aws_iam_project" "example" {
+  name = "tf-project" 
 }
 
 resource "aws_iam_policy" "global-policy" {
@@ -60,7 +61,7 @@ resource "aws_iam_user_policy_attachment" "attach-global" {
 
 resource "aws_iam_user_policy_attachment" "attach-project" {
   user       = aws_iam_user.example.name
-  project    = "user" # todo: use resource
+  project    = aws_iam_project.example.name
   policy_arn = aws_iam_policy.project-policy.arn
 }
 ```

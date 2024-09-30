@@ -36,9 +36,9 @@ The following arguments are supported:
 
 ## Attribute Reference
 
-* `arns` - List of user ARNs.
+* `arns` - List of ARNs of the users.
 * `id` - The region (e.g., `region-1`).
-* `names` - List of usernames.
+* `names` - List of names of the users.
 
 ->  **Unsupported attributes**
 These attributes are currently unsupported:

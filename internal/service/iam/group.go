@@ -38,6 +38,10 @@ func ResourceGroup() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
+			"group_id": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
 			"name": {
 				Type:         schema.TypeString,
 				Required:     true,
@@ -58,11 +62,6 @@ func ResourceGroup() *schema.Resource {
 				Required:     true,
 				ForceNew:     true,
 				ValidateFunc: validation.StringInSlice(iam.GrantsTypeType_Values(), false),
-			},
-			// todo: or group id
-			"unique_id": {
-				Type:     schema.TypeString,
-				Computed: true,
 			},
 		},
 	}
@@ -121,7 +120,7 @@ func resourceGroupRead(d *schema.ResourceData, meta interface{}) error {
 	d.Set("owner", group.Owner)
 	d.Set("path", group.Path)
 	d.Set("type", group.Type)
-	d.Set("unique_id", group.GroupId)
+	d.Set("group_id", group.GroupId)
 
 	return nil
 }

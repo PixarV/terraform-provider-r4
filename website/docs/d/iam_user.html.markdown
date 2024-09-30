@@ -16,20 +16,20 @@ Provides information about an IAM user.
 
 ```terraform
 data "aws_iam_user" "selected" {
-  user_name = "user"
+  name = "user-name"
 }
 ```
 
 ## Argument Reference
 
-* `user_name` - (Required) The name of the user.
+* `name` - (Required) The name of the user.
 
 ## Attribute Reference
 
 * `arn` - The Amazon Resource Name (ARN) of the user.
 * `display_name` - The displayed name of the user.
 * `email` - The email of the user.
-todo * `enabled` - Indicates whether the user is locked.
+* `enabled` - Indicates whether the user is **not** locked.
 * `id` - The ID of the user.
 * `identity_provider` - The ID of the identity provider of the user. It is specified only for IdP users.
 * `last_login_date` - The time when the user last logged in to the web interface in [RFC3339 format].

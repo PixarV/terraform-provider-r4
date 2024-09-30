@@ -43,6 +43,10 @@ func DataSourceUser() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
+			"name": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
 			"otp_required": {
 				Type:     schema.TypeBool,
 				Computed: true,
@@ -59,6 +63,7 @@ func DataSourceUser() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
+			"tags": tftags.TagsSchemaComputed(),
 			"update_date": {
 				Type:     schema.TypeString,
 				Computed: true,
@@ -67,11 +72,6 @@ func DataSourceUser() *schema.Resource {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"user_name": {
-				Type:     schema.TypeString,
-				Required: true,
-			},
-			"tags": tftags.TagsSchemaComputed(),
 		},
 	}
 }
@@ -80,14 +80,16 @@ func dataSourceUserRead(d *schema.ResourceData, meta interface{}) error {
 	conn := meta.(*conns.AWSClient).IAMConn
 	ignoreTagsConfig := meta.(*conns.AWSClient).IgnoreTagsConfig
 
-	userName := d.Get("user_name").(string)
-	user, err := FindUserByName(conn, userName)
+	name := d.Get("name").(string)
+	user, err := FindUserByName(conn, name)
 
 	if err != nil {
 		return fmt.Errorf("error reading IAM user: %w", err)
 	}
 
+	// todo: still thinking
 	d.SetId(aws.StringValue(user.UserId))
+
 	d.Set("arn", user.UserArn)
 	d.Set("display_name", user.DisplayName)
 	d.Set("email", user.Email)
@@ -101,6 +103,7 @@ func dataSourceUserRead(d *schema.ResourceData, meta interface{}) error {
 	}
 
 	d.Set("login", user.Login)
+	d.Set("name", user.UserName)
 	d.Set("otp_required", user.OtpRequired)
 	d.Set("path", user.Path)
 
@@ -117,7 +120,6 @@ func dataSourceUserRead(d *schema.ResourceData, meta interface{}) error {
 		d.Set("update_date", nil)
 	}
 
-	d.Set("user_name", user.UserName)
 	d.Set("user_id", user.UserId)
 
 	tags := KeyValueTags(user.Tags).IgnoreAWS().IgnoreConfig(ignoreTagsConfig)

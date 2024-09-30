@@ -40,7 +40,6 @@ func ResourceUser() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
-				// todo: mark optional in doc + password
 			},
 			"email": {
 				Type:     schema.TypeString,
@@ -111,21 +110,12 @@ func ResourceUser() *schema.Resource {
 			"secret_key": {
 				Type:     schema.TypeString,
 				Computed: true,
-				// todo: check after regen or add explanation to doc + password
 			},
-			/*
-				The UniqueID could be used as the Id(), but none of the API
-				calls allow specifying a user by the UniqueID: they require the
-				name. The only way to locate a user by UniqueID is to list them
-				all and that would make this provider unnecessarily complex
-				and inefficient. Still, there are other reasons one might want
-				the UniqueID, so we can make it available.
-			*/
-			"unique_id": {
+			"update_date": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
-			"update_date": {
+			"user_id": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
@@ -137,32 +127,32 @@ func resourceUserCreate(d *schema.ResourceData, meta interface{}) error {
 	conn := meta.(*conns.AWSClient).IAMConn
 	name := d.Get("name").(string)
 
-	request := &iam.CreateUserInput{
+	input := &iam.CreateUserInput{
 		UserName: aws.String(name),
 	}
 
 	if v, ok := d.GetOk("display_name"); ok {
-		request.DisplayName = aws.String(v.(string))
+		input.DisplayName = aws.String(v.(string))
 	} else {
-		request.DisplayName = aws.String(name)
+		input.DisplayName = aws.String(name)
 	}
 
 	if v, ok := d.GetOk("email"); ok {
-		request.Email = aws.String(v.(string))
+		input.Email = aws.String(v.(string))
 	}
 
 	if v, ok := d.GetOk("otp_required"); ok {
-		request.OtpRequired = aws.Bool(v.(bool))
+		input.OtpRequired = aws.Bool(v.(bool))
 	}
 
 	if v, ok := d.GetOk("path"); ok {
-		request.Path = aws.String(v.(string))
+		input.Path = aws.String(v.(string))
 	}
 
 	var password string
 	if v, ok := d.GetOk("password"); ok {
 		password = v.(string)
-		request.Password = aws.String(password)
+		input.Password = aws.String(password)
 	} else {
 		generatedPassword, err := GeneratePassword(RandomPasswordLength)
 
@@ -171,41 +161,41 @@ func resourceUserCreate(d *schema.ResourceData, meta interface{}) error {
 		}
 
 		password = generatedPassword
-		request.Password = aws.String(generatedPassword)
+		input.Password = aws.String(generatedPassword)
 	}
 
 	if v, ok := d.GetOk("permissions_boundary"); ok {
-		request.PermissionsBoundary = aws.String(v.(string))
+		input.PermissionsBoundary = aws.String(v.(string))
 	}
 
-	log.Println("[DEBUG] Create IAM user request:", request)
-	resp, err := conn.CreateUser(request)
+	log.Printf("[DEBUG] Creating IAM user: %s", input)
+	output, err := conn.CreateUser(input)
 
 	if err != nil {
 		return fmt.Errorf("failed creating IAM user (%s): %w", name, err)
 	}
 
-	d.SetId(aws.StringValue(resp.User.UserName))
+	d.SetId(aws.StringValue(output.User.UserName))
 	d.Set("password", password)
-	d.Set("secret_key", resp.User.SecretKey)
+	d.Set("secret_key", output.User.SecretKey)
 
 	return resourceUserUpdate(d, meta)
 }
 
 func resourceUserRead(d *schema.ResourceData, meta interface{}) error {
 	conn := meta.(*conns.AWSClient).IAMConn
-	username := d.Id()
+	name := d.Id()
 
-	user, err := FindUserByName(conn, username)
+	user, err := FindUserByName(conn, name)
 
 	if !d.IsNewResource() && tfresource.NotFound(err) {
-		log.Printf("[WARN] IAM user (%s) not found, removing from state", username)
+		log.Printf("[WARN] IAM user (%s) not found, removing from state", name)
 		d.SetId("")
 		return nil
 	}
 
 	if err != nil {
-		return fmt.Errorf("error reading IAM user (%s): %w", d.Id(), err)
+		return fmt.Errorf("error reading IAM user (%s): %w", name, err)
 	}
 
 	d.Set("arn", user.UserArn)
@@ -230,7 +220,7 @@ func resourceUserRead(d *schema.ResourceData, meta interface{}) error {
 	}
 
 	d.Set("phone", user.Phone)
-	d.Set("unique_id", user.UserId)
+	d.Set("user_id", user.UserId)
 
 	if user.UpdateDate != nil {
 		d.Set("update_date", aws.TimeValue(user.UpdateDate).Format(time.RFC3339))
@@ -243,7 +233,7 @@ func resourceUserRead(d *schema.ResourceData, meta interface{}) error {
 
 func resourceUserUpdate(d *schema.ResourceData, meta interface{}) error {
 	conn := meta.(*conns.AWSClient).IAMConn
-	username := d.Id()
+	name := d.Id()
 
 	updatableKeys := []string{
 		"display_name",
@@ -257,7 +247,7 @@ func resourceUserUpdate(d *schema.ResourceData, meta interface{}) error {
 
 	if d.HasChanges(updatableKeys...) {
 		input := &iam.UpdateUserInput{
-			UserName: aws.String(username),
+			UserName: aws.String(name),
 		}
 
 		if d.HasChange("display_name") {
@@ -284,11 +274,11 @@ func resourceUserUpdate(d *schema.ResourceData, meta interface{}) error {
 			input.Phone = aws.String(d.Get("phone").(string))
 		}
 
-		log.Printf("[DEBUG] Modifying IAM User: %s", input)
+		log.Printf("[DEBUG] Modifying IAM user: %s", input)
 		_, err := conn.UpdateUser(input)
 
 		if err != nil {
-			return fmt.Errorf("error modifying IAM user (%s): %w", username, err)
+			return fmt.Errorf("error modifying IAM user (%s): %w", name, err)
 		}
 	}
 
@@ -319,53 +309,53 @@ func resourceUserUpdate(d *schema.ResourceData, meta interface{}) error {
 
 func resourceUserDelete(d *schema.ResourceData, meta interface{}) error {
 	conn := meta.(*conns.AWSClient).IAMConn
-	username := d.Id()
+	name := d.Id()
 
 	// All access keys, MFA devices and login profile for the user must be removed
 	if d.Get("force_destroy").(bool) {
-		if err := DeleteUserAccessKeys(conn, username); err != nil {
-			return fmt.Errorf("error removing IAM User (%s) access keys: %w", username, err)
+		if err := DeleteUserAccessKeys(conn, name); err != nil {
+			return fmt.Errorf("error removing IAM User (%s) access keys: %w", name, err)
 		}
 
-		if err := DeleteUserSSHKeys(conn, username); err != nil {
-			return fmt.Errorf("error removing IAM User (%s) SSH keys: %w", username, err)
+		if err := DeleteUserSSHKeys(conn, name); err != nil {
+			return fmt.Errorf("error removing IAM User (%s) SSH keys: %w", name, err)
 		}
 
-		if err := DeleteUserVirtualMFADevices(conn, username); err != nil {
-			return fmt.Errorf("error removing IAM User (%s) Virtual MFA devices: %w", username, err)
+		if err := DeleteUserVirtualMFADevices(conn, name); err != nil {
+			return fmt.Errorf("error removing IAM User (%s) Virtual MFA devices: %w", name, err)
 		}
 
-		if err := DeactivateUserMFADevices(conn, username); err != nil {
-			return fmt.Errorf("error removing IAM User (%s) MFA devices: %w", username, err)
+		if err := DeactivateUserMFADevices(conn, name); err != nil {
+			return fmt.Errorf("error removing IAM User (%s) MFA devices: %w", name, err)
 		}
 
-		if err := DeleteUserLoginProfile(conn, username); err != nil {
-			return fmt.Errorf("error removing IAM User (%s) login profile: %w", username, err)
+		if err := DeleteUserLoginProfile(conn, name); err != nil {
+			return fmt.Errorf("error removing IAM User (%s) login profile: %w", name, err)
 		}
 
-		if err := deleteUserSigningCertificates(conn, username); err != nil {
-			return fmt.Errorf("error removing IAM User (%s) signing certificate: %w", username, err)
+		if err := deleteUserSigningCertificates(conn, name); err != nil {
+			return fmt.Errorf("error removing IAM User (%s) signing certificate: %w", name, err)
 		}
 
-		if err := DeleteServiceSpecificCredentials(conn, username); err != nil {
-			return fmt.Errorf("error removing IAM User (%s) Service Specific Credentials: %w", username, err)
+		if err := DeleteServiceSpecificCredentials(conn, name); err != nil {
+			return fmt.Errorf("error removing IAM User (%s) Service Specific Credentials: %w", name, err)
 		}
 	}
 
 	input := &iam.DeleteUserInput{
-		UserName: aws.String(username),
+		UserName: aws.String(name),
 	}
 
 	log.Printf("[DEBUG] Deleting IAM user: %s", input)
 	_, err := conn.DeleteUser(input)
 
 	if tfawserr.ErrCodeEquals(err, UserNotFoundCode) {
-		log.Printf("[WARN] IAM user (%s) not found, removing from state", username)
+		log.Printf("[WARN] IAM user (%s) not found, removing from state", name)
 		return nil
 	}
 
 	if err != nil {
-		return fmt.Errorf("error deleting IAM user %s: %w", username, err)
+		return fmt.Errorf("error deleting IAM user %s: %w", name, err)
 	}
 
 	return nil

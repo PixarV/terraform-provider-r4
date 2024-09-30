@@ -3,7 +3,7 @@ subcategory: "IAM (Identity & Access Management)"
 layout: "aws"
 page_title: "aws_iam_user"
 description: |-
-  Provides an IAM user.
+  Manages an IAM user.
 ---
 
 [iam-users-and-projects]: https://docs.cloud.croc.ru/en/services/iam/iam.html
@@ -12,9 +12,6 @@ description: |-
 # Resource: aws_iam_user
 
 Manages an IAM user. For details about IAM users, see the [user documentation][iam-users-and-projects].
-
-todo: check
-~> If policies are attached to the user via the [`aws_iam_policy_attachment` resource](/docs/providers/aws/r/iam_policy_attachment.html) and you are modifying the user `name` or `path`, the `force_destroy` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The [`aws_iam_user_policy_attachment` resource (recommended)](/docs/providers/aws/r/iam_user_policy_attachment.html) does not have this requirement.
 
 ## Example Usage
 
@@ -64,19 +61,21 @@ In addition to all arguments above, the following attributes are exported:
 
 * `arn` - The Amazon Resource Name (ARN) of the user.
 * `id` - The name of the user.
-todo * `enabled` - Indicates whether the user is locked.
+* `enabled` - Indicates whether the user is **not** locked.
 * `identity_provider` - The ID of the identity provider of the user. It is specified only for IdP users.
 * `last_login_date` - The time when the user last logged in to the web interface in [RFC3339 format].
 * `login` - The login of the user.
-* `unique_id` - The ID of the user.
-* `secret_key` - The secret key of the user. todo: after create only
+* `secret_key` - The secret key of the user.
 * `update_date` - The time the user was last updated in [RFC3339 format].
+* `user_id` - The ID of the user.
+
+~> `password` and `secret_key` are exported once when the user is created and will not be updated after that.
 
 ->  **Unsupported attributes**
 These attributes are currently unsupported:
 
-* `force_destroy` - When destroying this user, destroy even if it
-  has non-Terraform-managed IAM access keys, login profile or MFA devices. Always `false`.
+* `force_destroy` - When destroying this user, destroy even if it has non-Terraform-managed IAM access keys,
+  login profile or MFA devices. Always `false`.
 * `path` - Path in which to create the user. Always `""`.
 * `permissions_boundary` - The ARN of the policy that is used to set the permissions boundary for the user. Always empty.
 
@@ -85,5 +84,5 @@ These attributes are currently unsupported:
 IAM user can be imported using `name`, e.g.,
 
 ```
-$ terraform import aws_iam_user.example user
+$ terraform import aws_iam_user.example user-name
 ```

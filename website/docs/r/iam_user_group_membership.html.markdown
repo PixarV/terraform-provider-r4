@@ -67,7 +67,8 @@ resource "aws_iam_user_group_membership" "project-groups" {
 
 The following arguments are supported:
 
-* `group_arns` - (Required) List of Amazon Resource Names (ARNs) of the groups to which the user is added.
+* `group_arns` - (Required) List of Amazon Resource Names (ARNs) of the groups to which the user is added
+  (e.g. `arn:c2:iam::<customer-name>:group/<group-name>`).
 
 ~> All groups in the `group_arns` must be of the same type: **global** or **project**.
 If groups have a **project** type, `project` must be specified.

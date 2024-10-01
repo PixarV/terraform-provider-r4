@@ -70,7 +70,8 @@ resource "aws_iam_group_membership" "project-group" {
 The following arguments are supported:
 
 * `name` - (Required) The name to identify the group membership.
-* `group_arn` – (Required) The Amazon Resource Name (ARN) of the group to which users are added.
+* `group_arn` – (Required) The Amazon Resource Name (ARN) of the group to which users are added
+  (e.g. `arn:c2:iam::<customer-name>:group/<group-name>`).
 * `project` - (Optional) The name of the project, which is specified when users are added to a project group.
 * `users` - (Required) List of names of the users.
 

@@ -70,7 +70,8 @@ resource "aws_iam_user_policy_attachment" "attach-project" {
 
 The following arguments are supported:
 
-* `policy_arn` - (Required) The Amazon Resource Name (ARN) of the attached policy.
+* `policy_arn` - (Required) The Amazon Resource Name (ARN) of the attached policy
+  (e.g. `arn:c2:iam::<customer-name>:policy/<policy-name>`).
 * `project` - (Optional) The name of the project, which is specified when a project policy is attached.
 * `user` - (Required) The name of the user.
 

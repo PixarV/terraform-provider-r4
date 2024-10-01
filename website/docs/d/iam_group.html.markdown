@@ -33,7 +33,7 @@ data "aws_iam_group" "selected" {
 ## Argument Reference
 
 * `arn` - (Required if `name` is not specified) The Amazon Resource Name (ARN) of the group
-  (e.g. `arn:c2:iam::customer:group/name-example`).
+  (e.g. `arn:c2:iam::<customer-name>:group/<group-name>`).
 * `name` - (Required if `arn` is not specified) The name of the group.
 
 ~> Filtering by `name` is done locally and could have a performance impact if the list of groups is large.

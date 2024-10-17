@@ -71,7 +71,7 @@ The following arguments are supported:
   (e.g. `arn:c2:iam::<customer-name>:group/<group-name>`).
 
 ~> All groups in `group_arns` must be of the same type: **global** or **project**.
-If groups have the **project** type, `project` must be specified.
+If groups are of the **project** type, `project` must be specified.
 
 * `project` - (Optional) The name of the project. Specified when the user is added to project groups.
 * `user` - (Required) The name of the user.
@@ -90,13 +90,13 @@ IAM user group membership can be imported using `user`, `project` (optionally), 
 
 Examples:
 
-* import user global groups membership:
+* import user global group membership:
 
 ```
 $ terraform import aws_iam_user_group_membership.global-groups user-name#arn:c2:iam:::group/IAMAdministrators
 ```
 
-* import user project groups membership for project `project-example`:
+* import user project group membership for project `project-example`:
 
 ```
 $ terraform import aws_iam_user_group_membership.project-groups user-name#project-example#arn:c2:iam:::group/InstanceViewers#arn:c2:iam:::group/BackupOperators

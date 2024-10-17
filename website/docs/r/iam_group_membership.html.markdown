@@ -73,7 +73,7 @@ The following arguments are supported:
 * `group_arn` – (Required) The Amazon Resource Name (ARN) of the group to which users are added
   (e.g. `arn:c2:iam::<customer-name>:group/<group-name>`).
 * `project` - (Optional) The name of the project. Specified when users are added to a project group.
-* `users` - (Required) List of names of the users.
+* `users` - (Required) List of user names.
 
 ## Attribute Reference
 

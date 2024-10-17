@@ -17,7 +17,7 @@ Manages an IAM group. For details about IAM groups, see the [user documentation]
 
 ~> **User management in groups**
 Manually managing user/group membership via the cloud console alongside using
-[`aws_iam_group_membership`][tf-group-membership] or
+the [`aws_iam_group_membership`][tf-group-membership] or
 [`aws_iam_user_group_membership`][tf-user-group-membership] resources may result in configuration drift or conflicts.
 For this reason, it's recommended to manage membership either entirely using Terraform or entirely in the cloud console.
 

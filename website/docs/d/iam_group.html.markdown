@@ -49,13 +49,13 @@ data "aws_iam_group" "selected" {
 
 ### users
 
-* `arn` - The ARN of the user.
-* `user_id` - The ID of the user.
-* `user_name` - The name of the user.
+* `arn` - The ARN of a user.
+* `user_id` - The ID of a user.
+* `user_name` - The name of a user.
 
 ->  **Unsupported attributes**
 These attributes are currently unsupported:
 
 * `path` - The path to the group. Always `""`.
 * `users`:
-    * `path` - The path to the user. Always `""`.
+    * `path` - The path to a user. Always `""`.

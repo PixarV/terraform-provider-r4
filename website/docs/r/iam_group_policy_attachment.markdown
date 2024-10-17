@@ -3,12 +3,12 @@ subcategory: "IAM (Identity & Access Management)"
 layout: "aws"
 page_title: "aws_iam_group_policy_attachment"
 description: |-
-  Attaches an IAM Policy to an IAM group.
+  Attaches an IAM policy to an IAM group.
 ---
 
 # Resource: aws_iam_group_policy_attachment
 
-Attaches an IAM Policy to an IAM group.
+Attaches an IAM policy to an IAM group.
 
 ## Example Usage
 

@@ -3,12 +3,12 @@ subcategory: "IAM (Identity & Access Management)"
 layout: "aws"
 page_title: "aws_iam_user_policy_attachment"
 description: |-
-  Attaches an IAM Policy to an IAM user.
+  Attaches an IAM policy to an IAM user.
 ---
 
 # Resource: aws_iam_user_policy_attachment
 
-Attaches an IAM Policy to an IAM user.
+Attaches an IAM policy to an IAM user.
 
 ## Example Usage
 

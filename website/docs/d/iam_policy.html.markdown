@@ -56,4 +56,4 @@ These attributes are currently unsupported:
 
 * `path` - The path to the policy. Always `""`.
 * `path_prefix` - The prefix of the path to the IAM policy. Always empty.
-* `tags` - Key-value mapping of tags for the IAM Policy. Always empty.
+* `tags` - Key-value mapping of tags for the IAM policy. Always empty.

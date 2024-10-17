@@ -8,7 +8,7 @@ description: |-
 
 # Data Source: aws_iam_users
 
-Provides ARNs (Amazon Resource Names) and names of selected IAM users.
+Provides ARNs (Amazon Resource Names) and the names of selected IAM users.
 
 ## Example Usage
 
@@ -38,7 +38,7 @@ The following arguments are supported:
 
 * `arns` - List of ARNs of the users.
 * `id` - The region (e.g., `region-1`).
-* `names` - List of names of the users.
+* `names` - List of user names.
 
 ->  **Unsupported attributes**
 These attributes are currently unsupported:

@@ -49,7 +49,7 @@ The following arguments are supported:
   can only contain Latin letters, numbers, underscores (_), periods (.) and hyphens (-) (`^[a-zA-Z][a-zA-Z0-9_.-]*$`).
   The value must be 1 to 40 characters long.
 
-~> Usernames are not case-sensitive. For example, you cannot create users named "TESTUSER" and "testuser" at the same time.
+~> User names are not case-sensitive. For example, you cannot create user names "TESTUSER" and "testuser" at the same time.
 
 * `otp_required` - (Optional) Indicates whether the user is required to use two-factor authentication to log in to the web interface.
   Defaults to `false`.

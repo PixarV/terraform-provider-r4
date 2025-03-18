@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path of the directory with the documentation
-SOURCE_DIR="website/site/"
+SOURCE_DIR="site/"
 
 help () {
     echo "
@@ -17,25 +17,21 @@ tools () {
 
 # Copying of configuration for the documentatiion to the website folder
 copy () {
-  cp -r mkdocs/images website/docs/mkdocs_images
-  cp -r mkdocs/assets website/docs/mkdocs_assets
-  cp mkdocs/mkdocs.yml website/
+  cp -r mkdocs/images docs/mkdocs_images
+  cp -r mkdocs/assets docs/mkdocs_assets
+  cp mkdocs/mkdocs.yml ./
 }
 
 # Generation of the documentation
 build () {
-  cd website
   echo "Generation of the documentation"
-  mkdocs build --clean
-  cd -
+  mkdocs build -f ./mkdocs.yml --clean
 }
 
 # Run the documentation locally
 run_local () {
   echo "Run the documentation locally"
-  cd website
-  mkdocs serve
-  cd -
+  mkdocs serve -f ./mkdocs.yml
 }
 
 # Funtion to upload the documentation files to the bucket
@@ -60,7 +56,7 @@ done
 # Removing of the temp files
 cleanup () {
   echo "Removing of the temp files"
-  rm -fr website/docs/mkdocs_images website/docs/mkdocs_assets website/mkdocs.yml website/site
+  rm -fr docs/mkdocs_images docs/mkdocs_assets mkdocs.yml site
   echo Complete!
 }
 

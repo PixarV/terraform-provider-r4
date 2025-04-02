@@ -83,6 +83,46 @@ provider "aws" {
 }
 ```
 
+#### API Addresses
+
+The Rockit Cloud Provider manages resources via API calls. To connect the provider to the cloud platform
+you must specify its API addresses in the `provider.endpoints` block or define the corresponding environment variables.
+
+Each API address has its own provider parameter to specify in the configuration.
+The final set of addresses depends on what resources are used.
+
+| Resource Category                  | Provider Parameter | Environment Variable |
+|------------------------------------|--------------------|----------------------|
+| Auto Scaling                       | `autoscaling`      |                      |
+| Backup                             | `backup`           |                      |
+| CloudWatch                         | `cloudwatch`       |                      |
+| Direct Connect                     | `directconnect`    | `DIRECT_CONNECT_URL` |
+| EBS (EC2)                          | `ec2`              | `EC2_URL`            |
+| EC2 (Elastic Compute Cloud)        | `ec2`              | `EC2_URL`            |
+| EKS (Elastic Kubernetes)           | `eks`              |                      |
+| ELB (Elastic Load Balancing)       | `elbv2`            |                      |
+| IAM (Identity & Access Management) | `iam`              |                      |
+| PaaS                               | `paas`             | `PAAS_URL`           |
+| Route53                            | `route53`          |                      |
+| Transit Gateway                    | `ec2`              | `EC2_URL`            |
+| S3 (Simple Storage)                | `s3`               |                      |
+| VPC (Virtual Private Cloud)        | `ec2`              | `EC2_URL`            |
+| VPN (Site-to-Site)                 | `ec2`              | `EC2_URL`            |
+
+Usage:
+
+```terraform
+provider "aws" {
+  endpoints {
+    ec2 = "https://ec2.api.url"
+    s3 = "https://s3.api.url"
+  }
+  # ...
+}
+```
+
+~> **Note** It is recommended to always specify `ec2` endpoint, because it can be used for service calls.
+
 ### Environment Variables
 
 Credentials can also be provided by using the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables.
@@ -101,6 +141,8 @@ $ export AWS_REGION="region-1"
 $ terraform plan
 ```
 
+For some API addresses it is also possible to provide them via environment variables (see the [API Addresses section](#api-addresses)).
+
 ### Shared Configuration and Credentials Files
 
 Rockit Cloud Provider can use [AWS shared configuration and credentials files][aws-configure-files] and source credentials and other settings from them.
@@ -118,9 +160,9 @@ For example:
 
 ```terraform
 provider "aws" {
-  shared_config_files      = ["/Users/tf_user/.aws/conf"]
+  shared_config_files = ["/Users/tf_user/.aws/conf"]
   shared_credentials_files = ["/Users/tf_user/.aws/creds"]
-  profile                  = "customprofile"
+  profile = "customprofile"
 }
 ```
 

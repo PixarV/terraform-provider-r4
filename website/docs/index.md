@@ -88,8 +88,22 @@ provider "aws" {
 The Rockit Cloud Provider manages resources via API calls. To connect the provider to the cloud platform
 you must specify its API addresses in the `provider.endpoints` block or define the corresponding environment variables.
 
-Each API address has its own provider parameter to specify in the configuration.
+Usage:
+
+```terraform
+provider "aws" {
+  endpoints {
+    # It is recommended to always specify `ec2` endpoint,
+    # because it can be used for service calls.
+    ec2 = "https://ec2.api.url"
+    s3 = "https://s3.api.url"
+  }
+  # ...
+}
+```
+
 The final set of addresses depends on what resources are used.
+Each API address has its own provider parameter to specify in the configuration.
 
 | Resource Category                  | Provider Parameter | Environment Variable |
 |------------------------------------|--------------------|----------------------|
@@ -108,20 +122,6 @@ The final set of addresses depends on what resources are used.
 | S3 (Simple Storage)                | `s3`               |                      |
 | VPC (Virtual Private Cloud)        | `ec2`              | `EC2_URL`            |
 | VPN (Site-to-Site)                 | `ec2`              | `EC2_URL`            |
-
-Usage:
-
-```terraform
-provider "aws" {
-  endpoints {
-    ec2 = "https://ec2.api.url"
-    s3 = "https://s3.api.url"
-  }
-  # ...
-}
-```
-
-~> **Note** It is recommended to always specify `ec2` endpoint, because it can be used for service calls.
 
 ### Environment Variables
 

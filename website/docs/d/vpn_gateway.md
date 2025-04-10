@@ -11,7 +11,7 @@ description: |-
 The VPN Gateway data source provides details about
 a specific VPN gateway.
 
--> The terms VPC, Internet Gateway, VPN Gateway are equivalent
+-> **Note** The terms VPC and VPN gateway are equivalent.
 
 ## Example Usage
 

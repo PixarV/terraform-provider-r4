@@ -24,7 +24,7 @@ For more information about VPN connections, see [user documentation][vpn-connect
 
 ~> **Note:** The CIDR blocks in the arguments `tunnel1_inside_cidr` and `tunnel2_inside_cidr` must have a prefix of /30 and be a part of a specific range.
 
--> The terms VPC, Internet Gateway, VPN Gateway are equivalent
+-> **Note** The terms VPC and VPN gateway are equivalent.
 
 ## Example Usage
 

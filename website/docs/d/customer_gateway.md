@@ -12,7 +12,7 @@ Get an existing customer gateway.
 
 ## Example Usage
 
--> The terms VPC, Internet Gateway, VPN Gateway are equivalent.
+-> **Note** The terms VPC and VPN gateway are equivalent.
 
 ```terraform
 data "aws_customer_gateway" "selected" {

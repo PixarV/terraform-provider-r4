@@ -16,7 +16,7 @@ propagation not explicitly listed in its value will be removed.
 
 ## Example Usage
 
--> The terms VPC, Internet Gateway, VPN Gateway are equivalent
+-> **Note** The terms VPC and VPN gateway are equivalent.
 
 ```terraform
 resource "aws_vpc" "example" {

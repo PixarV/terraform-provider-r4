@@ -26,28 +26,27 @@ data "aws_internet_gateway" "selected" {
 ## Argument Reference
 
 The arguments of this data source act as filters for querying the available
-internet gateway in the current region. The given filters must match exactly one
+internet gateway. The given filters must match exactly one
 internet gateway whose data will be exported as attributes.
 
-* `internet_gateway_id` - (Optional) The ID of the internet gateway.
-* `tags` - (Optional) Map of tags, each pair of which must exactly match
-  a pair on the desired internet gateway.
 * `filter` - (Optional) One or more name/value pairs to use as filters.
     * _Valid values_: See supported names and values in [EC2 API documentation][describe-igws]
+* `internet_gateway_id` - (Optional) The ID of the internet gateway.
+* `tags` - (Optional) Map of tags. Each tag must exactly match a tag on the desired internet gateway.
 
 ## Attribute Reference
 
-All arguments except `filter` block are also exported as
-result attributes. This data source will complete the data by populating
-any fields that are not included in the configuration with the data for
-the selected internet gateway.
+All arguments except `filter` block are also exported as result attributes.
+If any fields are missing from the configuration,
+then this data source will populate them with data for the selected internet gateway.
 
 * `arn` - The Amazon Resource Name (ARN) of the internet gateway.
-* `attachments` - List of VPC attachments to the internet gateway. The structure of this block is [described below](#attachments).
+* `attachments` - The VPC attachment to the internet gateway.
+  The structure of this block is [described below](#attachments).
 * `id` - The ID of the internet gateway.
-* `owner_id` - The ID of the project that owns the internet gateway.
+* `owner_id` - The ID of the project that the internet gateway belongs to.
 
 ### attachments
 
-* `state` - The current state of the attachment between the internet gateway and the VPC.
+* `state` - The current state of the VPC attachment to the internet gateway.
 * `vpc_id` - The ID of the attached VPC.

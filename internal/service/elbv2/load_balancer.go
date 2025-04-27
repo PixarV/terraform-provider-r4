@@ -2,7 +2,6 @@ package elbv2
 
 import ( // nosemgrep: aws-sdk-go-multiple-service-imports
 	"bytes"
-	"context"
 	"errors"
 	"fmt"
 	"log"
@@ -33,9 +32,7 @@ func ResourceLoadBalancer() *schema.Resource {
 		Read:   resourceLoadBalancerRead,
 		Update: resourceLoadBalancerUpdate,
 		Delete: resourceLoadBalancerDelete,
-		// Subnets are ForceNew for Network Load Balancers
 		CustomizeDiff: customdiff.Sequence(
-			customizeDiffNLBSubnets,
 			verify.SetTagsDiff,
 		),
 		Importer: &schema.ResourceImporter{
@@ -84,11 +81,13 @@ func ResourceLoadBalancer() *schema.Resource {
 			},
 
 			"load_balancer_type": {
-				Type:         schema.TypeString,
-				ForceNew:     true,
-				Optional:     true,
-				Default:      elbv2.LoadBalancerTypeEnumApplication,
-				ValidateFunc: validation.StringInSlice(elbv2.LoadBalancerTypeEnum_Values(), false),
+				Type:     schema.TypeString,
+				ForceNew: true,
+				Optional: true,
+				ValidateFunc: validation.StringInSlice([]string{
+					elbv2.LoadBalancerTypeEnumApplication,
+					elbv2.LoadBalancerTypeEnumNetwork,
+				}, false),
 			},
 
 			"security_groups": {
@@ -100,18 +99,20 @@ func ResourceLoadBalancer() *schema.Resource {
 			},
 
 			"subnets": {
-				Type:     schema.TypeSet,
-				Elem:     &schema.Schema{Type: schema.TypeString},
-				Optional: true,
-				Computed: true,
-				Set:      schema.HashString,
+				Type:         schema.TypeSet,
+				Elem:         &schema.Schema{Type: schema.TypeString},
+				Optional:     true,
+				Computed:     true,
+				ExactlyOneOf: []string{"subnets", "subnet_mapping"},
+				Set:          schema.HashString,
 			},
 
 			"subnet_mapping": {
-				Type:     schema.TypeSet,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
+				Type:         schema.TypeSet,
+				Optional:     true,
+				Computed:     true,
+				ForceNew:     true,
+				ExactlyOneOf: []string{"subnets", "subnet_mapping"},
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"subnet_id": {
@@ -940,50 +941,5 @@ func flattenResource(d *schema.ResourceData, meta interface{}, lb *elbv2.LoadBal
 		return fmt.Errorf("error setting tags_all: %w", err)
 	}
 
-	return nil
-}
-
-// Load balancers of type 'network' cannot have their subnets updated at
-// this time. If the type is 'network' and subnets have changed, mark the
-// diff as a ForceNew operation
-func customizeDiffNLBSubnets(_ context.Context, diff *schema.ResourceDiff, v interface{}) error {
-	// The current criteria for determining if the operation should be ForceNew:
-	// - lb of type "network"
-	// - existing resource (id is not "")
-	// - there are actual changes to be made in the subnets
-	//
-	// Any other combination should be treated as normal. At this time, subnet
-	// handling is the only known difference between Network Load Balancers and
-	// Application Load Balancers, so the logic below is simple individual checks.
-	// If other differences arise we'll want to refactor to check other
-	// conditions in combinations, but for now all we handle is subnets
-	if lbType := diff.Get("load_balancer_type").(string); lbType != elbv2.LoadBalancerTypeEnumNetwork {
-		return nil
-	}
-
-	if diff.Id() == "" {
-		return nil
-	}
-
-	o, n := diff.GetChange("subnets")
-	if o == nil {
-		o = new(schema.Set)
-	}
-	if n == nil {
-		n = new(schema.Set)
-	}
-	os := o.(*schema.Set)
-	ns := n.(*schema.Set)
-	remove := os.Difference(ns).List()
-	add := ns.Difference(os).List()
-	if len(remove) > 0 || len(add) > 0 {
-		if err := diff.SetNew("subnets", n); err != nil {
-			return err
-		}
-
-		if err := diff.ForceNew("subnets"); err != nil {
-			return err
-		}
-	}
 	return nil
 }

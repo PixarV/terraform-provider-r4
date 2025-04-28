@@ -3,367 +3,156 @@ subcategory: "ELB (Elastic Load Balancing)"
 layout: "aws"
 page_title: "aws_lb_listener"
 description: |-
-  Provides a Load Balancer Listener resource.
+  Manages a listener for a load balancer.
 ---
 
 [default-tags]: https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block
+[elb]: https://docs.k2.cloud/en/services/elb/overview.html
 
 # Resource: aws_lb_listener
 
-Provides a Load Balancer Listener resource.
-
-~> **Note** `aws_alb_listener` is known as `aws_lb_listener`. The functionality is identical.
+Manages a listener for a load balancer.
+For details about listeners, see the [user documentation][elb].
 
 ## Example Usage
 
-### Forward Action
-
 ```terraform
-resource "aws_lb" "front_end" {
-  # ...
-}
+resource "aws_vpc" "example" {
+  cidr_block = "10.1.0.0/16"
 
-resource "aws_lb_target_group" "front_end" {
-  # ...
-}
-
-resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = aws_lb.front_end.arn
-  port              = "443"
-  protocol          = "HTTPS"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.front_end.arn
+  tags = {
+    Name = "tf-vpc"
   }
 }
-```
 
-To a NLB:
+resource "aws_subnet" "example" {
+  vpc_id     = aws_vpc.example.id
+  cidr_block = "10.1.1.0/24"
 
-```hcl
-resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = aws_lb.front_end.arn
-  port              = "443"
-  protocol          = "TLS"
-  certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
-  alpn_policy       = "HTTP2Preferred"
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.front_end.arn
+  tags = {
+    Name = "tf-subnet"
   }
 }
-```
 
-### Redirect Action
-
-```terraform
-resource "aws_lb" "front_end" {
-  # ...
-}
-
-resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = aws_lb.front_end.arn
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    type = "redirect"
-
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-    }
-  }
-}
-```
-
-### Fixed-response Action
-
-```terraform
-resource "aws_lb" "front_end" {
-  # ...
-}
-
-resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = aws_lb.front_end.arn
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    type = "fixed-response"
-
-    fixed_response {
-      content_type = "text/plain"
-      message_body = "Fixed response content"
-      status_code  = "200"
-    }
-  }
-}
-```
-
-### Authenticate-cognito Action
-
-```terraform
-resource "aws_lb" "front_end" {
-  # ...
-}
-
-resource "aws_lb_target_group" "front_end" {
-  # ...
-}
-
-resource "aws_cognito_user_pool" "pool" {
-  # ...
-}
-
-resource "aws_cognito_user_pool_client" "client" {
-  # ...
-}
-
-resource "aws_cognito_user_pool_domain" "domain" {
-  # ...
-}
-
-resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = aws_lb.front_end.arn
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    type = "authenticate-cognito"
-
-    authenticate_cognito {
-      user_pool_arn       = aws_cognito_user_pool.pool.arn
-      user_pool_client_id = aws_cognito_user_pool_client.client.id
-      user_pool_domain    = aws_cognito_user_pool_domain.domain.domain
-    }
-  }
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.front_end.arn
-  }
-}
-```
-
-### Authenticate-OIDC Action
-
-```terraform
-resource "aws_lb" "front_end" {
-  # ...
-}
-
-resource "aws_lb_target_group" "front_end" {
-  # ...
-}
-
-resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = aws_lb.front_end.arn
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    type = "authenticate-oidc"
-
-    authenticate_oidc {
-      authorization_endpoint = "https://example.com/authorization_endpoint"
-      client_id              = "client_id"
-      client_secret          = "client_secret"
-      issuer                 = "https://example.com"
-      token_endpoint         = "https://example.com/token_endpoint"
-      user_info_endpoint     = "https://example.com/user_info_endpoint"
-    }
-  }
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.front_end.arn
-  }
-}
-```
-
-### Gateway Load Balancer Listener
-
-```terraform
 resource "aws_lb" "example" {
-  load_balancer_type = "gateway"
-  name               = "example"
+  name               = "tf-lb"
+  internal           = true
+  load_balancer_type = "application"
+  subnets            = [aws_subnet.example.id]
 
-  subnet_mapping {
-    subnet_id = aws_subnet.example.id
+  tags = {
+    Name = "tf-lb"
   }
 }
 
 resource "aws_lb_target_group" "example" {
-  name     = "example"
-  port     = 6081
-  protocol = "GENEVE"
-  vpc_id   = aws_vpc.example.id
+  name = "tf-lb-tg"
 
-  health_check {
-    port     = 80
-    protocol = "HTTP"
+  target_type = "instance"
+  port        = 1234
+  protocol    = "TCP"
+  vpc_id      = aws_vpc.example.id
+
+  tags = {
+    Name = "tf-lb-tg"
   }
 }
 
 resource "aws_lb_listener" "example" {
-  load_balancer_arn = aws_lb.example.id
+  load_balancer_arn = aws_lb.example.arn
+
+  port     = 4321
+  protocol = "HTTP"
 
   default_action {
-    target_group_arn = aws_lb_target_group.example.id
     type             = "forward"
+    target_group_arn = aws_lb_target_group.example.arn
+  }
+
+  tags = {
+    Name = "tf-lb-listener"
   }
 }
 ```
 
 ## Argument Reference
 
-The following arguments are required:
-
-* `default_action` - (Required) Configuration block for default actions. Detailed below.
-* `load_balancer_arn` - (Required, Forces New Resource) ARN of the load balancer.
-
-The following arguments are optional:
-
-* `alpn_policy` - (Optional)  Name of the Application-Layer Protocol Negotiation (ALPN) policy. Can be set if `protocol` is `TLS`. Valid values are `HTTP1Only`, `HTTP2Only`, `HTTP2Optional`, `HTTP2Preferred`, and `None`.
-* `certificate_arn` - (Optional) ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS.
-* `port` - (Optional) Port on which the load balancer is listening. Not valid for Gateway Load Balancers.
-* `protocol` - (Optional) Protocol for connections from clients to the load balancer. For Application Load Balancers, valid values are `HTTP` and `HTTPS`, with a default of `HTTP`. For Network Load Balancers, valid values are `TCP`, `TLS`, `UDP`, and `TCP_UDP`. Not valid to use `UDP` or `TCP_UDP` if dual-stack mode is enabled. Not valid for Gateway Load Balancers.
-* `ssl_policy` - (Optional) Name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`.
-* `tags` - (Optional) A map of tags to assign to the resource. If configured with a provider [`default_tags` configuration block][default-tags] present, tags with matching keys will overwrite those defined at the provider-level.
-
-~> **Note::** Please note that listeners that are attached to Application Load Balancers must use either `HTTP` or `HTTPS` protocols while listeners that are attached to Network Load Balancers must use the `TCP` protocol.
+* `default_action` - (Required, Editable) The default action that will be applied to incoming requests.
+  The structure of this block is [described below](#default_action).
+* `load_balancer_arn` - (Required) The Amazon Resource Name (ARN) of the load balancer.
+    * _ARN Format_: `arn:c2:elasticloadbalancing::<project-name>@<customer-name>:loadbalancer/<app|net>/lb-12345678`
+* `port` - (Required, Editable) The port on which the listener will receive requests.
+    * _Valid values_: From 1 to 65535
+* `protocol` - (Required, Editable) The protocol for a client connection to the load balancer.
+    * _Valid values_:
+        * for network load balancers: `TCP`, `UDP`
+        * for application load balancers: `HTTP`, `HTTPS`
+* `certificate_arn` - (Optional, Editable) The Amazon Resource Name (ARN) of the IAM server certificate.
+    * _ARN Format_: `arn:c2:iam::<customer-name>:certificate/<certificate-name>`
+    * _Constraints_: `certificate_arn` is required if `protocol` is `HTTPS`
+* `tags` - (Optional, Editable) Map of tags to assign to the listener.
+  If a provider [`default_tags` configuration block][default-tags] is used,
+  tags with matching keys will overwrite those defined at the provider level.
 
 ### default_action
 
-The following arguments are required:
+The `default_action` block has the following structure:
 
-* `type` - (Required) Type of routing action. Valid values are `forward`, `redirect`, `fixed-response`, `authenticate-cognito` and `authenticate-oidc`.
+* `type` - (Required, Editable) The type of the routing action.
+    * _Valid values_: `forward`
+* `forward` - (Optional, Editable) The block with information about forwarding requests to target groups.
+  The structure of this block is [described below](#forward).
+    * _Constraints_: `forward` can be specified only if `type` is `forward` and `target_group_arn` is not specified
+* `order` - (Optional, Editable) The sequential number of the action.
+    * _Valid values_: From 1 to 50000
+* `target_group_arn` - (Optional, Editable) The Amazon Resource Name (ARN) of the target group to forward traffic.
+    * _ARN Format_: `arn:c2:elasticloadbalancing::<project-name>@<customer-name>:targetgroup/tg-12345678`
+    * _Constraints_: `target_group_arn` can be specified only if `type` is `forward` and the `forward` block is not specified
 
-The following arguments are optional:
-
-* `authenticate_cognito` - (Optional) Configuration block for using Amazon Cognito to authenticate users. Specify only when `type` is `authenticate-cognito`. Detailed below.
-* `authenticate_oidc` - (Optional) Configuration block for an identity provider that is compliant with OpenID Connect (OIDC). Specify only when `type` is `authenticate-oidc`. Detailed below.
-* `fixed_response` - (Optional) Information for creating an action that returns a custom HTTP response. Required if `type` is `fixed-response`.
-* `forward` - (Optional) Configuration block for creating an action that distributes requests among one or more target groups. Specify only if `type` is `forward`. If you specify both `forward` block and `target_group_arn` attribute, you can specify only one target group using `forward` and it must be the same target group specified in `target_group_arn`. Detailed below.
-* `order` - (Optional) Order for the action. This value is required for rules with multiple actions. The action with the lowest value for order is performed first. Valid values are between `1` and `50000`.
-* `redirect` - (Optional) Configuration block for creating a redirect action. Required if `type` is `redirect`. Detailed below.
-* `target_group_arn` - (Optional) ARN of the Target Group to which to route traffic. Specify only if `type` is `forward` and you want to route to a single target group. To route to one or more target groups, use a `forward` block instead.
-
-#### authenticate_cognito
-
-The following arguments are required:
-
-* `user_pool_arn` - (Required) ARN of the Cognito user pool.
-* `user_pool_client_id` - (Required) ID of the Cognito user pool client.
-* `user_pool_domain` - (Required) Domain prefix or fully-qualified domain name of the Cognito user pool.
-
-The following arguments are optional:
-
-* `authentication_request_extra_params` - (Optional) Query parameters to include in the redirect request to the authorization endpoint. Max: 10. Detailed below.
-* `on_unauthenticated_request` - (Optional) Behavior if the user is not authenticated. Valid values are `deny`, `allow` and `authenticate`.
-* `scope` - (Optional) Set of user claims to be requested from the IdP.
-* `session_cookie_name` - (Optional) Name of the cookie used to maintain session information.
-* `session_timeout` - (Optional) Maximum duration of the authentication session, in seconds.
-
-##### authentication_request_extra_params
-
-* `key` - (Required) Key of query parameter.
-* `value` - (Required) Value of query parameter.
-
-#### authenticate_oidc
-
-The following arguments are required:
-
-* `authorization_endpoint` - (Required) Authorization endpoint of the IdP.
-* `client_id` - (Required) OAuth 2.0 client identifier.
-* `client_secret` - (Required) OAuth 2.0 client secret.
-* `issuer` - (Required) OIDC issuer identifier of the IdP.
-* `token_endpoint` - (Required) Token endpoint of the IdP.
-* `user_info_endpoint` - (Required) User info endpoint of the IdP.
-
-The following arguments are optional:
-
-* `authentication_request_extra_params` - (Optional) Query parameters to include in the redirect request to the authorization endpoint. Max: 10.
-* `on_unauthenticated_request` - (Optional) Behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
-* `scope` - (Optional) Set of user claims to be requested from the IdP.
-* `session_cookie_name` - (Optional) Name of the cookie used to maintain session information.
-* `session_timeout` - (Optional) Maximum duration of the authentication session, in seconds.
-
-#### fixed_response
-
-The following arguments are required:
-
-* `content_type` - (Required) Content type. Valid values are `text/plain`, `text/css`, `text/html`, `application/javascript` and `application/json`.
-
-The following arguments are optional:
-
-* `message_body` - (Optional) Message body.
-* `status_code` - (Optional) HTTP response code. Valid values are `2XX`, `4XX`, or `5XX`.
+-> **Note** Use `target_group_arn` if you want to forward requests to a single target group or the load balancer type is `network`.
+  Otherwise, use the `forward` block.
 
 #### forward
 
-The following arguments are required:
+The `forward` block has the following structure:
 
-* `target_group` - (Required) Set of 1-5 target group blocks. Detailed below.
-
-The following arguments are optional:
-
-* `stickiness` - (Optional) Configuration block for target group stickiness for the rule. Detailed below.
+* `target_group` - (Required, Editable) List of target groups to forward traffic.
+  The structure of this block is [described below](#target_group).
+    * _Size of the list_: From 1 to 5 elements
 
 ##### target_group
 
-The following arguments are required:
+The `target_group` block has the following structure:
 
-* `arn` - (Required) ARN of the target group.
+* `arn` - (Required, Editable) The Amazon Resource Name (ARN) of the target group to forward traffic.
+    * _ARN Format_: `arn:c2:elasticloadbalancing::<project-name>@<customer-name>:targetgroup/tg-12345678`
+* `weight` - (Optional, Editable) The weight of the target group.
+    * _Valid values_: From 0 to 999
+    * _Default value_: 1
 
-The following arguments are optional:
+## Attribute Reference
 
-* `weight` - (Optional) Weight. The range is 0 to 999.
-
-##### stickiness
-
-The following arguments are required:
-
-* `duration` - (Required) Time period, in seconds, during which requests from a client should be routed to the same target group. The range is 1-604800 seconds (7 days).
-
-The following arguments are optional:
-
-* `enabled` - (Optional) Whether target group stickiness is enabled. Default is `false`.
-
-#### redirect
-
-~> **Note::** You can reuse URI components using the following reserved keywords: `#{protocol}`, `#{host}`, `#{port}`, `#{path}` (the leading "/" is removed) and `#{query}`.
-
-The following arguments are required:
-
-* `status_code` - (Required) HTTP redirect code. The redirect is either permanent (`HTTP_301`) or temporary (`HTTP_302`).
-
-The following arguments are optional:
-
-* `host` - (Optional) Hostname. This component is not percent-encoded. The hostname can contain `#{host}`. Defaults to `#{host}`.
-* `path` - (Optional) Absolute path, starting with the leading "/". This component is not percent-encoded. The path can contain #{host}, #{path}, and #{port}. Defaults to `/#{path}`.
-* `port` - (Optional) Port. Specify a value from `1` to `65535` or `#{port}`. Defaults to `#{port}`.
-* `protocol` - (Optional) Protocol. Valid values are `HTTP`, `HTTPS`, or `#{protocol}`. Defaults to `#{protocol}`.
-* `query` - (Optional) Query parameters, URL-encoded when necessary, but not percent-encoded. Do not include the leading "?". Defaults to `#{query}`.
-
-## Attributes Reference
+### Supported attributes
 
 In addition to all arguments above, the following attributes are exported:
 
-* `arn` - ARN of the listener (matches `id`).
-* `id` - ARN of the listener (matches `arn`).
-* `tags_all` - A map of tags assigned to the resource, including those inherited from the provider [`default_tags` configuration block][default-tags].
+* `arn` - The Amazon Resource Name (ARN) of the listener.
+* `id` - he Amazon Resource Name (ARN) of the listener.
+* `tags_all` - Map of tags assigned to the listener,
+  including those inherited from the provider [`default_tags` configuration block][default-tags].
+
+### Unsupported attributes
+
+~> **Note** These attributes may be present in the `terraform.tfstate` file, but they have preset values and cannot be specified in configuration files.
+
+The following attributes are not currently supported:
+
+`alpn_policy`, `default_action.authenticate_cognito`, `default_action.authenticate_oidc`, `default_action.fixed_response`, `default_action.redirect`, `forward.stickiness`, `ssl_policy`.
 
 ## Import
 
-Listeners can be imported using their ARN, e.g.,
+Listener can be imported using `arn`, e.g.,
 
 ```
-$ terraform import aws_lb_listener.front_end arn:aws:elasticloadbalancing:us-west-2:187416307283:listener/app/front-end-alb/8e4497da625e2d8a/9ab28ade35828f96
+$ terraform import aws_lb_listener.example arn:c2:elasticloadbalancing::project-name@customer-name:listener/app/lb-12345678/li-12345678
 ```

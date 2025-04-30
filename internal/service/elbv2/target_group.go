@@ -25,7 +25,6 @@ import (
 func ResourceTargetGroup() *schema.Resource {
 	return &schema.Resource{
 		CustomizeDiff: customdiff.Sequence(
-			// resourceTargetGroupCustomizeDiff,
 			verify.SetTagsDiff,
 		),
 

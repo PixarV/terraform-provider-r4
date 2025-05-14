@@ -108,7 +108,7 @@ The following arguments are supported:
 
 -> **Note** If `name` and `name_prefix` are not specified, Terraform will autogenerate a name with the prefix `tf-lb`.
 
-* `subnet_mapping` - (Optional) List of subnet-ID-to-IP-address mappings.
+* `subnet_mapping` - (Optional, Editable) List of subnet-ID-to-IP-address mappings.
   The structure of this block is [described below](#subnet_mapping).
     * _Constraints_: `subnet_mapping` is required if the `subnets` argument is not specified
 * `subnets` - (Optional, Editable) List of subnet IDs.
@@ -116,7 +116,7 @@ The following arguments are supported:
         * The `subnets` argument is required if `subnet_mapping` is not specified
         * All subnets must be from different availability zones
 
-~> **Note** You can only add new subnets to the `subnets` list, subnets cannot be removed.
+~> **Note** You can only add new subnets to the `subnets` or `subnet_mapping` list, subnets cannot be removed.
   
 * `tags` - (Optional, Editable) Map of tags to assign to the load balancer.
   If a provider [`default_tags` configuration block][default-tags] is used,
@@ -126,10 +126,10 @@ The following arguments are supported:
 
 The `subnet_mapping` block has the following structure:
 
-* `subnet_id` - (Required) The ID of the subnet.
-* `allocation_id` - (Optional) The ID of the Elastic IP address allocation.
+* `subnet_id` - (Required, Editable) The ID of the subnet.
+* `allocation_id` - (Optional, Editable) The ID of the Elastic IP address allocation.
   The _internet-facing_ load balancer will be available at this IP address.
-* `private_ipv4_address` - (Optional) The private IP address within the specified subnet.
+* `private_ipv4_address` - (Optional, Editable) The private IP address within the specified subnet.
   The _internal_ load balancer will be available at this IP address.
 
 ~> **Note** All subnets specified in the `subnet_mapping` blocks must be from different availability zones.

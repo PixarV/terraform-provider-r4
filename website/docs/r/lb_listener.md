@@ -127,7 +127,7 @@ The `target_group` block has the following structure:
 * `arn` - (Required, Editable) The Amazon Resource Name (ARN) of the target group to forward traffic to.
     * _ARN Format_: `arn:c2:elasticloadbalancing::<project-name>@<customer-name>:targetgroup/tg-12345678`
 * `weight` - (Optional, Editable) The weight of the target group.
-    * _Valid values_: From 0 to 999
+    * _Valid values_: From 0 to 256
     * _Default value_: 1
 
 ## Attribute Reference

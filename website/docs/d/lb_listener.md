@@ -55,7 +55,7 @@ In addition to all arguments above, the following attributes are exported:
 * `certificate_arn` - The Amazon Resource Name (ARN) of the IAM server certificate.
 * `default_action` - The default action that is applied to incoming requests.
   The structure of this block is [described below](#default_action).
-* `id` - he Amazon Resource Name (ARN) of the listener.
+* `id` - The Amazon Resource Name (ARN) of the listener.
 * `load_balancer_arn` - The Amazon Resource Name (ARN) of the load balancer.
 * `port` - The port on which the listener receives requests.
 * `protocol` - The protocol for a client connection to the load balancer.

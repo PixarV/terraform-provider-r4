@@ -111,7 +111,7 @@ func ResourceListenerRule() *schema.Resource {
 												},
 												"weight": {
 													Type:         schema.TypeInt,
-													ValidateFunc: validation.IntBetween(0, 999),
+													ValidateFunc: validation.IntBetween(0, 256),
 													Default:      1,
 													Optional:     true,
 												},

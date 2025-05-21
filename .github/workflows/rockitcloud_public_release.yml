@@ -7,6 +7,7 @@ on:
 
 jobs:
     Public_release:
+        if: github.repository == 'C2Devel/terraform-provider-rockitcloud'
         runs-on: ubuntu-22.04-large
         steps:
         - uses: actions/checkout@v3

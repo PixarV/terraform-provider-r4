@@ -83,8 +83,13 @@ resource "aws_lb_listener" "example" {
   protocol = "HTTP"
 
   default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.default-tg.arn
+    type = "forward"
+
+    forward {
+      target_group {
+        arn = aws_lb_target_group.default-tg.arn
+      }
+    }
   }
 
   tags = {
@@ -97,35 +102,8 @@ resource "aws_lb_listener_rule" "forward-action" {
   priority     = 100
 
   action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.another-tg.arn
-  }
-
-  condition {
-    path_pattern {
-      values = ["/static/*"]
-    }
-  }
-
-  condition {
-    host_header {
-      values = ["example.com"]
-    }
-  }
-}
-```
-
-### Weighted Forward Action
-
-~> **Note** This example uses the listener and target groups defined in the [Forward Action example](#forward-action).
-
-```terraform
-resource "aws_lb_listener_rule" "weighted-forward-action" {
-  listener_arn = aws_lb_listener.example.arn
-  priority     = 99
-
-  action {
     type = "forward"
+
     forward {
       target_group {
         arn    = aws_lb_target_group.default-tg.arn
@@ -227,17 +205,11 @@ The `action` block has the following structure:
     * _Constraints_: `fixed_response` can be specified only if `type` is `fixed-response`
 * `forward` - (Optional, Editable) The block with information about forwarding requests to target groups.
   The structure of this block is [described below](#forward).
-    * _Constraints_: `forward` can be specified only if `type` is `forward` and `target_group_arn` is not specified
 * `order` - (Optional, Editable) The sequential number of the action.
     * _Valid values_: From 1 to 50000
 * `redirect` - (Optional, Editable) The block with information about redirecting requests to another URL.
   The structure of this block is [described below](#redirect).
     * _Constraints_: `redirect` can be specified only if `type` is `redirect`
-* `target_group_arn` - (Optional, Editable) The Amazon Resource Name (ARN) of the target group to forward traffic to.
-    * _ARN Format_: `arn:c2:elasticloadbalancing::<project-name>@<customer-name>:targetgroup/tg-12345678`
-    * _Constraints_: `target_group_arn` can be specified only if `type` is `forward` and the `forward` block is not specified
-
--> **Note** Use `target_group_arn` if you want to forward requests to a single target group. Otherwise, use the `forward` block.
 
 #### fixed_response
 
@@ -257,7 +229,7 @@ The `forward` block has the following structure:
 
 * `target_group` - (Required, Editable) List of target groups to forward traffic to.
   The structure of this block is [described below](#target_group).
-    * _List size_: From 2 to 5 elements
+    * _List size_: From 1 to 5 elements
 
 ##### target_group
 

@@ -50,7 +50,7 @@ resource "aws_lb_target_group" "example" {
 
   target_type = "instance"
   port        = 1234
-  protocol    = "TCP"
+  protocol    = "HTTP"
   vpc_id      = aws_vpc.example.id
 
   tags = {

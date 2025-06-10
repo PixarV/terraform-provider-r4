@@ -50,7 +50,7 @@ resource "aws_lb" "example" {
   }
 }
 
-resource "aws_lb_target_group" "default-tg" {
+resource "aws_lb_target_group" "default_tg" {
   name = "tf-lb-default-tg"
 
   target_type = "instance"
@@ -63,7 +63,7 @@ resource "aws_lb_target_group" "default-tg" {
   }
 }
 
-resource "aws_lb_target_group" "another-tg" {
+resource "aws_lb_target_group" "another_tg" {
   name = "tf-lb-another-tg"
 
   target_type = "instance"
@@ -87,7 +87,7 @@ resource "aws_lb_listener" "example" {
 
     forward {
       target_group {
-        arn = aws_lb_target_group.default-tg.arn
+        arn = aws_lb_target_group.default_tg.arn
       }
     }
   }
@@ -97,7 +97,7 @@ resource "aws_lb_listener" "example" {
   }
 }
 
-resource "aws_lb_listener_rule" "forward-action" {
+resource "aws_lb_listener_rule" "forward_action" {
   listener_arn = aws_lb_listener.example.arn
   priority     = 100
 
@@ -106,12 +106,12 @@ resource "aws_lb_listener_rule" "forward-action" {
 
     forward {
       target_group {
-        arn    = aws_lb_target_group.default-tg.arn
+        arn    = aws_lb_target_group.default_tg.arn
         weight = 80
       }
 
       target_group {
-        arn    = aws_lb_target_group.another-tg.arn
+        arn    = aws_lb_target_group.another_tg.arn
         weight = 20
       }
     }
@@ -130,7 +130,7 @@ resource "aws_lb_listener_rule" "forward-action" {
 ~> **Note** This example uses the listener defined in the [Forward Action example](#forward-action).
 
 ```terraform
-resource "aws_lb_listener_rule" "redirect-action" {
+resource "aws_lb_listener_rule" "redirect_action" {
   listener_arn = aws_lb_listener.example.arn
 
   action {
@@ -156,7 +156,7 @@ resource "aws_lb_listener_rule" "redirect-action" {
 ~> **Note** This example uses the listener defined in the [Forward Action example](#forward-action).
 
 ```terraform
-resource "aws_lb_listener_rule" "fixed-response-action" {
+resource "aws_lb_listener_rule" "fixed_response_action" {
   listener_arn = aws_lb_listener.example.arn
 
   action {
@@ -322,5 +322,5 @@ The following attributes are not currently supported:
 The listener rule can be imported using `arn`, e.g.,
 
 ```
-$ terraform import aws_lb_listener_rule.forward-action arn:c2:elasticloadbalancing::project-name@cusomer-name:listener-rule/app/lb-12345678/li-12345678/rule-12345678
+$ terraform import aws_lb_listener_rule.forward_action arn:c2:elasticloadbalancing::project-name@cusomer-name:listener-rule/app/lb-12345678/li-12345678/rule-12345678
 ```

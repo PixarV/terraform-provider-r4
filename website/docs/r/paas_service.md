@@ -637,23 +637,23 @@ If you need to use such a parameter, contact [technical support].
 
 * `gcache_size` - (Optional) A Galera parameter. The size of GCache circular buffer storage preallocated on startup, in bytes.
     * _Valid values_: From 128 MiB
-    * _Constraints_:   The parameter can be set only if `high_availability` is `true`
+    * _Constraints_: The parameter can be set only if `high_availability` is `true`
 * `gcs_fc_factor` - (Optional) A Galera parameter. The fraction of `gcs_fc_limit` at which replication is resumed
   when the recv queue length falls below this value.
     * _Valid values_: From 0.0 to 1.0
-    * _Constraints_:   The parameter can be set only if `high_availability` is `true`
+    * _Constraints_: The parameter can be set only if `high_availability` is `true`
 * `gcs_fc_limit` - (Optional) A Galera parameter. The number of writesets. If the recv queue length exceeds it replication is suspended.
   Replication will resume according to the `gcs_fc_factor` setting.
     * _Valid values_: From 1 to 2147483647
-    * _Constraints_:   The parameter can be set only if `high_availability` is `true`
+    * _Constraints_: The parameter can be set only if `high_availability` is `true`
 * `gcs_fc_master_slave` - (Optional) A Galera parameter. Indicates whether the cluster has only one source node.
-  The parameter can be set only if `high_availability` is `true`.
+    * _Constraints_: The parameter can be set only if `high_availability` is `true`
 
 ~> **Note** `gcs_fc_master_slave` is deprecated. This parameter is relevant for Percona 5.7.
 Use `gcs_fc_single_primary` instead.
 
 * `gcs_fc_single_primary` - (Optional) A Galera parameter. Indicates whether there is more than one replication source.
-  The parameter can be set only if `high_availability` is `true`.
+    * _Constraints_: The parameter can be set only if `high_availability` is `true`
 
 ~> **Note** `gcs_fc_single_primary` replaces the deprecated `gcs_fc_master_slave` parameter.
 This parameter is relevant for Percona 8.0, MySQL 8.0, and MariaDB 10.4, 10.5, 10.6 and 10.11.
@@ -707,7 +707,7 @@ If you need to use such a parameter, contact [technical support].
 
 * `pxc_strict_mode` - (Optional) PXC mode. For more information about the parameter, see the [Percona documentation][doc-pxc_strict_mode].
     * _Valid values_: `DISABLED`, `PERMISSIVE`, `ENFORCING`, `MASTER`
-    * _Constraints_:   The parameter can be set only if `high_availability` is `true`
+    * _Constraints_: The parameter can be set only if `high_availability` is `true`
 * `table_open_cache` - (Optional) The number of open tables for all threads.
     * _Valid values_: From 1 to 1048576
 * `thread_cache_size` - (Optional) The number of threads that the server caches to establish new network connections.
@@ -835,7 +835,7 @@ If you need to use such a parameter, contact [technical support].
 
 * `replication_mode` - (Optional) The replication mode in the _Patroni_ cluster.
     * _Valid values_: `asynchronous`, `synchronous`, `synchronous_strict`
-    * _Constraints:_   The parameter must be set if `high_availability` is `true`.
+    * _Constraints_: The parameter must be set if `high_availability` is `true`
 * `shared_buffers` - (Optional) The amount of memory, in bytes (multiple of 1 KiB), the database server uses for shared memory buffers.
     * _Valid values_: From 128 to 8589934584 KiB
   For more information about the parameter, see the [PostgreSQL documentation][doc-shared_buffers].
@@ -847,7 +847,7 @@ If you need to use such a parameter, contact [technical support].
     * _Valid values_: From 8 to 262143
 * `wal_keep_segments` - (Optional) The minimum number of log files segments that must be kept in the _pg_xlog_ directory, in case a standby server needs to fetch them for streaming replication.
     * _Valid values_: From 0 to 2147483647
-    * _Constraints:_ This parameter is relevant only for PostgreSQL version 12.
+    * _Constraints_: This parameter is relevant only for PostgreSQL version 12
 
 * `work_mem` - (Optional) The base maximum amount of memory, in bytes (multiple of 1 KiB), to be used by a query operation (such as a sort or hash table) before writing to temporary disk files.
     * _Valid values_: From 64 to 2147483647 KiB

@@ -43,7 +43,7 @@ resource "aws_autoscaling_policy" "example" {
 
 In addition to all arguments above, the following attributes are exported:
 
-* `arn` - Amazon Resource Name (ARN) of the scaling policy.
+* `arn` - The Amazon Resource Name (ARN) of the scaling policy.
 * `id` - The scaling policy's name.
 * `name` - The scaling policy's name.
 * `autoscaling_group_name` - The scaling policy's assigned autoscaling group.

@@ -55,7 +55,7 @@ data "aws_ebs_volumes" "ten_or_twenty_gb_volumes" {
 In addition to all arguments above, the following attributes are exported:
 
 * `filter` - (Optional) One or more name/value pairs to use as filters.
-    * _Valid values:_ See supported names and values in [EC2 API documentation][describe-volumes]
+    * _Valid values_: See supported names and values in [EC2 API documentation][describe-volumes]
 * `tags` - (Optional) Map of tags, each pair of which must exactly match
   a pair on the desired volumes.
 

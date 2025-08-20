@@ -110,7 +110,7 @@ Terraform will autogenerate a name beginning with `tf-lb`.
 * `name_prefix` - (Optional) Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 * `internal` - (Optional) If true, the LB will be internal.
 * `load_balancer_type` - (Optional) The type of load balancer to create. Possible values are `application`, `gateway`, or `network`. The default value is `application`.
-* `security_groups` - (Optional) A list of security group IDs to assign to the LB. Only valid for load balancers of type `application`.
+* `security_groups` - (Optional) List of security group IDs to assign to the LB. Only valid for load balancers of type `application`.
 * `drop_invalid_header_fields` - (Optional) Indicates whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). The default is false. Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens. Only valid for load balancers of type `application`.
 * `access_logs` - (Optional) An access logs block. Access logs documented below.
 * `subnets` - (Optional) A list of subnet IDs to attach to the LB. Subnets
@@ -132,7 +132,7 @@ for load balancers of type `network` will force a recreation of the resource.
 * `ip_address_type` - (Optional) The type of IP addresses used by the subnets for your load balancer. The possible values are `ipv4` and `dualstack`
 * `desync_mitigation_mode` - (Optional) Determines how the load balancer handles requests that might pose a security risk to an application due to HTTP desync.
     * _Valid values_: `defensive` (default), `monitor`, `strictest`
-* `tags` - (Optional) Map of tags to assign to the load balancer. If configured with a provider [`default_tags` configuration block][default-tags] present, tags with matching keys will overwrite those defined at the provider level.
+* `tags` - (Optional) Map of tags to assign to the load balancer. If a provider [`default_tags` configuration block][default-tags] is used, tags with matching keys will overwrite those defined at the provider level.
 
 Access logs (`access_logs`) support the following:
 
@@ -154,7 +154,7 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - The ID of the load balancer (matches `arn`).
 * `arn` - The Amazon Resource Name (ARN) of the load balancer (matches `id`).
-* `arn_suffix` - The Amazon Resource Name (ARN) suffix for use with CloudWatch metrics.
+* `arn_suffix` - The ARN suffix for use with CloudWatch metrics.
 * `dns_name` - The DNS name of the load balancer.
 * `tags_all` - Map of tags assigned to the load balancer, including those inherited from the provider [`default_tags` configuration block][default-tags].
 * `zone_id` - The canonical hosted zone ID of the load balancer (to be used in a Route 53 Alias record).

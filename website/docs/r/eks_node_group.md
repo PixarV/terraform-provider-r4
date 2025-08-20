@@ -91,7 +91,7 @@ The following arguments are required:
 The following arguments are optional:
 
 * `capacity_type` - (Optional) Type of capacity associated with the EKS node group.  Terraform will only perform drift detection if a configuration value is provided.
-    * _Valid values_:  `ON_DEMAND`
+    * _Valid values_: `ON_DEMAND`
 * `disk_size` - (Optional) Disk size in GiB for worker nodes. Terraform will only perform drift detection if a configuration value is provided.
     * _Default value_: `20`
 * `labels` - (Optional) Key-value map of Kubernetes labels. Only labels that are applied with the EKS API are managed by this argument. Other Kubernetes labels applied to the EKS node group will not be managed.
@@ -116,7 +116,7 @@ The following arguments are optional:
 * `key` - (Required) The key of the taint. Maximum length of 63.
 * `value` - (Optional) The value of the taint. Maximum length of 63.
 * `effect` - (Required) The effect of the taint.
-    * _Valid values_:  `NO_SCHEDULE`, `NO_EXECUTE`, `PREFER_NO_SCHEDULE`
+    * _Valid values_: `NO_SCHEDULE`, `NO_EXECUTE`, `PREFER_NO_SCHEDULE`
 
 ### update_config Configuration Block
 

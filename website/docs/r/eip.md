@@ -67,15 +67,15 @@ resource "aws_eip" "byoip-ip" {
 The following arguments are supported:
 
 * `address` - (Optional) IP address from an EC2 BYOIP pool.
-    _Constraints:_ This option is only available for VPC EIPs
+    _Constraints_: This option is only available for VPC EIPs
 * `associate_with_private_ip` - (Optional) User-specified primary or secondary private IP address to associate with the elastic IP address.
-    * _Constraints:_ If no private IP address is specified, the elastic IP address is associated with the primary private IP address
+    * _Constraints_: If no private IP address is specified, the elastic IP address is associated with the primary private IP address
 * `instance` - (Optional) The ID of the EC2 instance.
 * `network_interface` - (Optional) The ID of the network interface to associate with.
 * `public_ipv4_pool` - (Optional) The ID of the EC2 IPv4 address pool.
-    * _Constraints:_  This option is only available for VPC EIPs
+    * _Constraints_: This option is only available for VPC EIPs
 * `tags` - (Optional) Map of tags to assign to the EIP. If a provider [`default_tags` configuration block][default-tags] is used, tags with matching keys will overwrite those defined at the provider level.
-    * _Constraints:_ Tags can only be applied to EIPs in a VPC
+    * _Constraints_: Tags can only be applied to EIPs in a VPC
 * `vpc` - (Optional) Boolean if the EIP is in a VPC or not.
 
 ~> **Note** You can specify either the ID of `instance` or the ID of `network_interface`, but not both.
@@ -90,8 +90,8 @@ The following arguments are supported:
 
 In addition to all arguments above, the following attributes are exported:
 
-* `allocation_id` - ID that the cloud assigns to represent the allocation of the elastic IP address for use with instances in a VPC.
-* `association_id` - ID representing the association of the address with an instance in a VPC.
+* `allocation_id` - The ID representing the allocation of the IP address.
+* `association_id` - The ID representing the association of the allocation of the IP-address with an instance or a private IP address.
 * `domain` - Indicates if this EIP is for use in VPC (`vpc`).
 * `id` - The ID of the EIP allocation.
 * `private_ip` - Contains the private IP address. Can be `""` if `associate_with_private_ip` is specified.

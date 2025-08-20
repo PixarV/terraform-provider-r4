@@ -44,7 +44,7 @@ VPC whose data will be exported as attributes.
 * `cidr_block` - (Optional) The CIDR block of the desired VPC.
 * `dhcp_options_id` - (Optional) The ID of the DHCP options for the desired VPC.
 * `filter` - (Optional) One or more name/value pairs to use as filters.
-    * _Valid values:_ See supported names and values in [EC2 API documentation][describe-vpcs]
+    * _Valid values_: See supported names and values in [EC2 API documentation][describe-vpcs]
 * `id` - (Optional) The ID of the specific VPC to retrieve.
 * `state` - (Optional) The current state of the desired VPC.
   Can be either `pending` or `available`.

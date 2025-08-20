@@ -43,7 +43,7 @@ data "aws_security_groups" "test" {
 
 * `tags` - (Optional) Map of tags, each pair of which must exactly match for desired security groups.
 * `filter` - (Optional) One or more name/value pairs to use as filters.
-    * _Valid values:_ See supported names and values in [EC2 API documentation][describe-security-groups]
+    * _Valid values_: See supported names and values in [EC2 API documentation][describe-security-groups]
 
 ## Attribute Reference
 

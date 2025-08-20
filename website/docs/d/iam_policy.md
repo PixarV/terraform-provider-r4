@@ -47,7 +47,7 @@ In addition to all arguments above, the following attributes are exported:
 
 * `create_date` - The time in [RFC3339 format] when the policy was created.
 * `description` - The description of the policy.
-* `id` - The Amazon Resource Name (ARN) of the policy.
+* `id` - The ARN of the policy.
 * `owner` - The owner of the policy.
 * `policy` - Policy-defined access rules in JSON format.
 * `policy_id` - The ID of the policy.

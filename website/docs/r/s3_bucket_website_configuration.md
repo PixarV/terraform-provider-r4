@@ -70,7 +70,7 @@ The `redirect_all_requests_to` configuration block supports the following argume
 
 * `host_name` - (Required) Name of the host where requests are redirected.
 * `protocol` - (Optional) Protocol to use when redirecting requests. The default is the protocol that is used in the original request.
-    * _Valid values_:  `http`, `https`
+    * _Valid values_: `http`, `https`
 
 ### routing_rule
 
@@ -94,7 +94,7 @@ The `redirect` configuration block supports the following arguments:
 
 * `host_name` - (Optional) The host name to use in the redirect request.
 * `protocol` - (Optional) Protocol to use when redirecting requests. The default is the protocol that is used in the original request.
-    * _Valid values_:  `http`, `https`
+    * _Valid values_: `http`, `https`
 * `replace_key_prefix_with` - (Optional, Conflicts with `replace_key_with`) The object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix `docs/` (objects in the `docs/` folder) to `documents/`, you can set a `condition` block with `key_prefix_equals` set to `docs/` and in the `redirect` set `replace_key_prefix_with` to `/documents`.
 * `replace_key_with` - (Optional, Conflicts with `replace_key_prefix_with`) The specific object key to use in the redirect request. For example, redirect request to `error.html`.
 

@@ -42,7 +42,7 @@ security group whose data will be exported as attributes.
 
 
 * `filter` - (Optional) One or more name/value pairs to use as filters.
-    * _Valid values:_ See supported names and values in [EC2 API documentation][describe-security-groups]
+    * _Valid values_: See supported names and values in [EC2 API documentation][describe-security-groups]
 * `id` - (Optional) ID of the specific security group to retrieve.
 * `name` - (Optional) The name that the desired security group must have.
 * `tags` - (Optional) Map of tags, each pair of which must exactly match

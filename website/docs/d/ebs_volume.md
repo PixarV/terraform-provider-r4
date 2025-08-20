@@ -35,7 +35,7 @@ data "aws_ebs_volume" "ebs_volume" {
 The following arguments are supported:
 
 * `filter` - (Optional) One or more name/value pairs to use as filters.
-    * _Valid values:_ See supported names and values in [EC2 API documentation][describe-volumes]
+    * _Valid values_: See supported names and values in [EC2 API documentation][describe-volumes]
 * `most_recent` - (Optional) If more than one result is returned, use the most recent volume.
 
 ## Attribute Reference
@@ -46,7 +46,7 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - The volume ID (e.g., vol-12345678).
 * `volume_id` - The volume ID (e.g., vol-12345678).
-* `arn` - Amazon Resource Name (ARN) of the volume.
+* `arn` - The Amazon Resource Name (ARN) of the volume.
 * `availability_zone` - The AZ where the EBS volume exists.
 * `iops` - The amount of IOPS for the disk.
 * `size` - The size of the drive in GiB.

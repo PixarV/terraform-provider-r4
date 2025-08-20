@@ -57,31 +57,31 @@ resource "aws_launch_template" "example" {
 
 The following arguments are supported:
 
+* `image_id` - (Required) The ID of the image from which to launch the instance.
 * `block_device_mappings` - (Optional) Specify volumes to attach to the instance besides the volumes specified by the image.
-  The structure of this block is [described below](#block-devices).
+  The structure of this block is [described below](#block_device_mappings).
 * `default_version` - (Optional) Default version of the launch template.
-    * _Constraints:_ Conflicts with `update_default_version`
+    * _Constraints_: Conflicts with `update_default_version`
 * `description` - (Optional) Description of the launch template version.
 * `disable_api_termination` - (Optional) If `true`, disables the possibility to terminate an instance via API.
-* `image_id` - (Required) The ID of the image from which to launch the instance.
 * `instance_initiated_shutdown_behavior` - (Optional) Shutdown behavior for the instance.
     * _Valid values_: `stop`, `terminate`
 * `instance_type` - (Optional) The type of the instance.
 * `key_name` - (Optional) The key name to use for the instance.
 * `monitoring` - (Optional) The monitoring option for the instance. The structure of this block is [described below](#monitoring).
 * `name` - (Optional) The name of the launch template. If you leave this blank, Terraform will auto-generate a unique name.
-    _Constraints:_ Conflicts with `name_prefix`
+    _Constraints_: Conflicts with `name_prefix`
 * `name_prefix` - (Optional) Creates a unique name beginning with the specified prefix.
-    _Constraints:_  Conflicts with `name`
+    _Constraints_: Conflicts with `name`
 * `network_interfaces` - (Optional) Customize network interfaces to be attached at instance boot time.
-  The structure of this block is [described below](#network-interfaces).
+  The structure of this block is [described below](#network_interfaces).
 * `placement` - (Optional) The placement of the instance. The structure of this block is [described below](#placement).
-* `tag_specifications` - (Optional) The tags to apply to the resources during launch. The structure of this block is [described below](#tag-specifications).
+* `tag_specifications` - (Optional) The tags to apply to the resources during launch. The structure of this block is [described below](#tag_specifications).
 * `tags` - (Optional) Map of tags to assign to the launch template. If a provider [`default_tags` configuration block][default-tags] is used, tags with matching keys will overwrite those defined at the provider level.
 * `update_default_version` - (Optional) Whether to update default version each update.
     * Constraints:_ Conflicts with `default_version`
 * `user_data` - (Optional) The base64-encoded user data to provide when launching the instance. The text length must not exceed 16 KB.
-* `vpc_security_group_ids` - (Optional) A list of security group IDs to associate with.
+* `vpc_security_group_ids` - (Optional) List of security group IDs to associate with.
 
 ### block_device_mappings
 
@@ -93,15 +93,16 @@ The `block_device_mappings` block has the following structure:
 
 * `device_name` - (Optional) The name of the device to mount.
 * `ebs` - (Optional) Configures EBS volume properties.
+  The structure of this block is [described below](#ebs).
 * `no_device` - (Optional) Suppresses the specified device included in the block device mapping.
 
-### ebs
+#### ebs
 
 The `ebs` block has the following structure:
 
 * `delete_on_termination` - (Optional) Indicates whether the volume should be destroyed on instance termination.
 * `iops` - (Optional) The amount of provisioned IOPS.
-    * _Constraints:_ This must be set with the volume_type of `io2`
+    * _Constraints_: This must be set with the volume_type of `io2`
 * `snapshot_id` - (Optional) The ID of the snapshot to mount.
 * `volume_size` - (Optional) The size of the volume, in GiB.
 * `volume_type` - (Optional) The type of the volume.
@@ -117,19 +118,19 @@ The `monitoring` block has the following structure:
 
 Attaches one or more network interfaces to the instance.
 
-For the details about configuring network interfaces when creating an auto scaling group, see the [user documentation][asg-create].
+For the details about configuring network interfaces when creating an Auto Scaling group, see the [user documentation][asg-create].
 
 The `network_interfaces` block has the following structure:
 
 * `associate_public_ip_address` - (Optional) Whether a public IP address should be associated with the network interface.
-    * _Constraints:_ The address will be assigned to the `eth0` interface if there are free allocated external addresses.
+    * _Constraints_: The address will be assigned to the `eth0` interface if there are free allocated external addresses.
       This operation is available only for instances running in the VPC and for new network interfaces.
 * `delete_on_termination` - (Optional) Whether the network interface should be destroyed on instance termination.
 * `description` - (Optional) Description of the network interface.
 * `device_index` - (Optional) The integer index of the network interface attachment.
 * `network_interface_id` - (Optional) The ID of the network interface to attach.
 * `private_ip_address` - (Optional) The primary private IPv4 address.
-* `security_groups` - (Optional) A list of security group IDs to associate.
+* `security_groups` - (Optional) List of security group IDs to associate.
 * `subnet_id` - (Optional) The ID of the subnet to associate.
 
 ### placement
@@ -139,13 +140,13 @@ The placement group of the instance.
 The `placement` block has the following structure:
 
 * `affinity` - (Optional) The affinity setting for an instance on a dedicated host.
-    * _Constraints:_ The parameter could be set to `host` only if `tenancy` is `host`.
+    * _Constraints_: The parameter could be set to `host` only if `tenancy` is `host`
 * `availability_zone` - (Optional) The availability zone for the instance.
 * `group_name` - (Optional) The name of the placement group for the instance.
 * `host_id` - (Optional) The ID of the dedicated host for the instance.
 * `tenancy` - (Optional) The tenancy of the instance (if the instance is running in a VPC).
     * _Valid values_: `default`, `host`
-    * _Default value:_ `default`
+    * _Default value_: `default`
 
 ~> **Note** If you use the `host` value, you may encounter the `NotEnoughResourcesForInstanceType` error when running an instance. To avoid this, it is recommended to provide either the `subnet_id` argument or the `availability_zone` argument.
 

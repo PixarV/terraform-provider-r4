@@ -112,7 +112,7 @@ The `grantee` configuration block supports the following arguments:
 * `email_address` - (Optional) Email address of the grantee (S3 Project email). Used only when `type` is `AmazonCustomerByEmail`.
 * `id` - (Optional) The canonical user ID of the grantee (S3 User ID). Used only when `type` is `CanonicalUser`.
 * `type` - (Required) Type of grantee.
-    * _Valid values_:  `CanonicalUser`, `AmazonCustomerByEmail`, `Group`
+    * _Valid values_: `CanonicalUser`, `AmazonCustomerByEmail`, `Group`
 * `uri` - (Optional) URI of the grantee group. Supported groups are `http://acs.amazonaws.com/groups/global/AllUsers` and `http://acs.amazonaws.com/groups/global/AuthenticatedUsers`. Used only when `type` is `Group`.
 
 ## Attribute Reference

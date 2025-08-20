@@ -43,7 +43,7 @@ The following arguments are optional:
 * `private_ips` - (Optional) List of private IPs to assign to the ENI without regard to order. One value only.
 * `security_groups` - (Optional) List of security group IDs to assign to the ENI.
 * `source_dest_check` - (Optional) Whether to enable source destination checking for the ENI.
-    * _Default value:_ `true`.
+    * _Default value_: `true`.
 * `tags` - (Optional) Map of tags to assign to the network interface. If a provider [`default_tags` configuration block][default-tags] is used, tags with matching keys will overwrite those defined at the provider level.
 
 ### Attachment

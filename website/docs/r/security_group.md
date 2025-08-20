@@ -103,7 +103,7 @@ The following arguments are supported:
 * `name_prefix` - (Optional, Forces new resource) Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 * `name` - (Optional, Forces new resource) Name of the security group. If omitted, Terraform will assign a random, unique name.
 * `revoke_rules_on_delete` - (Optional) Instruct Terraform to revoke all the security groups attached ingress and egress rules before deleting the rule itself.
-    * _Default value:_ `false`
+    * _Default value_: `false`
 * `tags` - (Optional) Map of tags to assign to the security group. If a provider [`default_tags` configuration block][default-tags] is used, tags with matching keys will overwrite those defined at the provider level.
 * `vpc_id` - (Optional, Forces new resource) VPC ID.
 

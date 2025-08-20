@@ -55,4 +55,4 @@ In addition to all arguments above, the following attributes are exported:
 * `arn` - The Amazon Resource Name (ARN) of the key pair.
 * `fingerprint` - The SHA-1 digest of the DER encoded private key.
 * `id` - The ID of the key pair.
-* `tags` - The map of tags assigned to the key pair.
+* `tags` - Map of tags assigned to the key pair.

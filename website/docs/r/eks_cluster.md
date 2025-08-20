@@ -101,7 +101,7 @@ The following arguments are optional:
 The following arguments are supported in the `kubernetes_network_config` configuration block:
 
 * `ip_family` - (Optional) The IP family used to assign Kubernetes pod and service addresses.
-    * _Valid values_:  `ipv4`
+    * _Valid values_: `ipv4`
 * `service_ipv4_cidr` - (Optional) The CIDR block to assign Kubernetes service IP addresses from. If you don't specify a block, Kubernetes assigns addresses from 10.96.0.0/12 CIDR block.
 The block must meet the following requirements:
     * Within one of the following private IP address blocks: 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16.

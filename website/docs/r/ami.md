@@ -23,7 +23,7 @@ For more information about images, see [user documentation][images].
 ```terraform
 # Creates an image that will start a machine whose root device is backed by
 # an EBS volume populated from a snapshot. It is assumed that such a snapshot
-# already exists with the id "snap-12345678".
+# already exists with the ID "snap-12345678".
 resource "aws_ami" "example" {
   name                = "tf-ami"
   virtualization_type = "hvm"
@@ -70,8 +70,7 @@ The `ebs_block_device` blocks has the following structure:
     * _Constraints_: Required if `volume_type` is `io2`
 * `snapshot_id` - (Optional) The ID of an EBS snapshot that will be used to initialize the created
   EBS volumes.
-    * _Constraints_:  If set, the `volume_size` attribute must be at least as large as the referenced
-  snapshot
+    * _Constraints_: If set, the `volume_size` attribute must be at least as large as the referenced snapshot
 * `volume_size` - (Optional) The size of created volumes, in GiB.
     * _Constraints_: Required unless `snapshot_id` is set. If `snapshot_id` is set and `volume_size` is omitted then the volume will have the same size as the selected snapshot
 * `volume_type` - (Optional) The type of EBS volume to create.
@@ -100,7 +99,7 @@ In addition to all arguments above, the following attributes are exported:
 * `owner_id` - The ID of the image owner.
 * `platform` - The platform of the image.
 * `public` - Indicates whether the image has public launch permissions.
-* `root_snapshot_id` - The ID of the snapshot for the root volume (for EBS-backed images)
+* `root_snapshot_id` - The ID of the snapshot for the root volume (for EBS-backed images).
 * `tags_all` - Map of tags assigned to the image, including those inherited from the provider [`default_tags` configuration block][default-tags].
 
 ### Unsupported attributes

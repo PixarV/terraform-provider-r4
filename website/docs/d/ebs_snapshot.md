@@ -36,7 +36,7 @@ data "aws_ebs_snapshot" "ebs_snapshot" {
 The following arguments are supported:
 
 * `filter` - (Optional) One or more name/value pairs to use as filters.
-    * _Valid values:_ See supported names and values in [EC2 API documentation][describe-snapshots]
+    * _Valid values_: See supported names and values in [EC2 API documentation][describe-snapshots]
 * `most_recent` - (Optional) If more than one result is returned, use the most recent snapshot.
 * `owners` - (Optional) List of the snapshot owners.
     * _Valid values_: Project ID (`project@customer`) or `self`

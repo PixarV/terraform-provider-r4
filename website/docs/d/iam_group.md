@@ -48,14 +48,14 @@ In addition to all arguments above, the following attributes are exported:
 
 * `create_date` - The time in [RFC3339 format] when the group was created.
 * `group_id` - The ID of the group.
-* `id` - The Amazon Resource Name (ARN) of the group.
+* `id` - The ARN of the group.
 * `owner` - The owner of the group.
 * `type` - The type of the group.
 * `users` - List of group members. The structure of this block is [described below](#users).
 
 #### users
 
-* `arn` - The Amazon Resource Name (ARN) of a user.
+* `arn` - The ARN of a user.
 * `user_id` - The ID of a user.
 * `user_name` - The name of a user.
 

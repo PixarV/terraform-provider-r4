@@ -42,15 +42,15 @@ resource "aws_eip" "example" {
 The following arguments are supported:
 
 * `allocation_id` - (Optional) The ID of the allocation.
-    _Constraints:_ Required, if `public_ip` is not supplied
+    _Constraints_: Required, if `public_ip` is not supplied
 * `allow_reassociation` - (Optional) Indicates whether to allow an Elastic IP to be re-associated.
     * Default value: `true`
 * `instance_id` - (Optional) The ID of the instance.
-    * _Constraints:_ Required, if `network_interface_id` is not supplied
+    * _Constraints_: Required, if `network_interface_id` is not supplied
 * `network_interface_id` - (Optional) The ID of the network interface.
-    * _Constraints:_ Required, if `instance_id` is not supplied
+    * _Constraints_: Required, if `instance_id` is not supplied
 * `public_ip` - (Optional) The Elastic IP address.
-    * _Constraints:_ Required, if `allocation_id` is not supplied
+    * _Constraints_: Required, if `allocation_id` is not supplied
 
 ## Attribute Reference
 

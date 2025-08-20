@@ -262,7 +262,7 @@ The `rule` configuration block supports the following arguments:
 * `prefix` - (Optional) **DEPRECATED** Use `filter` instead. This has been deprecated by Amazon S3. Prefix identifying one or more objects to which the rule applies.
     * _Default value_: An empty string (`""`) if `filter` is not specified
 * `status` - (Required) Whether the rule is currently being applied.
-    * _Valid values_:  `Enabled` or `Disabled`
+    * _Valid values_: `Enabled` or `Disabled`
 
 ### expiration
 

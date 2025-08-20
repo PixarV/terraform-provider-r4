@@ -44,8 +44,6 @@ zone whose data will be exported as attributes.
 In addition to all arguments above, the following attributes are exported:
 
 * `region` - The region where the selected availability zone resides.
-* `state` - A specific availability zone state to require.
-    * _Valid values_: `available`, `information`, `impaired`, `unavailable`
 
 ### Unsupported attributes
 

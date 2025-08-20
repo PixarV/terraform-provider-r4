@@ -37,7 +37,7 @@ The given filters must match exactly one VPN gateway whose data will be exported
 * `attached_vpc_id` - (Optional) ID of a VPC attached to the specific VPN gateway to retrieve.
 * `availability_zone` - (Optional) The availability zone of the specific VPN gateway to retrieve.
 * `filter` - (Optional) One or more name/value pairs to use as filters.
-    * _Valid values:_ See supported names and values in [EC2 API documentation][describe-vpn-gateways]
+    * _Valid values_: See supported names and values in [EC2 API documentation][describe-vpn-gateways]
 * `id` - (Optional) ID of the specific VPN gateway to retrieve.
 * `state` - (Optional) The state of the specific VPN gateway to retrieve.
 * `tags` - (Optional) Map of tags, each pair of which must exactly match

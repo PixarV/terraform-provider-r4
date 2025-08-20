@@ -76,7 +76,7 @@ data "aws_subnets" "selected" {
 ## Argument Reference
 
 * `filter` - (Optional) One or more name/value pairs to use as filters.
-    * _Valid values:_ See supported names and values in [EC2 API documentation][describe-subnets]
+    * _Valid values_: See supported names and values in [EC2 API documentation][describe-subnets]
 * `tags` - (Optional) Map of tags, each pair of which must exactly match
   a pair on the desired subnets.
 

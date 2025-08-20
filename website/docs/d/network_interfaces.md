@@ -56,7 +56,7 @@ output "example2" {
 ## Argument Reference
 
 * `filter` - (Optional) One or more name/value pairs to use as filters.
-    * _Valid values:_ See supported names and values in [EC2 API documentation][describe-network-interfaces]
+    * _Valid values_: See supported names and values in [EC2 API documentation][describe-network-interfaces]
 * `tags` - (Optional) Map of tags, each pair of which must exactly match
   a pair on the desired network interfaces.
 

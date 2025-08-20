@@ -41,7 +41,7 @@ data "aws_ec2_host" "selected" {
 The following arguments are supported:
 
 * `filter` - (Optional) One or more name/value pairs to use as filters.
-    * _Valid values:_ See supported names and values in [EC2 API documentation][describe-hosts]
+    * _Valid values_: See supported names and values in [EC2 API documentation][describe-hosts]
 * `host_id` - (Optional) The ID of the dedicated host.
 
 ## Attribute Reference

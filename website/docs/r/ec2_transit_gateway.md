@@ -38,6 +38,13 @@ The following arguments are supported:
     * _Default value:_ `enable`
 * `description` - (Optional) The description of the transit gateway.
 * `shared_owners` - (Optional) List of project IDs (`project@customer`) that are granted access to the transit gateway.
+
+~> **Note** Do not manage transit gateway sharing in more than one place. Use either:  
+  \- `shared_owners` on [`aws_ec2_transit_gateway`](ec2_transit_gateway.md), or  
+  \- [`aws_ec2_transit_gateway_project_access`](ec2_transit_gateway_project_access.md) resources.  
+  &nbsp;  
+  Using both for the same transit gateway will conflict, as both attempt to enforce sharing state.
+
 * `tags` - (Optional) Map of tags to assign to the transit gateway.
   If a provider [`default_tags` configuration block][default-tags] is used,
   tags with matching keys will overwrite those defined at the provider level.
